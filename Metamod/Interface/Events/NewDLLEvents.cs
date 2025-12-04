@@ -1,17 +1,14 @@
-﻿using Metamod.Native.Game;
+﻿using Metamod.Enum.Metamod;
 using Metamod.Wrapper.Engine;
-using System.Runtime.InteropServices;
 
 namespace Metamod.Interface.Events;
 
-#region delegates
 #region new dll functions
-public delegate void OnFreeEntPrivateDataDelegate(Edict pEnt);
-public delegate void GameShutdownDelegate();
-public delegate int ShouldCollideDelegate(Edict pentTouched, Edict pentOther);
-public delegate void CvarValueDelegate(Edict pEnt, string value);
-public delegate void CvarValue2Delegate(Edict pEnt, int requestID, string cvarName, string value);
-#endregion
+public delegate MetaResult OnFreeEntPrivateDataDelegate(Edict pEnt);
+public delegate MetaResult GameShutdownDelegate();
+public delegate (MetaResult, int) ShouldCollideDelegate(Edict pentTouched, Edict pentOther);
+public delegate MetaResult CvarValueDelegate(Edict pEnt, string value);
+public delegate MetaResult CvarValue2Delegate(Edict pEnt, int requestID, string cvarName, string value);
 #endregion
 
 public class NewDLLEvents
@@ -27,23 +24,37 @@ public class NewDLLEvents
     #region Invoker
     internal void InvokeOnFreeEntPrivateData(Edict pEnt)
     {
-        OnFreeEntPrivateData?.Invoke(pEnt);
+        var result = OnFreeEntPrivateData?.Invoke(pEnt);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
     }
     internal void InvokeGameShutdown()
     {
-        GameShutdown?.Invoke();
+        var result = GameShutdown?.Invoke();
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
     }
     internal int InvokeShouldCollide(Edict pentTouched, Edict pentOther)
     {
-        return ShouldCollide?.Invoke(pentTouched, pentOther) ?? 0;
+        var result = ShouldCollide?.Invoke(pentTouched, pentOther);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return 0;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
     }
     internal void InvokeCvarValue(Edict pEnt, string value)
     {
-        CvarValue?.Invoke(pEnt, value);
+        var result = CvarValue?.Invoke(pEnt, value);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
     }
     internal void InvokeCvarValue2(Edict pEnt, int requestID, string cvarName, string value)
     {
-        CvarValue2?.Invoke(pEnt, requestID, cvarName, value);
+        var result = CvarValue2?.Invoke(pEnt, requestID, cvarName, value);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
     }
     #endregion
 

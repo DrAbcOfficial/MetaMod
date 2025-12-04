@@ -1,4 +1,5 @@
 ﻿using Metamod.Enum.Common;
+using Metamod.Enum.Metamod;
 using Metamod.Native.Common;
 using Metamod.Wrapper.Common;
 using Metamod.Wrapper.Engine;
@@ -6,164 +7,164 @@ using Metamod.Wrapper.Engine;
 namespace Metamod.Interface.Events;
 
 #region Delegates
-public delegate int PrecacheModelDelegate(string s);
-public delegate int PrecacheSoundDelegate(string s);
-public delegate void SetModelDelegate(Edict e, string m);
-public delegate int ModelIndexDelegate(string m);
-public delegate int ModelFramesDelegate(int modelIndex);
-public delegate void SetSizeDelegate(Edict e, Vector3f min, Vector3f max);
-public delegate void ChangeLevelDelegate(string s1, string s2);
-public delegate void GetSpawnParmsDelegate(Edict ent);
-public delegate void SaveSpawnParmsDelegate(Edict ent);
-public delegate float VecToYawDelegate(Vector3f vec);
-public delegate void VecToAnglesDelegate(Vector3f vec, Vector3f angles);
-public delegate void MoveToOriginDelegate(Edict ent, Vector3f goal, float dist, int moveType);
-public delegate void ChangeYawDelegate(Edict edict);
-public delegate void ChangePitchDelegate(Edict ent);
-public delegate Edict FindEntityByStringDelegate(Edict e, string field, string value);
-public delegate int GetEntityIllumDelegate(Edict ent);
-public delegate Edict FindEntityInSphereDelegate(Edict e, Vector3f origin, float radius);
-public delegate Edict FindClientInPVSDelegate(Edict e);
-public delegate Edict EntitiesInPVSDelegate(Edict e);
-public delegate void MakeVectorsDelegate(Vector3f vec);
-public delegate void AngleVectorsDelegate(Vector3f vec, Vector3f forward, Vector3f right, Vector3f up);
-public delegate Edict CreateEntityDelegate();
-public delegate void RemoveEntityDelegate(Edict e);
-public delegate Edict CreateNamedEntityDelegate(int className);
-public delegate void MakeStaticDelegate(Edict ent);
-public delegate int EntIsOnFloorDelegate(Edict ent);
-public delegate int DropToFloorDelegate(Edict ent);
-public delegate int WalkMoveDelegate(Edict ent, float yaw, float dist, int mode);
-public delegate void SetOriginDelegate(Edict ent, Vector3f origin);
-public delegate void EmitSoundDelegate(Edict ent, int channel, string sample, float volume, float attenuation, int fFlags, int pitch);
-public delegate void EmitAmbientSoundDelegate(Edict ent, Vector3f pos, string sample, float volume, float attenuation, int fFlags, int pitch);
-public delegate void TraceLineDelegate(Vector3f v1, Vector3f v2, int fNoMonsters, Edict pentToSkip, ref TraceResult ptr);
-public delegate void TraceTossDelegate(Edict pent, Edict pentToIgnore, ref TraceResult ptr);
-public delegate int TraceMonsterHullDelegate(Edict pent, Vector3f v1, Vector3f v2, int fNoMonsters, Edict pentToSkip, ref TraceResult ptr);
-public delegate void TraceHullDelegate(Vector3f v1, Vector3f v2, int fNoMonsters, int hullNumber, Edict pentToSkip, ref TraceResult ptr);
-public delegate void TraceModelDelegate(Vector3f v1, Vector3f v2, int hullNumber, Edict pent, ref TraceResult ptr);
-public delegate string TraceTextureDelegate(Edict pTextureEntity, Vector3f v1, Vector3f v2);
-public delegate void TraceSphereDelegate(Vector3f v1, Vector3f v2, int fNoMonsters, float radius, Edict pentToSkip, ref TraceResult ptr);
-public delegate void GetAimVectorDelegate(Edict ent, float speed, ref Vector3f vec);
-public delegate void ServerCommandDelegate(string str);
-public delegate void ServerExecuteDelegate();
-public delegate void EngineClientCommandDelegate(Edict ent, string str);
-public delegate void ParticleEffectDelegate(Vector3f org, Vector3f dir, float color, float count);
-public delegate void LightStyleDelegate(int style, string val);
-public delegate int DecalIndexDelegate(string name);
-public delegate int PointContentsDelegate(Vector3f vec);
-public delegate void MessageBeginDelegate(int msg_dest, int msg_type, Vector3f pOrigin, Edict ed);
-public delegate void MessageEndDelegate();
-public delegate void WriteByteDelegate(int iValue);
-public delegate void WriteCharDelegate(int iValue);
-public delegate void WriteShortDelegate(int iValue);
-public delegate void WriteLongDelegate(int iValue);
-public delegate void WriteAngleDelegate(float flValue);
-public delegate void WriteCoordDelegate(float flValue);
-public delegate void WriteStringDelegate(string sz);
-public delegate void WriteEntityDelegate(int iValue);
-public delegate void CVarRegisterDelegate(CVar cvar);
-public delegate float CVarGetFloatDelegate(string szVarName);
-public delegate string CVarGetStringDelegate(string szVarName);
-public delegate void CVarSetFloatDelegate(string szVarName, float flValue);
-public delegate void CVarSetStringDelegate(string szVarName, string szValue);
-public delegate void AlertMessageDelegate(AlertType atype, string szFmt);
-public delegate void EngineFprintfDelegate(nint pFile, string szFmt, params string[] p);
-public delegate nint PvAllocEntPrivateDataDelegate(Edict ed, int size);
-public delegate nint PvEntPrivateDataDelegate(Edict ed);
-public delegate void FreeEntPrivateDataDelegate(Edict ed);
-public delegate string SzFromIndexDelegate(int iString);
-public delegate int AllocStringDelegate(string szValue);
-public delegate Entvars GetVarsOfEntDelegate(Edict pEdict);
-public delegate Edict PEntityOfEntOffsetDelegate(int iEntOffset);
-public delegate int EntOffsetOfPEntityDelegate(Edict pEdict);
-public delegate int IndexOfEdictDelegate(Edict pEdict);
-public delegate Edict PEntityOfEntIndexDelegate(int iEntIndex);
-public delegate Edict FindEntityByVarsDelegate(Entvars pvars);
-public delegate nint GetModelPtrDelegate(Edict pEdict);
-public delegate int RegUserMsgDelegate(string pszName, int iSize);
-public delegate void AnimationAutomoveDelegate(Edict ent, float flTime);
-public delegate void GetBonePositionDelegate(Edict ent, int iBone, ref Vector3f origin, ref Vector3f angles);
-public delegate uint FunctionFromNameDelegate(string pName);
-public delegate string NameForFunctionDelegate(uint function);
-public delegate void ClientPrintfDelegate(Edict ent, PrintType ptype, string szMsg);
-public delegate void ServerPrintDelegate(string msg);
-public delegate string Cmd_ArgsDelegate();
-public delegate string Cmd_ArgvDelegate(int argc);
-public delegate int Cmd_ArgcDelegate();
-public delegate void GetAttachmentDelegate(Edict ent, int iAttachment, ref Vector3f origin, ref Vector3f angles);
-public delegate void CRC32_InitDelegate(CRC32 pulCRC);
-public delegate void CRC32_ProcessBufferDelegate(CRC32 pulCRC, nint buffer, int len);
-public delegate void CRC32_ProcessByteDelegate(CRC32 pulCRC, byte ch);
-public delegate CRC32 CRC32_FinalDelegate(CRC32 pulCRC);
-public delegate int RandomLongDelegate(int lLow, int lHigh);
-public delegate float RandomFloatDelegate(float flLow, float flHigh);
-public delegate void SetViewDelegate(Edict ent, Edict viewent);
-public delegate float TimeDelegate();
-public delegate void CrosshairAngleDelegate(Edict ent, float pitch, float yaw);
-public delegate nint LoadFileForMeDelegate(string filename, out int pLength);
-public delegate void FreeFileDelegate(nint buffer);
-public delegate void EndSectionDelegate(string szSectionName);
-public delegate int CompareFileTimeDelegate(string filename1, string filename2, out int iCompare);
-public delegate string GetGameDirDelegate();
-public delegate void CVar_RegisterVariableDelegate(CVar cvar);
-public delegate void FadeClientVolumeDelegate(Edict ent, int fadePercent, int fadeOutSeconds, int holdTime, int fadeInSeconds);
-public delegate void SetClientMaxspeedDelegate(Edict ent, float fNewMaxspeed);
-public delegate Edict CreateFakeClientDelegate(string netname);
-public delegate void RunPlayerMoveDelegate(Edict fakeClient, Vector3f viewangles, float forwardmove, float sidemove, float upmove, ushort buttons, byte impulse, byte msec);
-public delegate int NumberOfEntitiesDelegate();
-public delegate string GetInfoKeyBufferDelegate(Edict ent);
-public delegate string InfoKeyValueDelegate(string infobuffer, string key);
-public delegate void SetKeyValueDelegate(ref string infobuffer, string key, string value);
-public delegate void SetClientKeyValueDelegate(int clientIndex, string infobuffer, string key, string value);
-public delegate bool IsMapValidDelegate(string filename);
-public delegate void StaticDecalDelegate(Vector3f origin, int decalIndex, int entityIndex, int modelIndex);
-public delegate int PrecacheGenericDelegate(string s);
-public delegate int GetPlayerUserIdDelegate(Edict e);
-public delegate void BuildSoundMsgDelegate(Edict entity, int channel, string sample, float volume, float attenuation, int fFlags, int pitch, int msg_dest, int msg_type, Vector3f pOrigin, Edict ed);
-public delegate bool IsDedicatedServerDelegate();
-public delegate CVar CVarGetPointerDelegate(string szVarName);
-public delegate uint GetPlayerWONIdDelegate(Edict e);
-public delegate void Info_RemoveKeyDelegate(ref string s, string key);
-public delegate string GetPhysicsKeyValueDelegate(Edict ent, string key);
-public delegate void SetPhysicsKeyValueDelegate(Edict ent, string key, string value);
-public delegate string GetPhysicsInfoStringDelegate(Edict ent);
-public delegate ushort PrecacheEventDelegate(int type, string psz);
-public delegate void PlaybackEventDelegate(int flags, Edict ed, ushort eventindex, float delay, Vector3f origin, Vector3f angles, float fparam1, float fparam2, int iparam1, int iparam2, int bparam1, int bparam2);
-public delegate string SetFatPVSDelegate(Vector3f org);
-public delegate string SetFatPASDelegate(Vector3f org);
-public delegate bool CheckVisibilityDelegate(Edict entity, nint pset);
-public delegate void DeltaSetFieldDelegate(nint pFields, string fieldName);
-public delegate void DeltaUnsetFieldDelegate(nint pFields, string fieldName);
-public delegate void DeltaAddEncoderDelegate(string name, nint callback);
-public delegate int GetCurrentPlayerDelegate();
-public delegate int CanSkipPlayerDelegate(Edict player);
-public delegate int DeltaFindFieldDelegate(nint pFields, string fieldName);
-public delegate void DeltaSetFieldByIndexDelegate(nint pFields, int fieldNumber);
-public delegate void DeltaUnsetFieldByIndexDelegate(nint pFields, int fieldNumber);
-public delegate void SetGroupMaskDelegate(int mask, int op);
-public delegate int CreateInstancedBaselineDelegate(int classname, EntityState baseline);
-public delegate void Cvar_DirectSetDelegate(CVar cvar, string value);
-public delegate void ForceUnmodifiedDelegate(ForceType type, Vector3f mins, Vector3f maxs, string filename);
-public delegate void GetPlayerStatsDelegate(Edict ent, out int ping, out int packet_loss);
-public delegate void AddServerCommandDelegate(string cmd_name, ServerCommandDelegate function);
-public delegate bool Voice_GetClientListeningDelegate(int iReceiver, int iSender);
-public delegate bool Voice_SetClientListeningDelegate(int iReceiver, int iSender, bool bListen);
-public delegate string GetPlayerAuthIdDelegate(Edict e);
-public delegate nint SequenceGetDelegate(string fieldName, string entryName);
-public delegate nint SequencePickSentenceDelegate(string groupName, int pickMethod, out int picked);
-public delegate int GetFileSizeDelegate(string filename);
-public delegate uint GetApproxWavePlayLenDelegate(string filepath);
-public delegate int IsCareerMatchDelegate();
-public delegate int GetLocalizedStringLengthDelegate(string label);
-public delegate void RegisterTutorMessageShownDelegate(int mid);
-public delegate int GetTimesTutorMessageShownDelegate(int mid);
-public delegate void ProcessTutorMessageDecayBufferDelegate(nint buffer, int bufferLength);
-public delegate void ConstructTutorMessageDecayBufferDelegate(nint buffer, int bufferLength);
-public delegate void ResetTutorMessageDecayDataDelegate();
-public delegate void QueryClientCvarValueDelegate(Edict player, string cvarName);
-public delegate void QueryClientCvarValue2Delegate(Edict player, string cvarName, int requestID);
-public delegate int EngCheckParmDelegate(string pchCmdLineToken, out string ppszValue);
+public delegate (MetaResult, int) PrecacheModelDelegate(string s);
+public delegate (MetaResult, int) PrecacheSoundDelegate(string s);
+public delegate MetaResult SetModelDelegate(Edict e, string m);
+public delegate (MetaResult, int) ModelIndexDelegate(string m);
+public delegate (MetaResult, int) ModelFramesDelegate(int modelIndex);
+public delegate MetaResult SetSizeDelegate(Edict e, Vector3f min, Vector3f max);
+public delegate MetaResult ChangeLevelDelegate(string s1, string s2);
+public delegate MetaResult GetSpawnParmsDelegate(Edict ent);
+public delegate MetaResult SaveSpawnParmsDelegate(Edict ent);
+public delegate (MetaResult, float) VecToYawDelegate(Vector3f vec);
+public delegate MetaResult VecToAnglesDelegate(Vector3f vec, Vector3f angles);
+public delegate MetaResult MoveToOriginDelegate(Edict ent, Vector3f goal, float dist, int moveType);
+public delegate MetaResult ChangeYawDelegate(Edict edict);
+public delegate MetaResult ChangePitchDelegate(Edict ent);
+public delegate (MetaResult, Edict) FindEntityByStringDelegate(Edict e, string field, string value);
+public delegate (MetaResult, int) GetEntityIllumDelegate(Edict ent);
+public delegate (MetaResult, Edict) FindEntityInSphereDelegate(Edict e, Vector3f origin, float radius);
+public delegate (MetaResult, Edict) FindClientInPVSDelegate(Edict e);
+public delegate (MetaResult, Edict) EntitiesInPVSDelegate(Edict e);
+public delegate MetaResult MakeVectorsDelegate(Vector3f vec);
+public delegate MetaResult AngleVectorsDelegate(Vector3f vec, Vector3f forward, Vector3f right, Vector3f up);
+public delegate (MetaResult, Edict) CreateEntityDelegate();
+public delegate MetaResult RemoveEntityDelegate(Edict e);
+public delegate (MetaResult, Edict) CreateNamedEntityDelegate(int className);
+public delegate MetaResult MakeStaticDelegate(Edict ent);
+public delegate (MetaResult, int) EntIsOnFloorDelegate(Edict ent);
+public delegate (MetaResult, int) DropToFloorDelegate(Edict ent);
+public delegate (MetaResult, int) WalkMoveDelegate(Edict ent, float yaw, float dist, int mode);
+public delegate MetaResult SetOriginDelegate(Edict ent, Vector3f origin);
+public delegate MetaResult EmitSoundDelegate(Edict ent, int channel, string sample, float volume, float attenuation, int fFlags, int pitch);
+public delegate MetaResult EmitAmbientSoundDelegate(Edict ent, Vector3f pos, string sample, float volume, float attenuation, int fFlags, int pitch);
+public delegate MetaResult TraceLineDelegate(Vector3f v1, Vector3f v2, int fNoMonsters, Edict pentToSkip, ref TraceResult ptr);
+public delegate MetaResult TraceTossDelegate(Edict pent, Edict pentToIgnore, ref TraceResult ptr);
+public delegate (MetaResult, int) TraceMonsterHullDelegate(Edict pent, Vector3f v1, Vector3f v2, int fNoMonsters, Edict pentToSkip, ref TraceResult ptr);
+public delegate MetaResult TraceHullDelegate(Vector3f v1, Vector3f v2, int fNoMonsters, int hullNumber, Edict pentToSkip, ref TraceResult ptr);
+public delegate MetaResult TraceModelDelegate(Vector3f v1, Vector3f v2, int hullNumber, Edict pent, ref TraceResult ptr);
+public delegate (MetaResult, string) TraceTextureDelegate(Edict pTextureEntity, Vector3f v1, Vector3f v2);
+public delegate MetaResult TraceSphereDelegate(Vector3f v1, Vector3f v2, int fNoMonsters, float radius, Edict pentToSkip, ref TraceResult ptr);
+public delegate MetaResult GetAimVectorDelegate(Edict ent, float speed, ref Vector3f vec);
+public delegate MetaResult ServerCommandDelegate(string str);
+public delegate MetaResult ServerExecuteDelegate();
+public delegate MetaResult EngineClientCommandDelegate(Edict ent, string str);
+public delegate MetaResult ParticleEffectDelegate(Vector3f org, Vector3f dir, float color, float count);
+public delegate MetaResult LightStyleDelegate(int style, string val);
+public delegate (MetaResult, int) DecalIndexDelegate(string name);
+public delegate (MetaResult, int) PointContentsDelegate(Vector3f vec);
+public delegate MetaResult MessageBeginDelegate(int msg_dest, int msg_type, Vector3f pOrigin, Edict ed);
+public delegate MetaResult MessageEndDelegate();
+public delegate MetaResult WriteByteDelegate(int iValue);
+public delegate MetaResult WriteCharDelegate(int iValue);
+public delegate MetaResult WriteShortDelegate(int iValue);
+public delegate MetaResult WriteLongDelegate(int iValue);
+public delegate MetaResult WriteAngleDelegate(float flValue);
+public delegate MetaResult WriteCoordDelegate(float flValue);
+public delegate MetaResult WriteStringDelegate(string sz);
+public delegate MetaResult WriteEntityDelegate(int iValue);
+public delegate MetaResult CVarRegisterDelegate(CVar cvar);
+public delegate (MetaResult, float) CVarGetFloatDelegate(string szVarName);
+public delegate (MetaResult, string) CVarGetStringDelegate(string szVarName);
+public delegate MetaResult CVarSetFloatDelegate(string szVarName, float flValue);
+public delegate MetaResult CVarSetStringDelegate(string szVarName, string szValue);
+public delegate MetaResult AlertMessageDelegate(AlertType atype, string szFmt);
+public delegate MetaResult EngineFprintfDelegate(nint pFile, string szFmt, params string[] p);
+public delegate (MetaResult, nint) PvAllocEntPrivateDataDelegate(Edict ed, int size);
+public delegate (MetaResult, nint) PvEntPrivateDataDelegate(Edict ed);
+public delegate MetaResult FreeEntPrivateDataDelegate(Edict ed);
+public delegate (MetaResult, string) SzFromIndexDelegate(int iString);
+public delegate (MetaResult, int) AllocStringDelegate(string szValue);
+public delegate (MetaResult, Entvars) GetVarsOfEntDelegate(Edict pEdict);
+public delegate (MetaResult, Edict) PEntityOfEntOffsetDelegate(int iEntOffset);
+public delegate (MetaResult, int) EntOffsetOfPEntityDelegate(Edict pEdict);
+public delegate (MetaResult, int) IndexOfEdictDelegate(Edict pEdict);
+public delegate (MetaResult, Edict) PEntityOfEntIndexDelegate(int iEntIndex);
+public delegate (MetaResult, Edict) FindEntityByVarsDelegate(Entvars pvars);
+public delegate (MetaResult, nint) GetModelPtrDelegate(Edict pEdict);
+public delegate (MetaResult, int) RegUserMsgDelegate(string pszName, int iSize);
+public delegate MetaResult AnimationAutomoveDelegate(Edict ent, float flTime);
+public delegate MetaResult GetBonePositionDelegate(Edict ent, int iBone, ref Vector3f origin, ref Vector3f angles);
+public delegate (MetaResult, uint) FunctionFromNameDelegate(string pName);
+public delegate (MetaResult, string) NameForFunctionDelegate(uint function);
+public delegate MetaResult ClientPrintfDelegate(Edict ent, PrintType ptype, string szMsg);
+public delegate MetaResult ServerPrintDelegate(string msg);
+public delegate (MetaResult, string) Cmd_ArgsDelegate();
+public delegate (MetaResult, string) Cmd_ArgvDelegate(int argc);
+public delegate (MetaResult, int) Cmd_ArgcDelegate();
+public delegate MetaResult GetAttachmentDelegate(Edict ent, int iAttachment, ref Vector3f origin, ref Vector3f angles);
+public delegate MetaResult CRC32_InitDelegate(CRC32 pulCRC);
+public delegate MetaResult CRC32_ProcessBufferDelegate(CRC32 pulCRC, nint buffer, int len);
+public delegate MetaResult CRC32_ProcessByteDelegate(CRC32 pulCRC, byte ch);
+public delegate (MetaResult, CRC32) CRC32_FinalDelegate(CRC32 pulCRC);
+public delegate (MetaResult, int) RandomLongDelegate(int lLow, int lHigh);
+public delegate (MetaResult, float) RandomFloatDelegate(float flLow, float flHigh);
+public delegate MetaResult SetViewDelegate(Edict ent, Edict viewent);
+public delegate (MetaResult, float) TimeDelegate();
+public delegate MetaResult CrosshairAngleDelegate(Edict ent, float pitch, float yaw);
+public delegate (MetaResult, nint) LoadFileForMeDelegate(string filename, out int pLength);
+public delegate MetaResult FreeFileDelegate(nint buffer);
+public delegate MetaResult EndSectionDelegate(string szSectionName);
+public delegate (MetaResult, int) CompareFileTimeDelegate(string filename1, string filename2, out int iCompare);
+public delegate (MetaResult, string) GetGameDirDelegate();
+public delegate MetaResult CVar_RegisterVariableDelegate(CVar cvar);
+public delegate MetaResult FadeClientVolumeDelegate(Edict ent, int fadePercent, int fadeOutSeconds, int holdTime, int fadeInSeconds);
+public delegate MetaResult SetClientMaxspeedDelegate(Edict ent, float fNewMaxspeed);
+public delegate (MetaResult, Edict) CreateFakeClientDelegate(string netname);
+public delegate MetaResult RunPlayerMoveDelegate(Edict fakeClient, Vector3f viewangles, float forwardmove, float sidemove, float upmove, ushort buttons, byte impulse, byte msec);
+public delegate (MetaResult, int) NumberOfEntitiesDelegate();
+public delegate (MetaResult, string) GetInfoKeyBufferDelegate(Edict ent);
+public delegate (MetaResult, string) InfoKeyValueDelegate(string infobuffer, string key);
+public delegate MetaResult SetKeyValueDelegate(ref string infobuffer, string key, string value);
+public delegate MetaResult SetClientKeyValueDelegate(int clientIndex, string infobuffer, string key, string value);
+public delegate (MetaResult, bool) IsMapValidDelegate(string filename);
+public delegate MetaResult StaticDecalDelegate(Vector3f origin, int decalIndex, int entityIndex, int modelIndex);
+public delegate (MetaResult, int) PrecacheGenericDelegate(string s);
+public delegate (MetaResult, int) GetPlayerUserIdDelegate(Edict e);
+public delegate MetaResult BuildSoundMsgDelegate(Edict entity, int channel, string sample, float volume, float attenuation, int fFlags, int pitch, int msg_dest, int msg_type, Vector3f pOrigin, Edict ed);
+public delegate (MetaResult, bool) IsDedicatedServerDelegate();
+public delegate (MetaResult, CVar?) CVarGetPointerDelegate(string szVarName);
+public delegate (MetaResult, uint) GetPlayerWONIdDelegate(Edict e);
+public delegate MetaResult Info_RemoveKeyDelegate(ref string s, string key);
+public delegate (MetaResult, string) GetPhysicsKeyValueDelegate(Edict ent, string key);
+public delegate MetaResult SetPhysicsKeyValueDelegate(Edict ent, string key, string value);
+public delegate (MetaResult, string) GetPhysicsInfoStringDelegate(Edict ent);
+public delegate (MetaResult, ushort) PrecacheEventDelegate(int type, string psz);
+public delegate MetaResult PlaybackEventDelegate(int flags, Edict ed, ushort eventindex, float delay, Vector3f origin, Vector3f angles, float fparam1, float fparam2, int iparam1, int iparam2, int bparam1, int bparam2);
+public delegate (MetaResult, string) SetFatPVSDelegate(Vector3f org);
+public delegate (MetaResult, string) SetFatPASDelegate(Vector3f org);
+public delegate (MetaResult, bool) CheckVisibilityDelegate(Edict entity, nint pset);
+public delegate MetaResult DeltaSetFieldDelegate(nint pFields, string fieldName);
+public delegate MetaResult DeltaUnsetFieldDelegate(nint pFields, string fieldName);
+public delegate MetaResult DeltaAddEncoderDelegate(string name, nint callback);
+public delegate (MetaResult, int) GetCurrentPlayerDelegate();
+public delegate (MetaResult, int) CanSkipPlayerDelegate(Edict player);
+public delegate (MetaResult, int) DeltaFindFieldDelegate(nint pFields, string fieldName);
+public delegate MetaResult DeltaSetFieldByIndexDelegate(nint pFields, int fieldNumber);
+public delegate MetaResult DeltaUnsetFieldByIndexDelegate(nint pFields, int fieldNumber);
+public delegate MetaResult SetGroupMaskDelegate(int mask, int op);
+public delegate (MetaResult, int) CreateInstancedBaselineDelegate(int classname, EntityState baseline);
+public delegate MetaResult Cvar_DirectSetDelegate(CVar cvar, string value);
+public delegate MetaResult ForceUnmodifiedDelegate(ForceType type, Vector3f mins, Vector3f maxs, string filename);
+public delegate MetaResult GetPlayerStatsDelegate(Edict ent, out int ping, out int packet_loss);
+public delegate MetaResult AddServerCommandDelegate(string cmd_name, ServerCommandDelegate function);
+public delegate (MetaResult, bool) Voice_GetClientListeningDelegate(int iReceiver, int iSender);
+public delegate (MetaResult, bool) Voice_SetClientListeningDelegate(int iReceiver, int iSender, bool bListen);
+public delegate (MetaResult, string) GetPlayerAuthIdDelegate(Edict e);
+public delegate (MetaResult, nint) SequenceGetDelegate(string fieldName, string entryName);
+public delegate (MetaResult, nint) SequencePickSentenceDelegate(string groupName, int pickMethod, out int picked);
+public delegate (MetaResult, int) GetFileSizeDelegate(string filename);
+public delegate (MetaResult, uint) GetApproxWavePlayLenDelegate(string filepath);
+public delegate (MetaResult, int) IsCareerMatchDelegate();
+public delegate (MetaResult, int) GetLocalizedStringLengthDelegate(string label);
+public delegate MetaResult RegisterTutorMessageShownDelegate(int mid);
+public delegate (MetaResult, int) GetTimesTutorMessageShownDelegate(int mid);
+public delegate MetaResult ProcessTutorMessageDecayBufferDelegate(nint buffer, int bufferLength);
+public delegate MetaResult ConstructTutorMessageDecayBufferDelegate(nint buffer, int bufferLength);
+public delegate MetaResult ResetTutorMessageDecayDataDelegate();
+public delegate MetaResult QueryClientCvarValueDelegate(Edict player, string cvarName);
+public delegate MetaResult QueryClientCvarValue2Delegate(Edict player, string cvarName, int requestID);
+public delegate (MetaResult, int) EngCheckParmDelegate(string pchCmdLineToken, out string ppszValue);
 #endregion
 
 
@@ -331,174 +332,1590 @@ public class EngineEvents
     #endregion
 
     #region Invoker
-    internal int InvokePrecacheModel(string s) => PrecacheModel?.Invoke(s) ?? 0;
-    internal int InvokePrecacheSound(string s) => PrecacheSound?.Invoke(s) ?? 0;
-    internal void InvokeSetModel(Edict e, string m) => SetModel?.Invoke(e, m);
-    internal int InvokeModelIndex(string m) => ModelIndex != null ? ModelIndex.Invoke(m) : 0;
-    internal int InvokeModelFrames(int modelIndex) => ModelFrames != null ? ModelFrames.Invoke(modelIndex) : 0;
-    internal void InvokeSetSize(Edict e, Vector3f min, Vector3f max) => SetSize?.Invoke(e, min, max);
-    internal void InvokeChangeLevel(string s1, string s2) => ChangeLevel?.Invoke(s1, s2);
-    internal void InvokeGetSpawnParms(Edict ent) => GetSpawnParms?.Invoke(ent);
-    internal void InvokeSaveSpawnParms(Edict ent) => SaveSpawnParms?.Invoke(ent);
-    internal float InvokeVecToYaw(Vector3f vec) => VecToYaw != null ? VecToYaw.Invoke(vec) : 0f;
-    internal void InvokeVecToAngles(Vector3f vec, Vector3f angles) => VecToAngles?.Invoke(vec, angles);
-    internal void InvokeMoveToOrigin(Edict ent, Vector3f goal, float dist, int moveType) => MoveToOrigin?.Invoke(ent, goal, dist, moveType);
-    internal void InvokeChangeYaw(Edict edict) => ChangeYaw?.Invoke(edict);
-    internal void InvokeChangePitch(Edict ent) => ChangePitch?.Invoke(ent);
-    internal Edict InvokeFindEntityByString(Edict e, string field, string value) => FindEntityByString != null ? FindEntityByString.Invoke(e, field, value) : new Edict();
-    internal int InvokeGetEntityIllum(Edict ent) => GetEntityIllum != null ? GetEntityIllum.Invoke(ent) : 0;
-    internal Edict InvokeFindEntityInSphere(Edict e, Vector3f origin, float radius) => FindEntityInSphere != null ? FindEntityInSphere.Invoke(e, origin, radius) : new Edict();
-    internal Edict InvokeFindClientInPVS(Edict e) => FindClientInPVS != null ? FindClientInPVS.Invoke(e) : new Edict();
-    internal Edict InvokeEntitiesInPVS(Edict e) => EntitiesInPVS != null ? EntitiesInPVS.Invoke(e) : new Edict();
-    internal void InvokeMakeVectors(Vector3f vec) => MakeVectors?.Invoke(vec);
-    internal void InvokeAngleVectors(Vector3f vec, Vector3f forward, Vector3f right, Vector3f up) => AngleVectors?.Invoke(vec, forward, right, up);
-    internal Edict InvokeCreateEntity() => CreateEntity != null ? CreateEntity.Invoke() : new Edict();
-    internal void InvokeRemoveEntity(Edict e) => RemoveEntity?.Invoke(e);
-    internal Edict InvokeCreateNamedEntity(int className) => CreateNamedEntity != null ? CreateNamedEntity.Invoke(className) : new Edict();
-    internal void InvokeMakeStatic(Edict ent) => MakeStatic?.Invoke(ent);
-    internal int InvokeEntIsOnFloor(Edict ent) => EntIsOnFloor != null ? EntIsOnFloor.Invoke(ent) : 0;
-    internal int InvokeDropToFloor(Edict ent) => DropToFloor != null ? DropToFloor.Invoke(ent) : 0;
-    internal int InvokeWalkMove(Edict ent, float yaw, float dist, int mode) => WalkMove != null ? WalkMove.Invoke(ent, yaw, dist, mode) : 0;
-    internal void InvokeSetOrigin(Edict ent, Vector3f origin) => SetOrigin?.Invoke(ent, origin);
-    internal void InvokeEmitSound(Edict ent, int channel, string sample, float volume, float attenuation, int fFlags, int pitch) => EmitSound?.Invoke(ent, channel, sample, volume, attenuation, fFlags, pitch);
-    internal void InvokeEmitAmbientSound(Edict ent, Vector3f pos, string sample, float volume, float attenuation, int fFlags, int pitch) => EmitAmbientSound?.Invoke(ent, pos, sample, volume, attenuation, fFlags, pitch);
-    internal void InvokeTraceLine(Vector3f v1, Vector3f v2, int fNoMonsters, Edict pentToSkip, ref TraceResult ptr) => TraceLine?.Invoke(v1, v2, fNoMonsters, pentToSkip, ref ptr);
-    internal void InvokeTraceToss(Edict pent, Edict pentToIgnore, ref TraceResult ptr) => TraceToss?.Invoke(pent, pentToIgnore, ref ptr);
-    internal int InvokeTraceMonsterHull(Edict pent, Vector3f v1, Vector3f v2, int fNoMonsters, Edict pentToSkip, ref TraceResult ptr) => TraceMonsterHull != null ? TraceMonsterHull.Invoke(pent, v1, v2, fNoMonsters, pentToSkip, ref ptr) : 0;
-    internal void InvokeTraceHull(Vector3f v1, Vector3f v2, int fNoMonsters, int hullNumber, Edict pentToSkip, ref TraceResult ptr) => TraceHull?.Invoke(v1, v2, fNoMonsters, hullNumber, pentToSkip, ref ptr);
-    internal void InvokeTraceModel(Vector3f v1, Vector3f v2, int hullNumber, Edict pent, ref TraceResult ptr) => TraceModel?.Invoke(v1, v2, hullNumber, pent, ref ptr);
-    internal string InvokeTraceTexture(Edict pTextureEntity, Vector3f v1, Vector3f v2) => TraceTexture != null ? TraceTexture.Invoke(pTextureEntity, v1, v2) : string.Empty;
-    internal void InvokeTraceSphere(Vector3f v1, Vector3f v2, int fNoMonsters, float radius, Edict pentToSkip, ref TraceResult ptr) => TraceSphere?.Invoke(v1, v2, fNoMonsters, radius, pentToSkip, ref ptr);
-    internal void InvokeGetAimVector(Edict ent, float speed, ref Vector3f vec) => GetAimVector?.Invoke(ent, speed, ref vec);
-    internal void InvokeServerCommand(string str) => ServerCommand?.Invoke(str);
-    internal void InvokeServerExecute() => ServerExecute?.Invoke();
-    internal void InvokeClientCommand(Edict ent, string str) => ClientCommand?.Invoke(ent, str);
-    internal void InvokeParticleEffect(Vector3f org, Vector3f dir, float color, float count) => ParticleEffect?.Invoke(org, dir, color, count);
-    internal void InvokeLightStyle(int style, string val) => LightStyle?.Invoke(style, val);
-    internal int InvokeDecalIndex(string name) => DecalIndex != null ? DecalIndex.Invoke(name) : 0;
-    internal int InvokePointContents(Vector3f vec) => PointContents != null ? PointContents.Invoke(vec) : 0;
-    internal void InvokeMessageBegin(int msg_dest, int msg_type, Vector3f pOrigin, Edict ed) => MessageBegin?.Invoke(msg_dest, msg_type, pOrigin, ed);
-    internal void InvokeMessageEnd() => MessageEnd?.Invoke();
-    internal void InvokeWriteByte(int iValue) => WriteByte?.Invoke(iValue);
-    internal void InvokeWriteChar(int iValue) => WriteChar?.Invoke(iValue);
-    internal void InvokeWriteShort(int iValue) => WriteShort?.Invoke(iValue);
-    internal void InvokeWriteLong(int iValue) => WriteLong?.Invoke(iValue);
-    internal void InvokeWriteAngle(float flValue) => WriteAngle?.Invoke(flValue);
-    internal void InvokeWriteCoord(float flValue) => WriteCoord?.Invoke(flValue);
-    internal void InvokeWriteString(string sz) => WriteString?.Invoke(sz);
-    internal void InvokeWriteEntity(int iValue) => WriteEntity?.Invoke(iValue);
-    internal void InvokeCVarRegister(CVar cvar) => CVarRegister?.Invoke(cvar);
-    internal float InvokeCVarGetFloat(string szVarName) => CVarGetFloat != null ? CVarGetFloat.Invoke(szVarName) : 0f;
-    internal string InvokeCVarGetString(string szVarName) => CVarGetString != null ? CVarGetString.Invoke(szVarName) : string.Empty;
-    internal void InvokeCVarSetFloat(string szVarName, float flValue) => CVarSetFloat?.Invoke(szVarName, flValue);
-    internal void InvokeCVarSetString(string szVarName, string szValue) => CVarSetString?.Invoke(szVarName, szValue);
-    internal void InvokeAlertMessage(AlertType atype, string szFmt) => AlertMessage?.Invoke(atype, szFmt);
-    internal void InvokeEngineFprintf(nint pFile, string szFmt, params string[] p) => EngineFprintf?.Invoke(pFile, szFmt, p);
-    internal nint InvokePvAllocEntPrivateData(Edict ed, int size) => PvAllocEntPrivateData != null ? PvAllocEntPrivateData.Invoke(ed, size) : nint.Zero;
-    internal nint InvokePvEntPrivateData(Edict ed) => PvEntPrivateData != null ? PvEntPrivateData.Invoke(ed) : nint.Zero;
-    internal void InvokeFreeEntPrivateData(Edict ed) => FreeEntPrivateData?.Invoke(ed);
-    internal string InvokeSzFromIndex(int iString) => SzFromIndex != null ? SzFromIndex.Invoke(iString) : string.Empty;
-    internal int InvokeAllocString(string szValue) => AllocString != null ? AllocString.Invoke(szValue) : 0;
-    internal Entvars InvokeGetVarsOfEnt(Edict pEdict) => GetVarsOfEnt != null ? GetVarsOfEnt.Invoke(pEdict) : new Entvars();
-    internal Edict InvokePEntityOfEntOffset(int iEntOffset) => PEntityOfEntOffset != null ? PEntityOfEntOffset.Invoke(iEntOffset) : new Edict();
-    internal int InvokeEntOffsetOfPEntity(Edict pEdict) => EntOffsetOfPEntity != null ? EntOffsetOfPEntity.Invoke(pEdict) : 0;
-    internal int InvokeIndexOfEdict(Edict pEdict) => IndexOfEdict != null ? IndexOfEdict.Invoke(pEdict) : 0;
-    internal Edict InvokePEntityOfEntIndex(int iEntIndex) => PEntityOfEntIndex != null ? PEntityOfEntIndex.Invoke(iEntIndex) : new Edict();
-    internal Edict InvokeFindEntityByVars(Entvars pvars) => FindEntityByVars != null ? FindEntityByVars.Invoke(pvars) : new Edict();
-    internal nint InvokeGetModelPtr(Edict pEdict) => GetModelPtr != null ? GetModelPtr.Invoke(pEdict) : nint.Zero;
-    internal int InvokeRegUserMsg(string pszName, int iSize) => RegUserMsg != null ? RegUserMsg.Invoke(pszName, iSize) : 0;
-    internal void InvokeAnimationAutomove(Edict ent, float flTime) => AnimationAutomove?.Invoke(ent, flTime);
-    internal void InvokeGetBonePosition(Edict ent, int iBone, ref Vector3f origin, ref Vector3f angles) => GetBonePosition?.Invoke(ent, iBone, ref origin, ref angles);
-    internal uint InvokeFunctionFromName(string pName) => FunctionFromName != null ? FunctionFromName.Invoke(pName) : 0u;
-    internal string InvokeNameForFunction(uint function) => NameForFunction != null ? NameForFunction.Invoke(function) : string.Empty;
-    internal void InvokeClientPrintf(Edict ent, PrintType ptype, string szMsg) => ClientPrintf?.Invoke(ent, ptype, szMsg);
-    internal void InvokeServerPrint(string msg) => ServerPrint?.Invoke(msg);
-    internal string InvokeCmd_Args() => Cmd_Args != null ? Cmd_Args.Invoke() : string.Empty;
-    internal string InvokeCmd_Argv(int argc) => Cmd_Argv != null ? Cmd_Argv.Invoke(argc) : string.Empty;
-    internal int InvokeCmd_Argc() => Cmd_Argc != null ? Cmd_Argc.Invoke() : 0;
-    internal void InvokeGetAttachment(Edict ent, int iAttachment, ref Vector3f origin, ref Vector3f angles) => GetAttachment?.Invoke(ent, iAttachment, ref origin, ref angles);
-    internal void InvokeCRC32_Init(CRC32 pulCRC) => CRC32_Init?.Invoke(pulCRC);
-    internal void InvokeCRC32_ProcessBuffer(CRC32 pulCRC, nint buffer, int len) => CRC32_ProcessBuffer?.Invoke(pulCRC, buffer, len);
-    internal void InvokeCRC32_ProcessByte(CRC32 pulCRC, byte ch) => CRC32_ProcessByte?.Invoke(pulCRC, ch);
-    internal CRC32 InvokeCRC32_Final(CRC32 pulCRC) => CRC32_Final != null ? CRC32_Final.Invoke(pulCRC) : new CRC32(new NativeCRC32());
-    internal int InvokeRandomLong(int lLow, int lHigh) => RandomLong != null ? RandomLong.Invoke(lLow, lHigh) : 0;
-    internal float InvokeRandomFloat(float flLow, float flHigh) => RandomFloat != null ? RandomFloat.Invoke(flLow, flHigh) : 0f;
-    internal void InvokeSetView(Edict ent, Edict viewent) => SetView?.Invoke(ent, viewent);
-    internal float InvokeTime() => Time != null ? Time.Invoke() : 0f;
-    internal void InvokeCrosshairAngle(Edict ent, float pitch, float yaw) => CrosshairAngle?.Invoke(ent, pitch, yaw);
-    internal nint InvokeLoadFileForMe(string filename, out int pLength) { if (LoadFileForMe != null) return LoadFileForMe.Invoke(filename, out pLength); pLength = 0; return nint.Zero; }
-    internal void InvokeFreeFile(nint buffer) => FreeFile?.Invoke(buffer);
-    internal void InvokeEndSection(string szSectionName) => EndSection?.Invoke(szSectionName);
-    internal int InvokeCompareFileTime(string filename1, string filename2, out int iCompare) { if (CompareFileTime != null) return CompareFileTime.Invoke(filename1, filename2, out iCompare); iCompare = 0; return 0; }
-    internal string InvokeGetGameDir() => GetGameDir != null ? GetGameDir.Invoke() : string.Empty;
-    internal void InvokeCVar_RegisterVariable(CVar cvar) => Cvar_RegisterVariable?.Invoke(cvar);
-    internal void InvokeFadeClientVolume(Edict ent, int fadePercent, int fadeOutSeconds, int holdTime, int fadeInSeconds) => FadeClientVolume?.Invoke(ent, fadePercent, fadeOutSeconds, holdTime, fadeInSeconds);
-    internal void InvokeSetClientMaxspeed(Edict ent, float fNewMaxspeed) => SetClientMaxspeed?.Invoke(ent, fNewMaxspeed);
-    internal Edict InvokeCreateFakeClient(string netname) => CreateFakeClient != null ? CreateFakeClient.Invoke(netname) : new Edict();
-    internal void InvokeRunPlayerMove(Edict fakeClient, Vector3f viewangles, float forwardmove, float sidemove, float upmove, ushort buttons, byte impulse, byte msec) => RunPlayerMove?.Invoke(fakeClient, viewangles, forwardmove, sidemove, upmove, buttons, impulse, msec);
-    internal int InvokeNumberOfEntities() => NumberOfEntities != null ? NumberOfEntities.Invoke() : 0;
-    internal string InvokeGetInfoKeyBuffer(Edict ent) => GetInfoKeyBuffer != null ? GetInfoKeyBuffer.Invoke(ent) : string.Empty;
-    internal string InvokeInfoKeyValue(string infobuffer, string key) => InfoKeyValue != null ? InfoKeyValue.Invoke(infobuffer, key) : string.Empty;
-    internal void InvokeSetKeyValue(ref string infobuffer, string key, string value) => SetKeyValue?.Invoke(ref infobuffer, key, value);
-    internal void InvokeSetClientKeyValue(int clientIndex, string infobuffer, string key, string value) => SetClientKeyValue?.Invoke(clientIndex, infobuffer, key, value);
-    internal bool InvokeIsMapValid(string filename) => IsMapValid != null ? IsMapValid.Invoke(filename) : false;
-    internal void InvokeStaticDecal(Vector3f origin, int decalIndex, int entityIndex, int modelIndex) => StaticDecal?.Invoke(origin, decalIndex, entityIndex, modelIndex);
-    internal int InvokePrecacheGeneric(string s) => PrecacheGeneric?.Invoke(s) ?? 0;
-    internal int InvokeGetPlayerUserId(Edict e) => GetPlayerUserId != null ? GetPlayerUserId.Invoke(e) : 0;
-    internal void InvokeBuildSoundMsg(Edict entity, int channel, string sample, float volume, float attenuation, int fFlags, int pitch, int msg_dest, int msg_type, Vector3f pOrigin, Edict ed) => BuildSoundMsg?.Invoke(entity, channel, sample, volume, attenuation, fFlags, pitch, msg_dest, msg_type, pOrigin, ed);
-    internal bool InvokeIsDedicatedServer() => IsDedicatedServer != null ? IsDedicatedServer.Invoke() : false;
-    internal CVar? InvokeCVarGetPointer(string szVarName) => CVarGetPointer != null ? CVarGetPointer.Invoke(szVarName) : null;
-    internal uint InvokeGetPlayerWONId(Edict e) => GetPlayerWONId != null ? GetPlayerWONId.Invoke(e) : 0u;
-    internal void InvokeInfo_RemoveKey(ref string s, string key) => Info_RemoveKey?.Invoke(ref s, key);
-    internal string InvokeGetPhysicsKeyValue(Edict ent, string key) => GetPhysicsKeyValue != null ? GetPhysicsKeyValue.Invoke(ent, key) : string.Empty;
-    internal void InvokeSetPhysicsKeyValue(Edict ent, string key, string value) => SetPhysicsKeyValue?.Invoke(ent, key, value);
-    internal string InvokeGetPhysicsInfoString(Edict ent) => GetPhysicsInfoString != null ? GetPhysicsInfoString.Invoke(ent) : string.Empty;
-    internal ushort InvokePrecacheEvent(int type, string psz) => PrecacheEvent != null ? PrecacheEvent.Invoke(type, psz) : (ushort)0;
-    internal void InvokePlaybackEvent(int flags, Edict ed, ushort eventindex, float delay, Vector3f origin, Vector3f angles, float fparam1, float fparam2, int iparam1, int iparam2, int bparam1, int bparam2) => PlaybackEvent?.Invoke(flags, ed, eventindex, delay, origin, angles, fparam1, fparam2, iparam1, iparam2, bparam1, bparam2);
-    internal string InvokeSetFatPVS(Vector3f org) => SetFatPVS != null ? SetFatPVS.Invoke(org) : string.Empty;
-    internal string InvokeSetFatPAS(Vector3f org) => SetFatPAS != null ? SetFatPAS.Invoke(org) : string.Empty;
-    internal bool InvokeCheckVisibility(Edict entity, nint pset) => CheckVisibility != null ? CheckVisibility.Invoke(entity, pset) : false;
-    internal void InvokeDeltaSetField(nint pFields, string fieldName) => DeltaSetField?.Invoke(pFields, fieldName);
-    internal void InvokeDeltaUnsetField(nint pFields, string fieldName) => DeltaUnsetField?.Invoke(pFields, fieldName);
-    internal void InvokeDeltaAddEncoder(string name, nint callback) => DeltaAddEncoder?.Invoke(name, callback);
-    internal int InvokeGetCurrentPlayer() => GetCurrentPlayer != null ? GetCurrentPlayer.Invoke() : 0;
-    internal int InvokeCanSkipPlayer(Edict player) => CanSkipPlayer != null ? CanSkipPlayer.Invoke(player) : 0;
-    internal int InvokeDeltaFindField(nint pFields, string fieldName) => DeltaFindField != null ? DeltaFindField.Invoke(pFields, fieldName) : 0;
-    internal void InvokeDeltaSetFieldByIndex(nint pFields, int fieldNumber) => DeltaSetFieldByIndex?.Invoke(pFields, fieldNumber);
-    internal void InvokeDeltaUnsetFieldByIndex(nint pFields, int fieldNumber) => DeltaUnsetFieldByIndex?.Invoke(pFields, fieldNumber);
-    internal void InvokeSetGroupMask(int mask, int op) => SetGroupMask?.Invoke(mask, op);
-    internal int InvokeCreateInstancedBaseline(int classname, EntityState baseline) => CreateInstancedBaseline != null ? CreateInstancedBaseline.Invoke(classname, baseline) : 0;
-    internal void InvokeCvar_DirectSet(CVar cvar, string value) => Cvar_DirectSet?.Invoke(cvar, value);
-    internal void InvokeForceUnmodified(ForceType type, Vector3f mins, Vector3f maxs, string filename) => ForceUnmodified?.Invoke(type, mins, maxs, filename);
-    internal void InvokeGetPlayerStats(Edict ent, out int ping, out int packet_loss) { if (GetPlayerStats != null) { GetPlayerStats.Invoke(ent, out ping, out packet_loss); } else { ping = 0; packet_loss = 0; } }
-    internal void InvokeAddServerCommand(string cmd_name, ServerCommandDelegate function) => AddServerCommand?.Invoke(cmd_name, function);
-    internal bool InvokeVoice_GetClientListening(int iReceiver, int iSender) => Voice_GetClientListening != null ? Voice_GetClientListening.Invoke(iReceiver, iSender) : false;
-    internal bool InvokeVoice_SetClientListening(int iReceiver, int iSender, bool bListen) => Voice_SetClientListening != null ? Voice_SetClientListening.Invoke(iReceiver, iSender, bListen) : false;
-    internal string InvokeGetPlayerAuthId(Edict e) => GetPlayerAuthId != null ? GetPlayerAuthId.Invoke(e) : string.Empty;
-    internal nint InvokeSequenceGet(string fieldName, string entryName) => SequenceGet != null ? SequenceGet.Invoke(fieldName, entryName) : nint.Zero;
-    internal nint InvokeSequencePickSentence(string groupName, int pickMethod, out int picked) { if (SequencePickSentence != null) return SequencePickSentence.Invoke(groupName, pickMethod, out picked); picked = 0; return nint.Zero; }
-    internal int InvokeGetFileSize(string filename) => GetFileSize != null ? GetFileSize.Invoke(filename) : 0;
-    internal uint InvokeGetApproxWavePlayLen(string filepath) => GetApproxWavePlayLen != null ? GetApproxWavePlayLen.Invoke(filepath) : 0u;
-    internal int InvokeIsCareerMatch() => IsCareerMatch != null ? IsCareerMatch.Invoke() : 0;
-    internal int InvokeGetLocalizedStringLength(string label) => GetLocalizedStringLength != null ? GetLocalizedStringLength.Invoke(label) : 0;
-    internal void InvokeRegisterTutorMessageShown(int mid) => RegisterTutorMessageShown?.Invoke(mid);
-    internal int InvokeGetTimesTutorMessageShown(int mid) => GetTimesTutorMessageShown != null ? GetTimesTutorMessageShown.Invoke(mid) : 0;
-    internal void InvokeProcessTutorMessageDecayBuffer(nint buffer, int bufferLength) => ProcessTutorMessageDecayBuffer?.Invoke(buffer, bufferLength);
-    internal void InvokeConstructTutorMessageDecayBuffer(nint buffer, int bufferLength) => ConstructTutorMessageDecayBuffer?.Invoke(buffer, bufferLength);
-    internal void InvokeResetTutorMessageDecayData() => ResetTutorMessageDecayData?.Invoke();
-    internal void InvokeQueryClientCvarValue(Edict player, string cvarName) => QueryClientCvarValue?.Invoke(player, cvarName);
-    internal void InvokeQueryClientCvarValue2(Edict player, string cvarName, int requestID) => QueryClientCvarValue2?.Invoke(player, cvarName, requestID);
-    internal int InvokeEngCheckParm(string pchCmdLineToken, out string ppszValue)
-    { 
-        if (EngCheckParm != null) 
-        { 
-            return EngCheckParm.Invoke(pchCmdLineToken, out ppszValue);
-        } 
-        else 
+    internal int InvokePrecacheModel(string s)
+    {
+        var result = PrecacheModel?.Invoke(s);
+        if (result == null)
         {
-            ppszValue = string.Empty;
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
             return 0;
-        } 
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+    internal int InvokePrecacheSound(string s)
+    {
+        var result = PrecacheSound?.Invoke(s);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return 0;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+    internal void InvokeSetModel(Edict e, string m)
+    {
+        var result = SetModel?.Invoke(e, m);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+    internal int InvokeModelIndex(string m)
+    {
+        var result = ModelIndex?.Invoke(m);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return 0;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+    internal int InvokeModelFrames(int modelIndex)
+    {
+        var result = ModelFrames?.Invoke(modelIndex);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return 0;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+    internal void InvokeSetSize(Edict e, Vector3f min, Vector3f max)
+    {
+        var result = SetSize?.Invoke(e, min, max);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+    internal void InvokeChangeLevel(string s1, string s2)
+    {
+        var result = ChangeLevel?.Invoke(s1, s2);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+    internal void InvokeGetSpawnParms(Edict ent)
+    {
+        var result = GetSpawnParms?.Invoke(ent);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+    internal void InvokeSaveSpawnParms(Edict ent)
+    {
+        var result = SaveSpawnParms?.Invoke(ent);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+    internal float InvokeVecToYaw(Vector3f vec)
+    {
+        var result = VecToYaw?.Invoke(vec);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return 0f;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+    internal void InvokeVecToAngles(Vector3f vec, Vector3f angles)
+    {
+        var result = VecToAngles?.Invoke(vec, angles);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+    internal void InvokeMoveToOrigin(Edict ent, Vector3f goal, float dist, int moveType)
+    {
+        var result = MoveToOrigin?.Invoke(ent, goal, dist, moveType);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+    internal void InvokeChangeYaw(Edict edict)
+    {
+        var result = ChangeYaw?.Invoke(edict);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+    internal void InvokeChangePitch(Edict ent)
+    {
+        var result = ChangePitch?.Invoke(ent);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+    internal Edict InvokeFindEntityByString(Edict e, string field, string value)
+    {
+        var result = FindEntityByString?.Invoke(e, field, value);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return new Edict();
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+    internal int InvokeGetEntityIllum(Edict ent)
+    {
+        var result = GetEntityIllum?.Invoke(ent);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return 0;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+    internal Edict InvokeFindEntityInSphere(Edict e, Vector3f origin, float radius)
+    {
+        var result = FindEntityInSphere?.Invoke(e, origin, radius);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return new Edict();
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+    internal Edict InvokeFindClientInPVS(Edict e)
+    {
+        var result = FindClientInPVS?.Invoke(e);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return new Edict();
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+    internal Edict InvokeEntitiesInPVS(Edict e)
+    {
+        var result = EntitiesInPVS?.Invoke(e);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return new Edict();
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+    internal void InvokeMakeVectors(Vector3f vec)
+    {
+        var result = MakeVectors?.Invoke(vec);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+    internal void InvokeAngleVectors(Vector3f vec, Vector3f forward, Vector3f right, Vector3f up)
+    {
+        var result = AngleVectors?.Invoke(vec, forward, right, up);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+    internal Edict InvokeCreateEntity()
+    {
+        var result = CreateEntity?.Invoke();
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return new Edict();
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+    internal void InvokeRemoveEntity(Edict e)
+    {
+        var result = RemoveEntity?.Invoke(e);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+    internal Edict InvokeCreateNamedEntity(int className)
+    {
+        var result = CreateNamedEntity?.Invoke(className);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return new Edict();
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+    internal void InvokeMakeStatic(Edict ent)
+    {
+        var result = MakeStatic?.Invoke(ent);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+    internal int InvokeEntIsOnFloor(Edict ent)
+    {
+        var result = EntIsOnFloor?.Invoke(ent);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return 0;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+    internal int InvokeDropToFloor(Edict ent)
+    {
+        var result = DropToFloor?.Invoke(ent);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return 0;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+    internal int InvokeWalkMove(Edict ent, float yaw, float dist, int mode)
+    {
+        var result = WalkMove?.Invoke(ent, yaw, dist, mode);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return 0;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+    internal void InvokeSetOrigin(Edict ent, Vector3f origin)
+    {
+        var result = SetOrigin?.Invoke(ent, origin);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+    internal void InvokeEmitSound(Edict ent, int channel, string sample, float volume, float attenuation, int fFlags, int pitch)
+    {
+        var result = EmitSound?.Invoke(ent, channel, sample, volume, attenuation, fFlags, pitch);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+    internal void InvokeEmitAmbientSound(Edict ent, Vector3f pos, string sample, float volume, float attenuation, int fFlags, int pitch)
+    {
+        var result = EmitAmbientSound?.Invoke(ent, pos, sample, volume, attenuation, fFlags, pitch);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+    internal void InvokeTraceLine(Vector3f v1, Vector3f v2, int fNoMonsters, Edict pentToSkip, ref TraceResult ptr)
+    {
+        var result = TraceLine?.Invoke(v1, v2, fNoMonsters, pentToSkip, ref ptr);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+    internal void InvokeTraceToss(Edict pent, Edict pentToIgnore, ref TraceResult ptr)
+    {
+        var result = TraceToss?.Invoke(pent, pentToIgnore, ref ptr);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+    internal int InvokeTraceMonsterHull(Edict pent, Vector3f v1, Vector3f v2, int fNoMonsters, Edict pentToSkip, ref TraceResult ptr)
+    {
+        var result = TraceMonsterHull?.Invoke(pent, v1, v2, fNoMonsters, pentToSkip, ref ptr);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return 0;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+    internal void InvokeTraceHull(Vector3f v1, Vector3f v2, int fNoMonsters, int hullNumber, Edict pentToSkip, ref TraceResult ptr)
+    {
+        var result = TraceHull?.Invoke(v1, v2, fNoMonsters, hullNumber, pentToSkip, ref ptr);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+
+    internal void InvokeTraceModel(Vector3f v1, Vector3f v2, int hullNumber, Edict pent, ref TraceResult ptr)
+    {
+        var result = TraceModel?.Invoke(v1, v2, hullNumber, pent, ref ptr);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+
+    internal string InvokeTraceTexture(Edict pTextureEntity, Vector3f v1, Vector3f v2)
+    {
+        var result = TraceTexture?.Invoke(pTextureEntity, v1, v2);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return string.Empty;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+
+    internal void InvokeTraceSphere(Vector3f v1, Vector3f v2, int fNoMonsters, float radius, Edict pentToSkip, ref TraceResult ptr)
+    {
+        var result = TraceSphere?.Invoke(v1, v2, fNoMonsters, radius, pentToSkip, ref ptr);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+    internal void InvokeGetAimVector(Edict ent, float speed, ref Vector3f vec)
+    {
+        var result = GetAimVector?.Invoke(ent, speed, ref vec);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+    internal void InvokeServerCommand(string str)
+    {
+        var result = ServerCommand?.Invoke(str);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+    internal void InvokeServerExecute()
+    {
+        var result = ServerExecute?.Invoke();
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+    internal void InvokeClientCommand(Edict ent, string str)
+    {
+        var result = ClientCommand?.Invoke(ent, str);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+
+    internal void InvokeParticleEffect(Vector3f org, Vector3f dir, float color, float count)
+    {
+        var result = ParticleEffect?.Invoke(org, dir, color, count);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+
+    internal void InvokeLightStyle(int style, string val)
+    {
+        var result = LightStyle?.Invoke(style, val);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+
+    internal int InvokeDecalIndex(string name)
+    {
+        var result = DecalIndex?.Invoke(name);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return 0;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+
+    internal int InvokePointContents(Vector3f vec)
+    {
+        var result = PointContents?.Invoke(vec);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return 0;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+
+    internal void InvokeMessageBegin(int msg_dest, int msg_type, Vector3f pOrigin, Edict ed)
+    {
+        var result = MessageBegin?.Invoke(msg_dest, msg_type, pOrigin, ed);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+
+    internal void InvokeMessageEnd()
+    {
+        var result = MessageEnd?.Invoke();
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+
+    internal void InvokeWriteByte(int iValue)
+    {
+        var result = WriteByte?.Invoke(iValue);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+
+    internal void InvokeWriteChar(int iValue)
+    {
+        var result = WriteChar?.Invoke(iValue);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+
+    internal void InvokeWriteShort(int iValue)
+    {
+        var result = WriteShort?.Invoke(iValue);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+
+    internal void InvokeWriteLong(int iValue)
+    {
+        var result = WriteLong?.Invoke(iValue);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+
+    internal void InvokeWriteAngle(float flValue)
+    {
+        var result = WriteAngle?.Invoke(flValue);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+
+    internal void InvokeWriteCoord(float flValue)
+    {
+        var result = WriteCoord?.Invoke(flValue);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+
+    internal void InvokeWriteString(string sz)
+    {
+        var result = WriteString?.Invoke(sz);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+
+    internal void InvokeWriteEntity(int iValue)
+    {
+        var result = WriteEntity?.Invoke(iValue);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+    internal void InvokeCVarRegister(CVar cvar)
+    {
+        var result = CVarRegister?.Invoke(cvar);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+
+    internal float InvokeCVarGetFloat(string szVarName)
+    {
+        var result = CVarGetFloat?.Invoke(szVarName);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return 0f;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+
+    internal string InvokeCVarGetString(string szVarName)
+    {
+        var result = CVarGetString?.Invoke(szVarName);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return string.Empty;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+
+    internal void InvokeCVarSetFloat(string szVarName, float flValue)
+    {
+        var result = CVarSetFloat?.Invoke(szVarName, flValue);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+
+    internal void InvokeCVarSetString(string szVarName, string szValue)
+    {
+        var result = CVarSetString?.Invoke(szVarName, szValue);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+
+    internal void InvokeAlertMessage(AlertType atype, string szFmt)
+    {
+        var result = AlertMessage?.Invoke(atype, szFmt);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+
+    internal void InvokeEngineFprintf(nint pFile, string szFmt, params string[] p)
+    {
+        var result = EngineFprintf?.Invoke(pFile, szFmt, p);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+    internal nint InvokePvAllocEntPrivateData(Edict ed, int size)
+    {
+        var result = PvAllocEntPrivateData?.Invoke(ed, size);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return nint.Zero;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+    internal nint InvokePvEntPrivateData(Edict ed)
+    {
+        var result = PvEntPrivateData?.Invoke(ed);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return nint.Zero;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+    internal void InvokeFreeEntPrivateData(Edict ed)
+    {
+        var result = FreeEntPrivateData?.Invoke(ed);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+    internal string InvokeSzFromIndex(int iString)
+    {
+        var result = SzFromIndex?.Invoke(iString);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return string.Empty;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+
+    internal int InvokeAllocString(string szValue)
+    {
+        var result = AllocString?.Invoke(szValue);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return 0;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+
+    internal Entvars InvokeGetVarsOfEnt(Edict pEdict)
+    {
+        var result = GetVarsOfEnt?.Invoke(pEdict);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return new Entvars();
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+
+    internal Edict InvokePEntityOfEntOffset(int iEntOffset)
+    {
+        var result = PEntityOfEntOffset?.Invoke(iEntOffset);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return new Edict();
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+
+    internal int InvokeEntOffsetOfPEntity(Edict pEdict)
+    {
+        var result = EntOffsetOfPEntity?.Invoke(pEdict);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return 0;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+
+    internal int InvokeIndexOfEdict(Edict pEdict)
+    {
+        var result = IndexOfEdict?.Invoke(pEdict);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return 0;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+
+    internal Edict InvokePEntityOfEntIndex(int iEntIndex)
+    {
+        var result = PEntityOfEntIndex?.Invoke(iEntIndex);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return new Edict();
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+
+    internal Edict InvokeFindEntityByVars(Entvars pvars)
+    {
+        var result = FindEntityByVars?.Invoke(pvars);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return new Edict();
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+
+    internal nint InvokeGetModelPtr(Edict pEdict)
+    {
+        var result = GetModelPtr?.Invoke(pEdict);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return nint.Zero;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+
+    internal int InvokeRegUserMsg(string pszName, int iSize)
+    {
+        var result = RegUserMsg?.Invoke(pszName, iSize);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return 0;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+
+    internal void InvokeAnimationAutomove(Edict ent, float flTime)
+    {
+        var result = AnimationAutomove?.Invoke(ent, flTime);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+
+    internal void InvokeGetBonePosition(Edict ent, int iBone, ref Vector3f origin, ref Vector3f angles)
+    {
+        var result = GetBonePosition?.Invoke(ent, iBone, ref origin, ref angles);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+
+    internal uint InvokeFunctionFromName(string pName)
+    {
+        var result = FunctionFromName?.Invoke(pName);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return 0u;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+
+    internal string InvokeNameForFunction(uint function)
+    {
+        var result = NameForFunction?.Invoke(function);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return string.Empty;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+
+    internal void InvokeClientPrintf(Edict ent, PrintType ptype, string szMsg)
+    {
+        var result = ClientPrintf?.Invoke(ent, ptype, szMsg);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+
+    internal void InvokeServerPrint(string msg)
+    {
+        var result = ServerPrint?.Invoke(msg);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+
+    internal string InvokeCmd_Args()
+    {
+        var result = Cmd_Args?.Invoke();
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return string.Empty;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+
+    internal string InvokeCmd_Argv(int argc)
+    {
+        var result = Cmd_Argv?.Invoke(argc);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return string.Empty;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+
+    internal int InvokeCmd_Argc()
+    {
+        var result = Cmd_Argc?.Invoke();
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return 0;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+
+    internal void InvokeGetAttachment(Edict ent, int iAttachment, ref Vector3f origin, ref Vector3f angles)
+    {
+        var result = GetAttachment?.Invoke(ent, iAttachment, ref origin, ref angles);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+
+    internal void InvokeCRC32_Init(CRC32 pulCRC)
+    {
+        var result = CRC32_Init?.Invoke(pulCRC);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+
+    internal void InvokeCRC32_ProcessBuffer(CRC32 pulCRC, nint buffer, int len)
+    {
+        var result = CRC32_ProcessBuffer?.Invoke(pulCRC, buffer, len);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+
+    internal void InvokeCRC32_ProcessByte(CRC32 pulCRC, byte ch)
+    {
+        var result = CRC32_ProcessByte?.Invoke(pulCRC, ch);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+
+    internal CRC32 InvokeCRC32_Final(CRC32 pulCRC)
+    {
+        var result = CRC32_Final?.Invoke(pulCRC);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return new CRC32(new NativeCRC32());
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+
+    internal int InvokeRandomLong(int lLow, int lHigh)
+    {
+        var result = RandomLong?.Invoke(lLow, lHigh);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return 0;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+    internal float InvokeRandomFloat(float flLow, float flHigh)
+    {
+        var result = RandomFloat?.Invoke(flLow, flHigh);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return 0f;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+
+    internal void InvokeSetView(Edict ent, Edict viewent)
+    {
+        var result = SetView?.Invoke(ent, viewent);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+
+    internal float InvokeTime()
+    {
+        var result = Time?.Invoke();
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return 0f;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+
+    internal void InvokeCrosshairAngle(Edict ent, float pitch, float yaw)
+    {
+        var result = CrosshairAngle?.Invoke(ent, pitch, yaw);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+
+    internal nint InvokeLoadFileForMe(string filename, out int pLength)
+    {
+        if (LoadFileForMe == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            pLength = 0;
+            return nint.Zero;
+        }
+        var result = LoadFileForMe.Invoke(filename, out pLength);
+        MetaMod.MetaGlobals.Result = result.Item1;
+        return result.Item2;
+    }
+
+    internal void InvokeFreeFile(nint buffer)
+    {
+        var result = FreeFile?.Invoke(buffer);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+
+    internal void InvokeEndSection(string szSectionName)
+    {
+        var result = EndSection?.Invoke(szSectionName);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+
+    internal int InvokeCompareFileTime(string filename1, string filename2, out int iCompare)
+    {
+        if (CompareFileTime == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            iCompare = 0;
+            return 0;
+        }
+        var result = CompareFileTime.Invoke(filename1, filename2, out iCompare);
+        MetaMod.MetaGlobals.Result = result.Item1;
+        return result.Item2;
+    }
+
+    internal string InvokeGetGameDir()
+    {
+        var result = GetGameDir?.Invoke();
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return string.Empty;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+
+    internal void InvokeCVar_RegisterVariable(CVar cvar)
+    {
+        var result = Cvar_RegisterVariable?.Invoke(cvar);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+
+    internal void InvokeFadeClientVolume(Edict ent, int fadePercent, int fadeOutSeconds, int holdTime, int fadeInSeconds)
+    {
+        var result = FadeClientVolume?.Invoke(ent, fadePercent, fadeOutSeconds, holdTime, fadeInSeconds);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+
+    internal void InvokeSetClientMaxspeed(Edict ent, float fNewMaxspeed)
+    {
+        var result = SetClientMaxspeed?.Invoke(ent, fNewMaxspeed);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+
+    internal Edict InvokeCreateFakeClient(string netname)
+    {
+        var result = CreateFakeClient?.Invoke(netname);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return new Edict();
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+    internal void InvokeRunPlayerMove(Edict fakeClient, Vector3f viewangles, float forwardmove, float sidemove, float upmove, ushort buttons, byte impulse, byte msec)
+    {
+        var result = RunPlayerMove?.Invoke(fakeClient, viewangles, forwardmove, sidemove, upmove, buttons, impulse, msec);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+
+    internal int InvokeNumberOfEntities()
+    {
+        var result = NumberOfEntities?.Invoke();
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return 0;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+
+    internal string InvokeGetInfoKeyBuffer(Edict ent)
+    {
+        var result = GetInfoKeyBuffer?.Invoke(ent);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return string.Empty;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+
+    internal string InvokeInfoKeyValue(string infobuffer, string key)
+    {
+        var result = InfoKeyValue?.Invoke(infobuffer, key);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return string.Empty;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+
+    internal void InvokeSetKeyValue(ref string infobuffer, string key, string value)
+    {
+        var result = SetKeyValue?.Invoke(ref infobuffer, key, value);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+
+    internal void InvokeSetClientKeyValue(int clientIndex, string infobuffer, string key, string value)
+    {
+        var result = SetClientKeyValue?.Invoke(clientIndex, infobuffer, key, value);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+
+    internal bool InvokeIsMapValid(string filename)
+    {
+        var result = IsMapValid?.Invoke(filename);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return false;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+
+    internal void InvokeStaticDecal(Vector3f origin, int decalIndex, int entityIndex, int modelIndex)
+    {
+        var result = StaticDecal?.Invoke(origin, decalIndex, entityIndex, modelIndex);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+
+    internal int InvokePrecacheGeneric(string s)
+    {
+        var result = PrecacheGeneric?.Invoke(s);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return 0;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+
+    internal int InvokeGetPlayerUserId(Edict e)
+    {
+        var result = GetPlayerUserId?.Invoke(e);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return 0;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+
+    internal void InvokeBuildSoundMsg(Edict entity, int channel, string sample, float volume, float attenuation, int fFlags, int pitch, int msg_dest, int msg_type, Vector3f pOrigin, Edict ed)
+    {
+        var result = BuildSoundMsg?.Invoke(entity, channel, sample, volume, attenuation, fFlags, pitch, msg_dest, msg_type, pOrigin, ed);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+
+    internal bool InvokeIsDedicatedServer()
+    {
+        var result = IsDedicatedServer?.Invoke();
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return false;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+
+    internal CVar? InvokeCVarGetPointer(string szVarName)
+    {
+        var result = CVarGetPointer?.Invoke(szVarName);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return null;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+
+    internal uint InvokeGetPlayerWONId(Edict e)
+    {
+        var result = GetPlayerWONId?.Invoke(e);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return 0u;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+
+    internal void InvokeInfo_RemoveKey(ref string s, string key)
+    {
+        var result = Info_RemoveKey?.Invoke(ref s, key);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+
+    internal string InvokeGetPhysicsKeyValue(Edict ent, string key)
+    {
+        var result = GetPhysicsKeyValue?.Invoke(ent, key);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return string.Empty;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+    internal void InvokeSetPhysicsKeyValue(Edict ent, string key, string value)
+    {
+        var result = SetPhysicsKeyValue?.Invoke(ent, key, value);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+
+    internal string InvokeGetPhysicsInfoString(Edict ent)
+    {
+        var result = GetPhysicsInfoString?.Invoke(ent);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return string.Empty;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+
+    internal ushort InvokePrecacheEvent(int type, string psz)
+    {
+        var result = PrecacheEvent?.Invoke(type, psz);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return 0;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+
+    internal void InvokePlaybackEvent(int flags, Edict ed, ushort eventindex, float delay, Vector3f origin, Vector3f angles, float fparam1, float fparam2, int iparam1, int iparam2, int bparam1, int bparam2)
+    {
+        var result = PlaybackEvent?.Invoke(flags, ed, eventindex, delay, origin, angles, fparam1, fparam2, iparam1, iparam2, bparam1, bparam2);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+
+    internal string InvokeSetFatPVS(Vector3f org)
+    {
+        var result = SetFatPVS?.Invoke(org);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return string.Empty;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+
+    internal string InvokeSetFatPAS(Vector3f org)
+    {
+        var result = SetFatPAS?.Invoke(org);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return string.Empty;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+
+    internal bool InvokeCheckVisibility(Edict entity, nint pset)
+    {
+        var result = CheckVisibility?.Invoke(entity, pset);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return false;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+
+    internal void InvokeDeltaSetField(nint pFields, string fieldName)
+    {
+        var result = DeltaSetField?.Invoke(pFields, fieldName);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+
+    internal void InvokeDeltaUnsetField(nint pFields, string fieldName)
+    {
+        var result = DeltaUnsetField?.Invoke(pFields, fieldName);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+
+    internal void InvokeDeltaAddEncoder(string name, nint callback)
+    {
+        var result = DeltaAddEncoder?.Invoke(name, callback);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+
+    internal int InvokeGetCurrentPlayer()
+    {
+        var result = GetCurrentPlayer?.Invoke();
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return 0;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+
+    internal int InvokeCanSkipPlayer(Edict player)
+    {
+        var result = CanSkipPlayer?.Invoke(player);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return 0;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+
+    internal int InvokeDeltaFindField(nint pFields, string fieldName)
+    {
+        var result = DeltaFindField?.Invoke(pFields, fieldName);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return 0;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+
+    internal void InvokeDeltaSetFieldByIndex(nint pFields, int fieldNumber)
+    {
+        var result = DeltaSetFieldByIndex?.Invoke(pFields, fieldNumber);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+
+    internal void InvokeDeltaUnsetFieldByIndex(nint pFields, int fieldNumber)
+    {
+        var result = DeltaUnsetFieldByIndex?.Invoke(pFields, fieldNumber);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+
+    internal void InvokeSetGroupMask(int mask, int op)
+    {
+        var result = SetGroupMask?.Invoke(mask, op);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+
+    internal int InvokeCreateInstancedBaseline(int classname, EntityState baseline)
+    {
+        var result = CreateInstancedBaseline?.Invoke(classname, baseline);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return 0;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+
+    internal void InvokeCvar_DirectSet(CVar cvar, string value)
+    {
+        var result = Cvar_DirectSet?.Invoke(cvar, value);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+
+    internal void InvokeForceUnmodified(ForceType type, Vector3f mins, Vector3f maxs, string filename)
+    {
+        var result = ForceUnmodified?.Invoke(type, mins, maxs, filename);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+
+    internal void InvokeGetPlayerStats(Edict ent, out int ping, out int packet_loss)
+    {
+        var originalPing = ping = 0;
+        var originalPacketLoss = packet_loss = 0;
+        var result = GetPlayerStats?.Invoke(ent, out ping, out packet_loss);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+
+    internal void InvokeAddServerCommand(string cmd_name, ServerCommandDelegate function)
+    {
+        var result = AddServerCommand?.Invoke(cmd_name, function);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+
+    internal bool InvokeVoice_GetClientListening(int iReceiver, int iSender)
+    {
+        var result = Voice_GetClientListening?.Invoke(iReceiver, iSender);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return false;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+
+    internal bool InvokeVoice_SetClientListening(int iReceiver, int iSender, bool bListen)
+    {
+        var result = Voice_SetClientListening?.Invoke(iReceiver, iSender, bListen);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return false;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+
+    internal string InvokeGetPlayerAuthId(Edict e)
+    {
+        var result = GetPlayerAuthId?.Invoke(e);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return string.Empty;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+
+    internal nint InvokeSequenceGet(string fieldName, string entryName)
+    {
+        var result = SequenceGet?.Invoke(fieldName, entryName);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return nint.Zero;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+
+    internal nint InvokeSequencePickSentence(string groupName, int pickMethod, out int picked)
+    {
+        picked = 0;
+        var result = SequencePickSentence?.Invoke(groupName, pickMethod, out picked);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return nint.Zero;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+
+    internal int InvokeGetFileSize(string filename)
+    {
+        var result = GetFileSize?.Invoke(filename);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return 0;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+
+    internal uint InvokeGetApproxWavePlayLen(string filepath)
+    {
+        var result = GetApproxWavePlayLen?.Invoke(filepath);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return 0u;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+
+    internal int InvokeIsCareerMatch()
+    {
+        var result = IsCareerMatch?.Invoke();
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return 0;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+
+    internal int InvokeGetLocalizedStringLength(string label)
+    {
+        var result = GetLocalizedStringLength?.Invoke(label);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return 0;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+
+    internal void InvokeRegisterTutorMessageShown(int mid)
+    {
+        var result = RegisterTutorMessageShown?.Invoke(mid);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+
+    internal int InvokeGetTimesTutorMessageShown(int mid)
+    {
+        var result = GetTimesTutorMessageShown?.Invoke(mid);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return 0;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
+    }
+
+    internal void InvokeProcessTutorMessageDecayBuffer(nint buffer, int bufferLength)
+    {
+        var result = ProcessTutorMessageDecayBuffer?.Invoke(buffer, bufferLength);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+
+    internal void InvokeConstructTutorMessageDecayBuffer(nint buffer, int bufferLength)
+    {
+        var result = ConstructTutorMessageDecayBuffer?.Invoke(buffer, bufferLength);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+
+    internal void InvokeResetTutorMessageDecayData()
+    {
+        var result = ResetTutorMessageDecayData?.Invoke();
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+
+    internal void InvokeQueryClientCvarValue(Edict player, string cvarName)
+    {
+        var result = QueryClientCvarValue?.Invoke(player, cvarName);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+
+    internal void InvokeQueryClientCvarValue2(Edict player, string cvarName, int requestID)
+    {
+        var result = QueryClientCvarValue2?.Invoke(player, cvarName, requestID);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
+
+    internal int InvokeEngCheckParm(string pchCmdLineToken, out string ppszValue)
+    {
+        ppszValue = string.Empty;
+        var result = EngCheckParm?.Invoke(pchCmdLineToken, out ppszValue);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return 0;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
     }
     #endregion
 

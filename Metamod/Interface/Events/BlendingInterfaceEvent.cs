@@ -1,17 +1,21 @@
-﻿using Metamod.Wrapper.Common;
+﻿using Metamod.Enum.Metamod;
+using Metamod.Wrapper.Common;
 using Metamod.Wrapper.Engine;
 
 namespace Metamod.Interface.Events;
 
 #region Delegates
-public delegate void SV_StudioSetupBonesDelegate(nint pModel, float frame, int sequence, Vector3f angles, Vector3f origin, nint pcontroller, nint pblending, int iBone, Edict pEdict);
+public delegate MetaResult SV_StudioSetupBonesDelegate(nint pModel, float frame, int sequence, Vector3f angles, Vector3f origin, nint pcontroller, nint pblending, int iBone, Edict pEdict);
 #endregion
 
 public class BlendingInterfaceEvent
 {
     public int Version { get; set; }
     public event SV_StudioSetupBonesDelegate? SV_StudioSetupBones;
-    internal void InvokeSV_StudioSetupBones(nint pModel, float frame, int sequence, Vector3f angles, Vector3f origin, nint pcontroller, nint pblending, int iBone, Edict pEdict) =>
-        SV_StudioSetupBones?.Invoke(pModel, frame, sequence, angles, origin, pcontroller, pblending, iBone, pEdict);
+    internal void InvokeSV_StudioSetupBones(nint pModel, float frame, int sequence, Vector3f angles, Vector3f origin, nint pcontroller, nint pblending, int iBone, Edict pEdict)
+    {
+        var result = SV_StudioSetupBones?.Invoke(pModel, frame, sequence, angles, origin, pcontroller, pblending, iBone, pEdict);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
+    }
     internal bool IsSV_StudioSetupBonesNull => SV_StudioSetupBones == null;
 }

@@ -1,4 +1,5 @@
-﻿using Metamod.Wrapper.Common;
+﻿using Metamod.Enum.Metamod;
+using Metamod.Wrapper.Common;
 using Metamod.Wrapper.Engine;
 using Metamod.Wrapper.Engine.PM;
 
@@ -6,56 +7,56 @@ namespace Metamod.Interface.Events;
 
 #region delegates
 #region dll functions
-public delegate void GameInitDelegate();
-public delegate int SpawnDelegate(Edict pent);
-public delegate void ThinkDelegate(Edict pent);
-public delegate void UseDelegate(Edict pentUsed, Edict pentOther);
-public delegate void TouchDelegate(Edict pentTouched, Edict pentOther);
-public delegate void BlockedDelegate(Edict pentBlocked, Edict pentOther);
-public delegate void KeyValueDelegate(Edict pentKeyvalue, KeyValueData pkvd);
-public delegate void SaveDelegate(Edict pent, nint pSaveData);
-public delegate int RestoreDelegate(Edict pent, nint pSaveData, int globalEntity);
-public delegate void SetAbsBoxDelegate(Edict pent);
-public delegate void SaveWriteFieldsDelegate(nint a, nint b, nint c, nint d, int max);
-public delegate void SaveReadFieldsDelegate(nint a, nint b, nint c, nint d, int max);
-public delegate void SaveGlobalStateDelegate(nint pSaveData);
-public delegate void RestoreGlobalStateDelegate(nint pSaveData);
-public delegate void ResetGlobalStateDelegate();
-public delegate bool ClientConnectDelegate(Edict pEntity, string pszName, string pszAddress, ref string szRejectReason);
-public delegate void ClientDisconnectDelegate(Edict pEntity);
-public delegate void ClientKillDelegate(Edict pEntity);
-public delegate void ClientPutInServerDelegate(Edict pEntity);
-public delegate void DllClientCommandDelegate(Edict pEntity);
-public delegate void ClientUserInfoChangedDelegate(Edict pEntity, ref string infobuffer);
-public delegate void ServerActivateDelegate(Edict pEdictList, int edictCount, int clientMax);
-public delegate void ServerDeactivateDelegate();
-public delegate void PlayerPreThinkDelegate(Edict pEntity);
-public delegate void PlayerPostThinkDelegate(Edict pEntity);
-public delegate void StartFrameDelegate();
-public delegate void ParmsNewLevelDelegate();
-public delegate void ParmsChangeLevelDelegate();
-public delegate string GetGameDescriptionDelegate();
-public delegate void PlayerCustomizationDelegate(Edict pEntity, Customization pCustom);
-public delegate void SpectatorConnectDelegate(Edict pEntity);
-public delegate void SpectatorDisconnectDelegate(Edict pEntity);
-public delegate void SpectatorThinkDelegate(Edict pEntity);
-public delegate void SysErrorDelegate(string error_string);
-public delegate void PMMoveDelegate(PlayerMove pm, bool server);
-public delegate void PMInitDelegate(PlayerMove pm);
-public delegate byte PMFindTextureTypeDelegate(string name);
-public delegate void SetupVisibilityDelegate(Edict pViewEntity, Edict pClient, ref byte[] pvs, ref byte[] pas);
-public delegate void UpdateClientDataDelegate(Edict ent, int sendweapons, ClientData cd);
-public delegate int AddToFullPackDelegate(EntityState state, int e, Edict ent, Edict host, int hostflags, int player, byte[] pSet);
-public delegate void CreateBaselineDelegate(int player, int eindex, EntityState baseline, Edict entity, int playermodelindex, Vector3f player_mins, Vector3f player_maxs);
-public delegate void RegisterEncodersDelegate();
-public delegate int GetWeaponDataDelegate(Edict player, WeaponData info);
-public delegate void CmdStartDelegate(Edict plyer, UserCmd cmd, uint random_seed);
-public delegate void CmdEndDelegate(Edict plyer);
-public delegate int ConnectionlessPacketDelegate(NetAdr net_from, string args, ref string response_buffer, ref int response_buffer_size);
-public delegate int GetHullBoundsDelegate(int hullnumber, ref Vector3f mins, ref Vector3f maxs);
-public delegate void CreateInstancedBaselinesDelegate();
-public delegate int InconsistentFileDelegate(Edict player, string filename, ref string disconnect_message);
-public delegate int AllowLagCompensationDelegate();
+public delegate MetaResult GameInitDelegate();
+public delegate (MetaResult, int) SpawnDelegate(Edict pent);
+public delegate MetaResult ThinkDelegate(Edict pent);
+public delegate MetaResult UseDelegate(Edict pentUsed, Edict pentOther);
+public delegate MetaResult TouchDelegate(Edict pentTouched, Edict pentOther);
+public delegate MetaResult BlockedDelegate(Edict pentBlocked, Edict pentOther);
+public delegate MetaResult KeyValueDelegate(Edict pentKeyvalue, KeyValueData pkvd);
+public delegate MetaResult SaveDelegate(Edict pent, nint pSaveData);
+public delegate (MetaResult, int) RestoreDelegate(Edict pent, nint pSaveData, int globalEntity);
+public delegate MetaResult SetAbsBoxDelegate(Edict pent);
+public delegate MetaResult SaveWriteFieldsDelegate(nint a, nint b, nint c, nint d, int max);
+public delegate MetaResult SaveReadFieldsDelegate(nint a, nint b, nint c, nint d, int max);
+public delegate MetaResult SaveGlobalStateDelegate(nint pSaveData);
+public delegate MetaResult RestoreGlobalStateDelegate(nint pSaveData);
+public delegate MetaResult ResetGlobalStateDelegate();
+public delegate (MetaResult, bool) ClientConnectDelegate(Edict pEntity, string pszName, string pszAddress, ref string szRejectReason);
+public delegate MetaResult ClientDisconnectDelegate(Edict pEntity);
+public delegate MetaResult ClientKillDelegate(Edict pEntity);
+public delegate MetaResult ClientPutInServerDelegate(Edict pEntity);
+public delegate MetaResult DllClientCommandDelegate(Edict pEntity);
+public delegate MetaResult ClientUserInfoChangedDelegate(Edict pEntity, ref string infobuffer);
+public delegate MetaResult ServerActivateDelegate(Edict pEdictList, int edictCount, int clientMax);
+public delegate MetaResult ServerDeactivateDelegate();
+public delegate MetaResult PlayerPreThinkDelegate(Edict pEntity);
+public delegate MetaResult PlayerPostThinkDelegate(Edict pEntity);
+public delegate MetaResult StartFrameDelegate();
+public delegate MetaResult ParmsNewLevelDelegate();
+public delegate MetaResult ParmsChangeLevelDelegate();
+public delegate (MetaResult, string) GetGameDescriptionDelegate();
+public delegate MetaResult PlayerCustomizationDelegate(Edict pEntity, Customization pCustom);
+public delegate MetaResult SpectatorConnectDelegate(Edict pEntity);
+public delegate MetaResult SpectatorDisconnectDelegate(Edict pEntity);
+public delegate MetaResult SpectatorThinkDelegate(Edict pEntity);
+public delegate MetaResult SysErrorDelegate(string error_string);
+public delegate MetaResult PMMoveDelegate(PlayerMove pm, bool server);
+public delegate MetaResult PMInitDelegate(PlayerMove pm);
+public delegate MetaResult PMFindTextureTypeDelegate(string name);
+public delegate MetaResult SetupVisibilityDelegate(Edict pViewEntity, Edict pClient, ref byte[] pvs, ref byte[] pas);
+public delegate MetaResult UpdateClientDataDelegate(Edict ent, int sendweapons, ClientData cd);
+public delegate (MetaResult, int) AddToFullPackDelegate(EntityState state, int e, Edict ent, Edict host, int hostflags, int player, byte[] pSet);
+public delegate MetaResult CreateBaselineDelegate(int player, int eindex, EntityState baseline, Edict entity, int playermodelindex, Vector3f player_mins, Vector3f player_maxs);
+public delegate MetaResult RegisterEncodersDelegate();
+public delegate (MetaResult, int) GetWeaponDataDelegate(Edict player, WeaponData info);
+public delegate MetaResult CmdStartDelegate(Edict plyer, UserCmd cmd, uint random_seed);
+public delegate MetaResult CmdEndDelegate(Edict plyer);
+public delegate (MetaResult, int) ConnectionlessPacketDelegate(NetAdr net_from, string args, ref string response_buffer, ref int response_buffer_size);
+public delegate (MetaResult, int) GetHullBoundsDelegate(int hullnumber, ref Vector3f mins, ref Vector3f maxs);
+public delegate MetaResult CreateInstancedBaselinesDelegate();
+public delegate (MetaResult, int) InconsistentFileDelegate(Edict player, string filename, ref string disconnect_message);
+public delegate (MetaResult, int) AllowLagCompensationDelegate();
 #endregion
 #endregion
 
@@ -116,223 +117,344 @@ public class DLLEvents
     #region Invoker
     internal void InvokeGameInit()
     {
-        GameInit?.Invoke();
+        var result = GameInit?.Invoke();
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
     }
     internal int InvokeSpawn(Edict pent)
     {
-        if(Spawn != null)
-            return Spawn.Invoke(pent);
-        return 0;
+        var result = Spawn?.Invoke(pent);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return 0;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
     }
     internal void InvokeThink(Edict pent)
     {
-        Think?.Invoke(pent);
+        var result = Think?.Invoke(pent);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
     }
     internal void InvokeUse(Edict pentUsed, Edict pentOther)
     {
-        Use?.Invoke(pentUsed, pentOther);
+        var result = Use?.Invoke(pentUsed, pentOther);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
     }
     internal void InvokeTouch(Edict pentTouched, Edict pentOther)
     {
-        Touch?.Invoke(pentTouched, pentOther);
+        var result = Touch?.Invoke(pentTouched, pentOther);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
     }
     internal void InvokeBlocked(Edict pentBlocked, Edict pentOther)
     {
-        Blocked?.Invoke(pentBlocked, pentOther);
+        var result = Blocked?.Invoke(pentBlocked, pentOther);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
     }
     internal void InvokeKeyValue(Edict pentKeyvalue, KeyValueData pkvd)
     {
-        KeyValue?.Invoke(pentKeyvalue, pkvd);
+        var result = KeyValue?.Invoke(pentKeyvalue, pkvd);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
     }
     internal void InvokeSave(Edict pent, nint pSaveData)
     {
-        Save?.Invoke(pent, pSaveData);
+        var result = Save?.Invoke(pent, pSaveData);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
     }
     internal int InvokeRestore(Edict pent, nint pSaveData, int globalEntity)
     {
-        if (Restore != null)
-            return Restore.Invoke(pent, pSaveData, globalEntity);
-        return 1;
+        var result = Restore?.Invoke(pent, pSaveData, globalEntity);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return 1;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
     }
     internal void InvokeSetAbsBox(Edict pent)
     {
-        SetAbsBox?.Invoke(pent);
+        var result = SetAbsBox?.Invoke(pent);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
     }
     internal void InvokeSaveWriteFields(nint a, nint b, nint c, nint d, int max)
     {
-        SaveWriteFields?.Invoke(a, b, c, d, max);
+        var result = SaveWriteFields?.Invoke(a, b, c, d, max);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
     }
     internal void InvokeSaveReadFields(nint a, nint b, nint c, nint d, int max)
     {
-        SaveReadFields?.Invoke(a, b, c, d, max);
+        var result = SaveReadFields?.Invoke(a, b, c, d, max);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
     }
     internal void InvokeSaveGlobalState(nint pSaveData)
     {
-        SaveGlobalState?.Invoke(pSaveData);
+        var result = SaveGlobalState?.Invoke(pSaveData);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
     }
     internal void InvokeRestoreGlobalState(nint pSaveData)
     {
-        RestoreGlobalState?.Invoke(pSaveData);
+        var result = RestoreGlobalState?.Invoke(pSaveData);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
     }
     internal void InvokeResetGlobalState()
     {
-        ResetGlobalState?.Invoke();
+        var result = ResetGlobalState?.Invoke();
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
     }
     internal bool InvokeClientConnect(Edict pEntity, string pszName, string pszAddress, ref string szRejectReason)
     {
-        if (ClientConnect != null)
-            return ClientConnect.Invoke(pEntity, pszName, pszAddress, ref szRejectReason);
-        return true;
+        var result = ClientConnect?.Invoke(pEntity, pszName, pszAddress, ref szRejectReason);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return true;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
     }
     internal void InvokeClientDisconnect(Edict pEntity)
     {
-        ClientDisconnect?.Invoke(pEntity);
+        var result = ClientDisconnect?.Invoke(pEntity);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
     }
     internal void InvokeClientKill(Edict pEntity)
     {
-        ClientKill?.Invoke(pEntity);
+        var result = ClientKill?.Invoke(pEntity);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
     }
     internal void InvokeClientPutInServer(Edict pEntity)
     {
-        ClientPutInServer?.Invoke(pEntity);
+        var result = ClientPutInServer?.Invoke(pEntity);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
     }
     internal void InvokeClientCommand(Edict pEntity)
     {
-        ClientCommand?.Invoke(pEntity);
+        var result = ClientCommand?.Invoke(pEntity);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
     }
     internal void InvokeClientUserInfoChanged(Edict pEntity, ref string infobuffer)
     {
-        ClientUserInfoChanged?.Invoke(pEntity, ref infobuffer);
+        var result = ClientUserInfoChanged?.Invoke(pEntity, ref infobuffer);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
     }
     internal void InvokeServerActivate(Edict pEdictList, int edictCount, int clientMax)
     {
-        ServerActivate?.Invoke(pEdictList, edictCount, clientMax);
+        var result = ServerActivate?.Invoke(pEdictList, edictCount, clientMax);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
     }
     internal void InvokeServerDeactivate()
     {
-        ServerDeactivate?.Invoke();
+        var result = ServerDeactivate?.Invoke();
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
     }
     internal void InvokePlayerPreThink(Edict pEntity)
     {
-        PlayerPreThink?.Invoke(pEntity);
+        var result = PlayerPreThink?.Invoke(pEntity);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
     }
     internal void InvokePlayerPostThink(Edict pEntity)
     {
-        PlayerPostThink?.Invoke(pEntity);
+        var result = PlayerPostThink?.Invoke(pEntity);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
     }
     internal void InvokeStartFrame()
     {
-        StartFrame?.Invoke();
+        var result = StartFrame?.Invoke();
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
     }
     internal void InvokeParmsNewLevel()
     {
-        ParmsNewLevel?.Invoke();
+        var result = ParmsNewLevel?.Invoke();
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
     }
     internal void InvokeParmsChangeLevel()
     {
-        ParmsChangeLevel?.Invoke();
+        var result = ParmsChangeLevel?.Invoke();
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
     }
     internal string InvokeGetGameDescription()
     {
-        if (GetGameDescription != null)
-            return GetGameDescription.Invoke();
-        return string.Empty;
+        var result = GetGameDescription?.Invoke();
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return string.Empty;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
     }
     internal void InvokePlayerCustomization(Edict pEntity, Customization pCustom)
     {
-        PlayerCustomization?.Invoke(pEntity, pCustom);
+        var result = PlayerCustomization?.Invoke(pEntity, pCustom);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
     }
     internal void InvokeSpectatorConnect(Edict pEntity)
     {
-        SpectatorConnect?.Invoke(pEntity);
+        var result = SpectatorConnect?.Invoke(pEntity);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
     }
     internal void InvokeSpectatorDisconnect(Edict pEntity)
     {
-        SpectatorDisconnect?.Invoke(pEntity);
+        var result = SpectatorDisconnect?.Invoke(pEntity);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
     }
     internal void InvokeSpectatorThink(Edict pEntity)
     {
-        SpectatorThink?.Invoke(pEntity);
+        var result = SpectatorThink?.Invoke(pEntity);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
     }
     internal void InvokeSysError(string error_string)
     {
-        SysError?.Invoke(error_string);
+        var result = SysError?.Invoke(error_string);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
     }
     internal void InvokePM_Move(PlayerMove pm, bool server)
     {
-        PM_Move?.Invoke(pm, server);
+        var result = PM_Move?.Invoke(pm, server);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
     }
     internal void InvokePM_Init(PlayerMove pm)
     {
-        PM_Init?.Invoke(pm);
+        var result = PM_Init?.Invoke(pm);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
     }
     internal byte InvokePM_FindTextureType(string name)
     {
-        if (PM_FindTextureType != null)
-            return PM_FindTextureType.Invoke(name);
+        var result = PM_FindTextureType?.Invoke(name);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
         return 0;
     }
     internal void InvokeSetupVisibility(Edict pViewEntity, Edict pClient, ref byte[] pvs, ref byte[] pas)
     {
-        SetupVisibility?.Invoke(pViewEntity, pClient, ref pvs, ref pas);
+        var result = SetupVisibility?.Invoke(pViewEntity, pClient, ref pvs, ref pas);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
     }
     internal void InvokeUpdateClientData(Edict ent, int sendweapons, ClientData cd)
     {
-        UpdateClientData?.Invoke(ent, sendweapons, cd);
+        var result = UpdateClientData?.Invoke(ent, sendweapons, cd);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
     }
     internal int InvokeAddToFullPack(EntityState state, int e, Edict ent, Edict host, int hostflags, int player, byte[] pSet)
     {
-        if (AddToFullPack != null)
-            return AddToFullPack.Invoke(state, e, ent, host, hostflags, player, pSet);
-        return 0;
+        var result = AddToFullPack?.Invoke(state, e, ent, host, hostflags, player, pSet);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return 0;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
     }
     internal void InvokeCreateBaseline(int player, int eindex, EntityState baseline, Edict entity, int playermodelindex, Vector3f player_mins, Vector3f player_maxs)
     {
-        CreateBaseline?.Invoke(player, eindex, baseline, entity, playermodelindex, player_mins, player_maxs);
+        var result = CreateBaseline?.Invoke(player, eindex, baseline, entity, playermodelindex, player_mins, player_maxs);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
     }
     internal void InvokeRegisterEncoders()
     {
-        RegisterEncoders?.Invoke();
+        var result = RegisterEncoders?.Invoke();
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
     }
     internal int InvokeGetWeaponData(Edict player, WeaponData info)
     {
-        if (GetWeaponData != null)
-            return GetWeaponData.Invoke(player, info);
-        return 0;
+        var result = GetWeaponData?.Invoke(player, info);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return 0;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
     }
     internal void InvokeCmdStart(Edict plyer, UserCmd cmd, uint random_seed)
     {
-        CmdStart?.Invoke(plyer, cmd, random_seed);
+        var result = CmdStart?.Invoke(plyer, cmd, random_seed);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
     }
     internal void InvokeCmdEnd(Edict plyer)
     {
-        CmdEnd?.Invoke(plyer);
+        var result = CmdEnd?.Invoke(plyer);
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
     }
     internal int InvokeConnectionlessPacket(NetAdr net_from, string args, ref string response_buffer, ref int response_buffer_size)
     {
-        if (ConnectionlessPacket != null)
-            return ConnectionlessPacket.Invoke(net_from, args, ref response_buffer, ref response_buffer_size);
-        return 0;
+        var result = ConnectionlessPacket?.Invoke(net_from, args, ref response_buffer, ref response_buffer_size);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return 0;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
     }
     internal int InvokeGetHullBounds(int hullnumber, ref Vector3f mins, ref Vector3f maxs)
     {
-        if (GetHullBounds != null)
-            return GetHullBounds.Invoke(hullnumber, ref mins, ref maxs);
-        return 0;
+        var result = GetHullBounds?.Invoke(hullnumber, ref mins, ref maxs);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return 0;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
     }
     internal void InvokeCreateInstancedBaselines()
     {
-        CreateInstancedBaselines?.Invoke();
+        var result = CreateInstancedBaselines?.Invoke();
+        MetaMod.MetaGlobals.Result = result ?? MetaResult.MRES_IGNORED;
     }
     internal int InvokeInconsistentFile(Edict player, string filename, ref string disconnect_message)
     {
-        return InconsistentFile?.Invoke(player, filename, ref disconnect_message) ?? 0;
+        var result = InconsistentFile?.Invoke(player, filename, ref disconnect_message);
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return 0;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
     }
     internal int InvokeAllowLagCompensation()
     {
-        if (AllowLagCompensation != null)
-            return AllowLagCompensation.Invoke();
-        return 0;
+        var result = AllowLagCompensation?.Invoke();
+        if (result == null)
+        {
+            MetaMod.MetaGlobals.Result = MetaResult.MRES_IGNORED;
+            return 0;
+        }
+        else
+        {
+            MetaMod.MetaGlobals.Result = result.Value.Item1;
+            return result.Value.Item2;
+        }
     }
     #endregion
     #region Null Checker
