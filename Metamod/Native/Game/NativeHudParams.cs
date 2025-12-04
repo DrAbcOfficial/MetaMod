@@ -1,5 +1,6 @@
-﻿using Metamod.Native;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
+
+namespace Metamod.Native.Game;
 
 [StructLayout(LayoutKind.Sequential)]
 public struct NativeHudParams : INativeStruct
