@@ -1,10 +1,16 @@
-﻿using Metamod.Native.Engine;
-using Metamod.Wrapper;
+﻿using NuggetMod.Native.Engine;
+using NuggetMod.Wrapper;
 
-namespace Metamod.Wrapper.Engine;
+namespace NuggetMod.Wrapper.Engine;
 
+/// <summary>
+/// Represents a linked list node for spatial partitioning
+/// </summary>
 public class Link : BaseNativeWrapper<NativeLink>
 {
+    /// <summary>
+    /// Initializes a new instance with default values
+    /// </summary>
     public Link() : base() { }
 
     internal unsafe Link(NativeLink* nativePtr, bool ownsPointer = false)

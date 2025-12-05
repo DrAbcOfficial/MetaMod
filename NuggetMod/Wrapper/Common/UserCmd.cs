@@ -1,10 +1,17 @@
-﻿using Metamod.Native.Common;
+﻿using NuggetMod.Native.Common;
 
-namespace Metamod.Wrapper.Common;
+namespace NuggetMod.Wrapper.Common;
 
+/// <summary>
+/// Represents a user command from client input
+/// </summary>
 public class UserCmd : BaseNativeWrapper<NativeUserCmd>
 {
     internal unsafe UserCmd(nint ptr) : base((NativeUserCmd*)ptr) { }
+    
+    /// <summary>
+    /// Gets or sets the lerp milliseconds for interpolation
+    /// </summary>
     public short LerpMsec
     {
         get

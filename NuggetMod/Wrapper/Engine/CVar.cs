@@ -1,17 +1,29 @@
-﻿using Metamod.Native.Engine;
+﻿using NuggetMod.Native.Engine;
 using System.Runtime.InteropServices;
 
-namespace Metamod.Wrapper.Engine;
+namespace NuggetMod.Wrapper.Engine;
 
+/// <summary>
+/// Represents a console variable (CVar)
+/// </summary>
 public class CVar : BaseNativeWrapper<NativeCVar>
 {
+    /// <summary>
+    /// Console variable flags
+    /// </summary>
     public enum FCVAR
     {
+        /// <summary>No flags</summary>
         None = 0,
+        /// <summary>Saved to config file</summary>
         Archive = 1 << 0,
+        /// <summary>User info variable</summary>
         UserInfo = 1 << 1,
+        /// <summary>Server variable</summary>
         Server = 1 << 2,
+        /// <summary>External DLL variable</summary>
         ExternalDLL = 1 << 3,
+        /// <summary>Client DLL variable</summary>
         ClientDLL = 1 << 4,
         Protected = 1 << 5,
         SinglePlayOnly = 1 << 6,

@@ -1,15 +1,26 @@
-﻿using Metamod.Native.Game;
-using Metamod.Wrapper.Common;
-using Metamod.Wrapper.Engine;
-using Metamod.Wrapper.Engine.PM;
+﻿using NuggetMod.Native.Game;
+using NuggetMod.Wrapper.Common;
+using NuggetMod.Wrapper.Engine;
+using NuggetMod.Wrapper.Engine.PM;
 using System.Runtime.InteropServices;
 
-namespace Metamod.Wrapper.Game;
+namespace NuggetMod.Wrapper.Game;
 
+/// <summary>
+/// Wrapper for game DLL function table
+/// </summary>
 public class DLLFunctions(nint ptr) : BaseFunctionWrapper<NativeDllFuncs>(ptr)
 {
-    // Initialize/shutdown the game (one-time call after loading of game .dll )
+    /// <summary>
+    /// Initializes the game (one-time call after loading of game DLL)
+    /// </summary>
     public void GameInit() => Base.pfnGameInit();
+    
+    /// <summary>
+    /// Spawns an entity
+    /// </summary>
+    /// <param name="pent">Entity to spawn</param>
+    /// <returns>Spawn result code</returns>
     public int Spawn(Edict pent) => Base.pfnSpawn(pent.GetPointer());
     public void Think(Edict pent) => Base.pfnThink(pent.GetPointer());
     public void Use(Edict pentUsed, Edict pentOther) => Base.pfnUse(pentUsed.GetPointer(), pentOther.GetPointer());

@@ -1,9 +1,12 @@
-﻿using Metamod.Interface;
-using Metamod.Native.Engine;
+﻿using NuggetMod.Interface;
+using NuggetMod.Native.Engine;
 using System.Runtime.InteropServices;
 
-namespace Metamod.Helper;
+namespace NuggetMod.Helper;
 
+/// <summary>
+/// Handles string references in the game engine's string pool
+/// </summary>
 public class StringHandle
 {
     private nint _handle;
@@ -19,6 +22,11 @@ public class StringHandle
         _value = str.value;
         _need_release = false; 
     }
+    
+    /// <summary>
+    /// Initializes a new instance with a string value
+    /// </summary>
+    /// <param name="str">String to store</param>
     public StringHandle(string str)
     {
         SetString(str);
@@ -35,6 +43,10 @@ public class StringHandle
         _need_release = false;
     }
 
+    /// <summary>
+    /// Sets the string value
+    /// </summary>
+    /// <param name="str">String to set</param>
     public void SetString(string str)
     {
         if (_need_release)
@@ -46,6 +58,10 @@ public class StringHandle
         _value = (int)(_handle - MetaMod.GlobalVars.StringBase);
     }
 
+    /// <summary>
+    /// Converts the string handle to a string
+    /// </summary>
+    /// <returns>String value</returns>
     public override string ToString()
     {
         nint ptr = MetaMod.GlobalVars.StringBase + _value;

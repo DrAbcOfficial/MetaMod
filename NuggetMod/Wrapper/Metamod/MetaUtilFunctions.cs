@@ -1,16 +1,24 @@
-﻿using Metamod.Enum.Metamod;
-using Metamod.Interface;
-using Metamod.Native.Engine;
-using Metamod.Native.Game;
-using Metamod.Native.Metamod;
-using Metamod.Wrapper.Engine;
-using Metamod.Wrapper.Game;
+﻿using NuggetMod.Enum.NuggetMod;
+using NuggetMod.Interface;
+using NuggetMod.Native.Engine;
+using NuggetMod.Native.Game;
+using NuggetMod.Native.NuggetMod;
+using NuggetMod.Wrapper.Engine;
+using NuggetMod.Wrapper.Game;
 using System.Runtime.InteropServices;
 
-namespace Metamod.Wrapper.Metamod;
+namespace NuggetMod.Wrapper.NuggetMod;
 
+/// <summary>
+/// Wrapper for MetaMod utility functions
+/// </summary>
 public class MetaUtilFunctions(nint ptr) : BaseFunctionWrapper<NativeMetaUtilFunctions>(ptr)
 {
+    /// <summary>
+    /// Logs a message to the console
+    /// </summary>
+    /// <param name="fmt">Format string</param>
+    /// <param name="parm">Format parameters</param>
     public void LogConsole(string fmt, params string[] parm)
     {
         string str = string.Format(fmt, parm);
@@ -22,6 +30,11 @@ public class MetaUtilFunctions(nint ptr) : BaseFunctionWrapper<NativeMetaUtilFun
         Marshal.FreeHGlobal(strptr);
     }
 
+    /// <summary>
+    /// Logs a general message
+    /// </summary>
+    /// <param name="fmt">Format string</param>
+    /// <param name="parm">Format parameters</param>
     public void LogMessage(string fmt, params string[] parm)
     {
         string str = string.Format(fmt, parm);
@@ -33,6 +46,11 @@ public class MetaUtilFunctions(nint ptr) : BaseFunctionWrapper<NativeMetaUtilFun
         Marshal.FreeHGlobal(strptr);
     }
 
+    /// <summary>
+    /// Logs an error message
+    /// </summary>
+    /// <param name="fmt">Format string</param>
+    /// <param name="parm">Format parameters</param>
     public void LogError(string fmt, params string[] parm)
     {
         string str = string.Format(fmt, parm);

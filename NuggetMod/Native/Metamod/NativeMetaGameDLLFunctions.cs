@@ -1,7 +1,7 @@
-﻿using Metamod.Native.Game;
+﻿using NuggetMod.Native.Game;
 using System.Runtime.InteropServices;
 
-namespace Metamod.Native.Metamod;
+namespace NuggetMod.Native.NuggetMod;
 
 [StructLayout(LayoutKind.Sequential)]
 public struct NativeMetaGameDLLFunctions : INativeStruct

@@ -1,14 +1,21 @@
-﻿using Metamod.Enum.Common;
-using Metamod.Helper;
-using Metamod.Native.Common;
-using Metamod.Native.Engine;
-using Metamod.Wrapper.Common;
+﻿using NuggetMod.Enum.Common;
+using NuggetMod.Helper;
+using NuggetMod.Native.Common;
+using NuggetMod.Native.Engine;
+using NuggetMod.Wrapper.Common;
 using System.Runtime.InteropServices;
 
-namespace Metamod.Wrapper.Engine;
+namespace NuggetMod.Wrapper.Engine;
 
+/// <summary>
+/// Wrapper for engine function table providing access to engine API
+/// </summary>
 public class EngineFuncs(nint ptr) : BaseFunctionWrapper<NativeEngineFuncs>(ptr)
 {
+    /// <summary>
+    /// Precaches a model file
+    /// </summary>
+    /// <param name="s">Model file path</param>
     public void PrecacheModel(string s)
     {
         nint ns = Marshal.StringToHGlobalAnsi(s);
@@ -16,6 +23,10 @@ public class EngineFuncs(nint ptr) : BaseFunctionWrapper<NativeEngineFuncs>(ptr)
         Marshal.FreeHGlobal(ns);
     }
 
+    /// <summary>
+    /// Precaches a sound file
+    /// </summary>
+    /// <param name="s">Sound file path</param>
     public void PrecacheSound(string s)
     {
         nint ns = Marshal.StringToHGlobalAnsi(s);
@@ -23,6 +34,11 @@ public class EngineFuncs(nint ptr) : BaseFunctionWrapper<NativeEngineFuncs>(ptr)
         Marshal.FreeHGlobal(ns);
     }
 
+    /// <summary>
+    /// Sets the model for an entity
+    /// </summary>
+    /// <param name="e">Entity to set model for</param>
+    /// <param name="m">Model file path</param>
     public void SetModel(Edict e, string m)
     {
         nint ns = Marshal.StringToHGlobalAnsi(m);

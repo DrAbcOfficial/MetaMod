@@ -1,17 +1,26 @@
-﻿using Metamod.Helper;
-using Metamod.Native.Game;
-using Metamod.Wrapper;
+﻿using NuggetMod.Helper;
+using NuggetMod.Native.Game;
+using NuggetMod.Wrapper;
 using System.Runtime.InteropServices;
 
-namespace Metamod.Wrapper.Game;
+namespace NuggetMod.Wrapper.Game;
 
+/// <summary>
+/// Represents a game hook structure
+/// </summary>
 public class Hook : BaseNativeWrapper<NativeHook>
 {
+    /// <summary>
+    /// Initializes a new instance with default values
+    /// </summary>
     public Hook() : base() { }
 
     internal unsafe Hook(NativeHook* nativePtr, bool ownsPointer = false)
         : base(nativePtr, ownsPointer) { }
 
+    /// <summary>
+    /// Gets or sets the hook type
+    /// </summary>
     public int Type
     {
         get

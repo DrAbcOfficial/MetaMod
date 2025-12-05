@@ -1,8 +1,8 @@
-﻿using Metamod.Enum.Metamod;
-using Metamod.Native.Common;
+﻿using NuggetMod.Enum.NuggetMod;
+using NuggetMod.Native.Common;
 using System.Runtime.InteropServices;
 
-namespace Metamod.Native.Engine.PM;
+namespace NuggetMod.Native.Engine.PM;
 
 [StructLayout(LayoutKind.Sequential)]
 public struct NativePlayerMove : INativeStruct

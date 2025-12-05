@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace Metamod.Native.Common;
+namespace NuggetMod.Native.Common;
 
 [StructLayout(LayoutKind.Sequential)]
 public struct NativeClientData : INativeStruct

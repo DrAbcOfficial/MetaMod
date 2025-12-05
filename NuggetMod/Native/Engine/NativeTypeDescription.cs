@@ -1,6 +1,6 @@
-﻿using Metamod.Enum.Engine;
+﻿using NuggetMod.Enum.Engine;
 using System.Runtime.InteropServices;
-namespace Metamod.Native.Engine;
+namespace NuggetMod.Native.Engine;
 
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct NativeTypeDescription : INativeStruct

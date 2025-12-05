@@ -1,7 +1,7 @@
-﻿using Metamod.Enum.Metamod;
+﻿using NuggetMod.Enum.NuggetMod;
 using System.Runtime.InteropServices;
 
-namespace Metamod.Native.Metamod;
+namespace NuggetMod.Native.NuggetMod;
 
 [StructLayout(LayoutKind.Sequential)]
 public struct NativeMetaGlobals : INativeStruct

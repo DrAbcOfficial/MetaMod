@@ -1,29 +1,29 @@
-﻿using Metamod.Native;
+﻿using NuggetMod.Native;
 using System.Runtime.InteropServices;
 
-namespace Metamod.Wrapper;
+namespace NuggetMod.Wrapper;
 
 /// <summary>
-/// 非托管结构体包装器基类
+/// Base class for unmanaged structure wrappers
 /// </summary>
-/// <typeparam name="T">非托管结构体类型</typeparam>
+/// <typeparam name="T">Unmanaged structure type</typeparam>
 public abstract class BaseNativeWrapper<T> : IDisposable where T : unmanaged, INativeStruct
 {
     /// <summary>
-    /// 非托管内存指针
+    /// Unmanaged memory pointer
     /// </summary>
     protected unsafe T* NativePtr { get; private set; }
 
     /// <summary>
-    /// 是否拥有指针所有权（是否需要释放）
+    /// Indicates whether this wrapper owns the pointer (whether it needs to be freed)
     /// </summary>
     private readonly bool _ownsPointer;
 
     /// <summary>
-    /// 构造函数（包装现有非托管指针）
+    /// Constructor (wraps an existing unmanaged pointer)
     /// </summary>
-    /// <param name="nativePtr">非托管结构体指针</param>
-    /// <param name="ownsPointer">是否拥有指针所有权</param>
+    /// <param name="nativePtr">Unmanaged structure pointer</param>
+    /// <param name="ownsPointer">Whether this wrapper owns the pointer</param>
     internal unsafe BaseNativeWrapper(T* nativePtr, bool ownsPointer = false)
     {
         NativePtr = nativePtr;
@@ -31,7 +31,7 @@ public abstract class BaseNativeWrapper<T> : IDisposable where T : unmanaged, IN
     }
 
     /// <summary>
-    /// 构造函数（分配新的非托管内存）
+    /// Constructor (allocates new unmanaged memory)
     /// </summary>
     public BaseNativeWrapper()
     {
@@ -43,9 +43,9 @@ public abstract class BaseNativeWrapper<T> : IDisposable where T : unmanaged, IN
     }
 
     /// <summary>
-    /// 获取原始指针
+    /// Gets the raw pointer
     /// </summary>
-    /// <returns>非托管指针</returns>
+    /// <returns>Unmanaged pointer</returns>
     public nint GetPointer()
     {
         unsafe
@@ -55,7 +55,7 @@ public abstract class BaseNativeWrapper<T> : IDisposable where T : unmanaged, IN
     }
 
     /// <summary>
-    /// 释放非托管资源
+    /// Releases unmanaged resources
     /// </summary>
     public void Dispose()
     {
@@ -63,6 +63,10 @@ public abstract class BaseNativeWrapper<T> : IDisposable where T : unmanaged, IN
         GC.SuppressFinalize(this);
     }
 
+    /// <summary>
+    /// Checks if the native pointer is valid
+    /// </summary>
+    /// <returns>True if the pointer is not null</returns>
     public bool IsValid()
     {
         unsafe
@@ -71,6 +75,10 @@ public abstract class BaseNativeWrapper<T> : IDisposable where T : unmanaged, IN
         }
     }
 
+    /// <summary>
+    /// Releases unmanaged resources and optionally releases managed resources
+    /// </summary>
+    /// <param name="disposing">True to release both managed and unmanaged resources; false to release only unmanaged resources</param>
     protected virtual void Dispose(bool disposing)
     {
         unsafe

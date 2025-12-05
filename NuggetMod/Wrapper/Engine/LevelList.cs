@@ -1,12 +1,18 @@
-﻿using Metamod.Native.Engine;
-using Metamod.Wrapper;
-using Metamod.Wrapper.Common;
+﻿using NuggetMod.Native.Engine;
+using NuggetMod.Wrapper;
+using NuggetMod.Wrapper.Common;
 using System.Runtime.InteropServices;
 
-namespace Metamod.Wrapper.Engine;
+namespace NuggetMod.Wrapper.Engine;
 
+/// <summary>
+/// Represents a level/map list entry
+/// </summary>
 public class LevelList : BaseNativeWrapper<NativeLevelList>
 {
+    /// <summary>
+    /// Initializes a new instance with default values
+    /// </summary>
     public LevelList() : base() { }
 
     internal unsafe LevelList(NativeLevelList* nativePtr, bool ownsPointer = false)

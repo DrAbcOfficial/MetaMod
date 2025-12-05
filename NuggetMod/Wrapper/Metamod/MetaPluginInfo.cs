@@ -1,21 +1,63 @@
-﻿using Metamod.Enum.Metamod;
+﻿using NuggetMod.Enum.NuggetMod;
 
-namespace Metamod.Wrapper.Metamod;
+namespace NuggetMod.Wrapper.NuggetMod;
 
+/// <summary>
+/// Contains metadata information about a MetaMod plugin
+/// </summary>
 public class MetaPluginInfo
 {
-    public required InterfaceVersion InterfaceVersion;             // meta_interface version
-    public required string Name;                   // full name of plugin
-    public required string Version;                // version
-    public required string Date;                   // date
-    public required string Author;             // author name/email
-    public required string Url;                    // URL
-    public required string LogTag;             // log message prefix (unused right now)
-    public required PluginLoadTime Loadable;     // when loadable
-    public required PluginLoadTime Unloadable;   // when unloadable
+    /// <summary>
+    /// MetaMod interface version
+    /// </summary>
+    public required InterfaceVersion InterfaceVersion;
+    
+    /// <summary>
+    /// Full name of the plugin
+    /// </summary>
+    public required string Name;
+    
+    /// <summary>
+    /// Plugin version string
+    /// </summary>
+    public required string Version;
+    
+    /// <summary>
+    /// Plugin release date
+    /// </summary>
+    public required string Date;
+    
+    /// <summary>
+    /// Author name and/or email
+    /// </summary>
+    public required string Author;
+    
+    /// <summary>
+    /// Plugin URL
+    /// </summary>
+    public required string Url;
+    
+    /// <summary>
+    /// Log message prefix
+    /// </summary>
+    public required string LogTag;
+    
+    /// <summary>
+    /// When the plugin can be loaded
+    /// </summary>
+    public required PluginLoadTime Loadable;
+    
+    /// <summary>
+    /// When the plugin can be unloaded
+    /// </summary>
+    public required PluginLoadTime Unloadable;
 
     internal nint NavitePtr;
 
+    /// <summary>
+    /// Gets the interface version as a string
+    /// </summary>
+    /// <returns>Interface version string (e.g., "5:13")</returns>
     public string GetInterfaceVersionString()
     {
         string str = InterfaceVersion.ToString();

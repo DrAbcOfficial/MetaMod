@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace Metamod.Native.Engine;
+namespace NuggetMod.Native.Engine;
 
 [StructLayout(LayoutKind.Sequential)]
 public struct NativeStringHandle : INativeStruct

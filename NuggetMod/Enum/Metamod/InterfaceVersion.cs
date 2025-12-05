@@ -1,4 +1,4 @@
-﻿namespace Metamod.Enum.Metamod;
+﻿namespace NuggetMod.Enum.NuggetMod;
 
 // Version consists of "major:minor", two separate integer numbers.
 public enum InterfaceVersion

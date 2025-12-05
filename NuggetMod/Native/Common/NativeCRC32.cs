@@ -1,4 +1,4 @@
-﻿namespace Metamod.Native.Common;
+﻿namespace NuggetMod.Native.Common;
 
 public struct NativeCRC32 : INativeStruct
 {

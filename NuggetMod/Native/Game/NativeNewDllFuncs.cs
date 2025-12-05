@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace Metamod.Native.Game;
+namespace NuggetMod.Native.Game;
 
 internal delegate void NativeOnFreeEntPrivateDataDelegate(nint pEnt);
 internal delegate void NativeGameShutdownDelegate();

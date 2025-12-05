@@ -2,7 +2,7 @@
 
 Write metamod plugin based on .NET 9 and later
 
-[![](https://img.shields.io/nuget/v/DrAbc.MetaMod.svg?label=MetaMod&logo=NuGet)](https://www.nuget.org/packages/DrAbc.NuggetMod)
+[![](https://img.shields.io/nuget/v/DrAbc.NuggetMod.svg?label=NuggetMod&logo=NuGet)](https://www.nuget.org/packages/DrAbc.NuggetMod)
 ![NuGet Downloads](https://img.shields.io/nuget/dt/DrAbc.NuggetMod?label=Downloads)
 
 

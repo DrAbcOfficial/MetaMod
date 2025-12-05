@@ -1,12 +1,18 @@
-﻿using Metamod.Enum.Engine;
-using Metamod.Native.Engine;
-using Metamod.Wrapper;
+﻿using NuggetMod.Enum.Engine;
+using NuggetMod.Native.Engine;
+using NuggetMod.Wrapper;
 using System.Runtime.InteropServices;
 
-namespace Metamod.Wrapper.Engine;
+namespace NuggetMod.Wrapper.Engine;
 
+/// <summary>
+/// Represents a type description for save/restore operations
+/// </summary>
 public class TypeDescription : BaseNativeWrapper<NativeTypeDescription>
 {
+    /// <summary>
+    /// Initializes a new instance with default values
+    /// </summary>
     public TypeDescription() : base() { }
 
     internal unsafe TypeDescription(NativeTypeDescription* nativePtr, bool ownsPointer = false)

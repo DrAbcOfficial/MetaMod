@@ -1,11 +1,17 @@
-﻿using Metamod.Native.Engine;
-using Metamod.Wrapper.Common;
+﻿using NuggetMod.Native.Engine;
+using NuggetMod.Wrapper.Common;
 using System.Runtime.InteropServices;
 
-namespace Metamod.Wrapper.Engine;
+namespace NuggetMod.Wrapper.Engine;
 
+/// <summary>
+/// Represents save/restore data for game state persistence
+/// </summary>
 public class SaveStoreData : BaseNativeWrapper<NativeSaveStoreData>
 {
+    /// <summary>
+    /// Initializes a new instance with default values
+    /// </summary>
     public SaveStoreData() : base() { }
 
     internal unsafe SaveStoreData(NativeSaveStoreData* nativePtr, bool ownsPointer = false)

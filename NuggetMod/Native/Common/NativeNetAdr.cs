@@ -1,7 +1,7 @@
-﻿using Metamod.Enum.Common;
+﻿using NuggetMod.Enum.Common;
 using System.Runtime.InteropServices;
 
-namespace Metamod.Native.Common;
+namespace NuggetMod.Native.Common;
 
 [StructLayout(LayoutKind.Sequential)]
 public struct NativeNetAdr : INativeStruct

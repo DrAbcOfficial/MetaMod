@@ -1,7 +1,7 @@
-﻿using Metamod.Native.Common;
+﻿using NuggetMod.Native.Common;
 using System.Runtime.InteropServices;
 
-namespace Metamod.Native.Engine.PM;
+namespace NuggetMod.Native.Engine.PM;
 
 [StructLayout(LayoutKind.Sequential)]
 public struct NativePhySent : INativeStruct

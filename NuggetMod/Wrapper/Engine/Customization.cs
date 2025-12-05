@@ -1,9 +1,15 @@
-﻿using Metamod.Native.Engine;
+﻿using NuggetMod.Native.Engine;
 
-namespace Metamod.Wrapper.Engine;
+namespace NuggetMod.Wrapper.Engine;
 
+/// <summary>
+/// Represents player customization data (sprays, models, etc.)
+/// </summary>
 public class Customization : BaseNativeWrapper<NativeCustomization>
 {
+    /// <summary>
+    /// Initializes a new instance with default values
+    /// </summary>
     public Customization() : base() { }
 
     internal unsafe Customization(nint ptr) : this((NativeCustomization*)ptr) { }

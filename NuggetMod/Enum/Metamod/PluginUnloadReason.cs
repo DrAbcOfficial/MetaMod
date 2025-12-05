@@ -1,4 +1,4 @@
-﻿namespace Metamod.Enum.Metamod;
+﻿namespace NuggetMod.Enum.NuggetMod;
 
 public enum PluginUnloadReason
 {

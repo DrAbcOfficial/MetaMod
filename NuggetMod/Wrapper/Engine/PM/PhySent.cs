@@ -1,11 +1,17 @@
-﻿using Metamod.Native.Engine.PM;
-using Metamod.Wrapper.Common;
+﻿using NuggetMod.Native.Engine.PM;
+using NuggetMod.Wrapper.Common;
 using System.Text;
 
-namespace Metamod.Wrapper.Engine.PM;
+namespace NuggetMod.Wrapper.Engine.PM;
 
+/// <summary>
+/// Represents a physical entity for player movement collision detection
+/// </summary>
 public class PhySent : BaseNativeWrapper<NativePhySent>
 {
+    /// <summary>
+    /// Gets the entity name
+    /// </summary>
     public string Name
     {
         get

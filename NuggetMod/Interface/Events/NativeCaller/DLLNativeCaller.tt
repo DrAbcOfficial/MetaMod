@@ -8,19 +8,19 @@
 <#
     string[] pluginClassName = ["EntityAPI", "EntityAPI2", "EntityAPIPost", "EntityAPI2Post"];    // 生成的类名
 #>
-using Metamod.Native.Common;
-using Metamod.Native.Engine.PM;
-using Metamod.Native.Engine;
-using Metamod.Native.Game;
-using Metamod.Wrapper.Common;
-using Metamod.Wrapper.Engine;
-using Metamod.Wrapper.Engine.PM;
-using static Metamod.Native.Game.NativeDllFuncs;
+using NuggetMod.Native.Common;
+using NuggetMod.Native.Engine.PM;
+using NuggetMod.Native.Engine;
+using NuggetMod.Native.Game;
+using NuggetMod.Wrapper.Common;
+using NuggetMod.Wrapper.Engine;
+using NuggetMod.Wrapper.Engine.PM;
+using static NuggetMod.Native.Game.NativeDllFuncs;
 using System.Runtime.InteropServices;
-using Metamod.Enum.Metamod;
-using Metamod.Interface.Events;
+using NuggetMod.Enum.NuggetMod;
+using NuggetMod.Interface.Events;
 #nullable enable
-namespace Metamod.Interface;
+namespace NuggetMod.Interface;
 
 <# foreach (var cls in pluginClassName) { #>
 internal static class <#= cls #>NativeCaller

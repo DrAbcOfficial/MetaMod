@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace Metamod.Native.Metamod;
+namespace NuggetMod.Native.NuggetMod;
 
 [StructLayout(LayoutKind.Sequential)]
 internal struct NativePluginInfo : INativeStruct

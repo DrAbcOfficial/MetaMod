@@ -1,21 +1,37 @@
-﻿using Metamod.Native.Common;
+﻿using NuggetMod.Native.Common;
 using System.Net;
 
-namespace Metamod.Wrapper.Common;
+namespace NuggetMod.Wrapper.Common;
 
+/// <summary>
+/// Represents a network address
+/// </summary>
 public class NetAdr : BaseNativeWrapper<NativeNetAdr>
 {
     internal unsafe NetAdr(nint ptr) : base((NativeNetAdr*)ptr) { }
+    
+    /// <summary>
+    /// Defines network address types
+    /// </summary>
     public enum NetAdrType
     {
+        /// <summary>Unused address</summary>
         NA_UNUSED,
+        /// <summary>Loopback address</summary>
         NA_LOOPBACK,
+        /// <summary>Broadcast address</summary>
         NA_BROADCAST,
+        /// <summary>IP address</summary>
         NA_IP,
+        /// <summary>IPX address</summary>
         NA_IPX,
+        /// <summary>IPX broadcast address</summary>
         NA_BROADCAST_IPX,
     }
 
+    /// <summary>
+    /// Gets or sets the network address type
+    /// </summary>
     public NetAdrType Type
     {
         get

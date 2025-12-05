@@ -1,11 +1,17 @@
-﻿using Metamod.Enum.Engine;
-using Metamod.Native.Engine;
+﻿using NuggetMod.Enum.Engine;
+using NuggetMod.Native.Engine;
 using System.Text;
 
-namespace Metamod.Wrapper.Engine;
+namespace NuggetMod.Wrapper.Engine;
 
+/// <summary>
+/// Represents a game resource (model, sound, etc.)
+/// </summary>
 public class Resource : BaseNativeWrapper<NativeResource>
 {
+    /// <summary>
+    /// Initializes a new instance with default values
+    /// </summary>
     public Resource() : base() { }
 
     internal unsafe Resource(NativeResource* nativePtr, bool ownsPointer = false)

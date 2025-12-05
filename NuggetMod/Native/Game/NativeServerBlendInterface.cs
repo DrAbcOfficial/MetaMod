@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace Metamod.Native.Game;
+namespace NuggetMod.Native.Game;
 
 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 internal delegate void NativeSV_StudioSetupBonesDelegate(

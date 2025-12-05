@@ -1,11 +1,17 @@
-﻿using Metamod.Helper;
-using Metamod.Native.Engine;
-using Metamod.Wrapper.Common;
+﻿using NuggetMod.Helper;
+using NuggetMod.Native.Engine;
+using NuggetMod.Wrapper.Common;
 
-namespace Metamod.Wrapper.Engine;
+namespace NuggetMod.Wrapper.Engine;
 
+/// <summary>
+/// Represents entity variables (entvars) - the core data for each entity
+/// </summary>
 public class Entvars : BaseNativeWrapper<NativeEntvars>
 {
+    /// <summary>
+    /// Initializes a new instance with default values
+    /// </summary>
     public Entvars() : base() { }
 
     internal unsafe Entvars(NativeEntvars* nativePtr, bool ownsPointer = false)

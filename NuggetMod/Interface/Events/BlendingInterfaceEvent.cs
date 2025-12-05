@@ -1,8 +1,8 @@
-﻿using Metamod.Enum.Metamod;
-using Metamod.Wrapper.Common;
-using Metamod.Wrapper.Engine;
+﻿using NuggetMod.Enum.NuggetMod;
+using NuggetMod.Wrapper.Common;
+using NuggetMod.Wrapper.Engine;
 
-namespace Metamod.Interface.Events;
+namespace NuggetMod.Interface.Events;
 
 #region Delegates
 public delegate MetaResult SV_StudioSetupBonesDelegate(nint pModel, float frame, int sequence, Vector3f angles, Vector3f origin, nint pcontroller, nint pblending, int iBone, Edict pEdict);

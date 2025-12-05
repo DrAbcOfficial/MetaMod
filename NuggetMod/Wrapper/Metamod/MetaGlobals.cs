@@ -1,12 +1,19 @@
-﻿using Metamod.Enum.Metamod;
-using Metamod.Native.Metamod;
+﻿using NuggetMod.Enum.NuggetMod;
+using NuggetMod.Native.NuggetMod;
 
-namespace Metamod.Wrapper.Metamod
+namespace NuggetMod.Wrapper.NuggetMod
 {
+    /// <summary>
+    /// Wrapper for MetaMod global variables
+    /// </summary>
     public class MetaGlobals : BaseNativeWrapper<NativeMetaGlobals>
     {
         internal unsafe MetaGlobals(NativeMetaGlobals* ptr) : base(ptr) { }
         internal unsafe MetaGlobals(nint ptr) : this((NativeMetaGlobals*)ptr) { }
+        
+        /// <summary>
+        /// Gets or sets the plugin's return result flag
+        /// </summary>
         public MetaResult Result
         {
             get
@@ -25,6 +32,9 @@ namespace Metamod.Wrapper.Metamod
             }
         }
 
+        /// <summary>
+        /// Gets or sets the previous result value
+        /// </summary>
         public MetaResult PreverseResult
         {
             get

@@ -1,11 +1,18 @@
-﻿using Metamod.Native.Common;
+﻿using NuggetMod.Native.Common;
 
-namespace Metamod.Wrapper.Common;
+namespace NuggetMod.Wrapper.Common;
 
+/// <summary>
+/// Represents client-specific data sent to the client
+/// </summary>
 public class ClientData : BaseNativeWrapper<NativeClientData>
 {
     internal unsafe ClientData(nint ptr) : base((NativeClientData*)ptr) { }
     private Vector3f? _origin;
+    
+    /// <summary>
+    /// Gets the client's origin position
+    /// </summary>
     public Vector3f Origin
     {
         get

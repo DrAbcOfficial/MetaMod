@@ -1,16 +1,26 @@
-﻿using Metamod.Native.Engine.PM;
-using Metamod.Wrapper.Common;
+﻿using NuggetMod.Native.Engine.PM;
+using NuggetMod.Wrapper.Common;
 
-namespace Metamod.Wrapper.Engine.PM;
+namespace NuggetMod.Wrapper.Engine.PM;
 
+/// <summary>
+/// Represents a trace result for player movement
+/// </summary>
 public class PMTrace : BaseNativeWrapper<NativePMTrace>
 {
+    /// <summary>
+    /// Initializes a new instance with default values
+    /// </summary>
     public PMTrace() : base() { }
 
     internal unsafe PMTrace(NativePMTrace* nativePtr, bool ownsPointer = false)
         : base(nativePtr, ownsPointer) { }
 
     private Vector3f? _endpos;
+    
+    /// <summary>
+    /// Gets the trace end position
+    /// </summary>
     public Vector3f EndPos
     {
         get

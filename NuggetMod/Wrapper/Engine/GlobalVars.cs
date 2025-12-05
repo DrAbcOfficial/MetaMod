@@ -1,17 +1,26 @@
-﻿using Metamod.Helper;
-using Metamod.Native.Engine;
-using Metamod.Wrapper.Common;
+﻿using NuggetMod.Helper;
+using NuggetMod.Native.Engine;
+using NuggetMod.Wrapper.Common;
 
-namespace Metamod.Wrapper.Engine;
+namespace NuggetMod.Wrapper.Engine;
 
+/// <summary>
+/// Represents global variables shared between the engine and game DLL
+/// </summary>
 public class GlobalVars : BaseNativeWrapper<NativeGlobalVars>
 {
+    /// <summary>
+    /// Initializes a new instance with default values
+    /// </summary>
     public GlobalVars() : base() { }
 
     internal unsafe GlobalVars(nint nativePtr) : this((NativeGlobalVars*)nativePtr) { }
     internal unsafe GlobalVars(NativeGlobalVars* nativePtr, bool ownsPointer = false)
         : base(nativePtr, ownsPointer) { }
 
+    /// <summary>
+    /// Gets or sets the current game time in seconds
+    /// </summary>
     public float Time
     {
         get
@@ -30,6 +39,9 @@ public class GlobalVars : BaseNativeWrapper<NativeGlobalVars>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the duration of the current frame in seconds
+    /// </summary>
     public float Frametime
     {
         get

@@ -1,7 +1,7 @@
-﻿using Metamod.Enum.Metamod;
-using Metamod.Wrapper.Engine;
+﻿using NuggetMod.Enum.NuggetMod;
+using NuggetMod.Wrapper.Engine;
 
-namespace Metamod.Interface.Events;
+namespace NuggetMod.Interface.Events;
 
 #region new dll functions
 public delegate MetaResult OnFreeEntPrivateDataDelegate(Edict pEnt);

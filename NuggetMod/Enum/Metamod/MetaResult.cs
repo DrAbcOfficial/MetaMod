@@ -1,4 +1,4 @@
-﻿namespace Metamod.Enum.Metamod;
+﻿namespace NuggetMod.Enum.NuggetMod;
 // Flags returned by a plugin's api function.
 // NOTE: order is crucial, as greater/less comparisons are made.
 public enum MetaResult

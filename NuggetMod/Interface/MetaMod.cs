@@ -1,15 +1,18 @@
-﻿using Metamod.Helper;
-using Metamod.Interface.Events;
-using Metamod.Interface.Events.NativeCaller;
-using Metamod.Native.Engine;
-using Metamod.Native.Game;
-using Metamod.Native.Metamod;
-using Metamod.Wrapper.Engine;
-using Metamod.Wrapper.Metamod;
+﻿using NuggetMod.Helper;
+using NuggetMod.Interface.Events;
+using NuggetMod.Interface.Events.NativeCaller;
+using NuggetMod.Native.Engine;
+using NuggetMod.Native.Game;
+using NuggetMod.Native.NuggetMod;
+using NuggetMod.Wrapper.Engine;
+using NuggetMod.Wrapper.NuggetMod;
 using System.Runtime.InteropServices;
 
-namespace Metamod.Interface;
+namespace NuggetMod.Interface;
 
+/// <summary>
+/// Main MetaMod interface class for plugin integration
+/// </summary>
 public class MetaMod
 {
     #region 内部函数
@@ -430,18 +433,18 @@ public class MetaMod
 
     #region 对外函数
     /// <summary>
-    /// 统一注册事件接口
+    /// Unified event registration interface
     /// </summary>
-    /// <param name="entityApi">实体API事件</param>
-    /// <param name="entityApiPost">实体API后置事件</param>
-    /// <param name="entityApi2">实体API2事件</param>
-    /// <param name="entityApi2Post">实体API2后置事件</param>
-    /// <param name="newDllFunctions">新DLL函数事件</param>
-    /// <param name="newDllFunctionsPost">新DLL函数后置事件</param>
-    /// <param name="engineFunctions">引擎函数事件</param>
-    /// <param name="engineFunctionsPost">引擎函数后置事件</param>
-    /// <param name="blendingInterface">混合接口事件</param>
-    /// <param name="blendingInterfacePost">混合接口后置事件</param>
+    /// <param name="entityApi">Entity API events</param>
+    /// <param name="entityApiPost">Entity API post events</param>
+    /// <param name="entityApi2">Entity API2 events</param>
+    /// <param name="entityApi2Post">Entity API2 post events</param>
+    /// <param name="newDllFunctions">New DLL function events</param>
+    /// <param name="newDllFunctionsPost">New DLL function post events</param>
+    /// <param name="engineFunctions">Engine function events</param>
+    /// <param name="engineFunctionsPost">Engine function post events</param>
+    /// <param name="blendingInterface">Blending interface events</param>
+    /// <param name="blendingInterfacePost">Blending interface post events</param>
     public static void RegisterEvents(
         DLLEvents? entityApi = null,
         DLLEvents? entityApiPost = null,
@@ -468,17 +471,38 @@ public class MetaMod
     #endregion
 
     #region 对外变量
+    /// <summary>
+    /// Gets the engine functions interface
+    /// </summary>
     public static EngineFuncs EngineFuncs => _engineFuncs ?? throw new NullReferenceException("EngineFuncs is NULL");
+    
+    /// <summary>
+    /// Gets the global variables
+    /// </summary>
     public static GlobalVars GlobalVars => _globalVars ?? throw new NullReferenceException("GlobalVars is NULL");
-    public static Utility Utility => _utility ?? throw new NullReferenceException("Utility is NULL");
+        
+    /// <summary>
+    /// Gets the MetaMod utility functions
+    /// </summary>
     public static MetaUtilFunctions MetaUtilFuncs => _metaUtilFuncs ?? throw new NullReferenceException("MetaUtilFuncs is NULL");
+    
+    /// <summary>
+    /// Gets the plugin information
+    /// </summary>
     public static MetaPluginInfo PluginInfo => _pluginInfo ?? throw new NullReferenceException("PluginInfo is NULL");
+    
+    /// <summary>
+    /// Gets the MetaMod global variables
+    /// </summary>
     public static MetaGlobals MetaGlobals => _metaGlobals ?? throw new NullReferenceException("MetaGlobals is NULL");
+    
+    /// <summary>
+    /// Gets the game DLL functions
+    /// </summary>
     public static MetaGameDLLFunctions GameDllFuncs => _gameDllFuncs ?? throw new NullReferenceException("GameDllFuncs is NULL");
 
     internal static EngineFuncs? _engineFuncs;
     internal static GlobalVars? _globalVars;
-    internal static Utility? _utility;
     internal static MetaUtilFunctions? _metaUtilFuncs;
     internal static MetaPluginInfo? _pluginInfo;
     internal static MetaGlobals? _metaGlobals;

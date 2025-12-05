@@ -1,13 +1,23 @@
-﻿using Metamod.Native.Common;
+﻿using NuggetMod.Native.Common;
 
-namespace Metamod.Wrapper.Common;
+namespace NuggetMod.Wrapper.Common;
 
+/// <summary>
+/// Represents the network state of an entity
+/// </summary>
 public class EntityState : BaseNativeWrapper<NativeEntityState>
 {
     internal unsafe EntityState(nint ptr) : this((NativeEntityState*)ptr) { }
     internal unsafe EntityState(NativeEntityState* nativePtr, bool ownsPointer = false) : base(nativePtr, ownsPointer) { }
+    
+    /// <summary>
+    /// Initializes a new instance with default values
+    /// </summary>
     public EntityState() : base() { }
 
+    /// <summary>
+    /// Gets or sets the entity type
+    /// </summary>
     public int EntityType
     {
         get

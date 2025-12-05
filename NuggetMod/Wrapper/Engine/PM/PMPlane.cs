@@ -1,16 +1,26 @@
-﻿using Metamod.Native.Engine.PM;
-using Metamod.Wrapper.Common;
+﻿using NuggetMod.Native.Engine.PM;
+using NuggetMod.Wrapper.Common;
 
-namespace Metamod.Wrapper.Engine.PM;
+namespace NuggetMod.Wrapper.Engine.PM;
 
+/// <summary>
+/// Represents a plane for player movement collision
+/// </summary>
 public class PMPlane : BaseNativeWrapper<NativePMPlane>
 {
+    /// <summary>
+    /// Initializes a new instance with default values
+    /// </summary>
     public PMPlane() : base() { }
 
     internal unsafe PMPlane(NativePMPlane* nativePtr, bool ownsPointer = false)
         : base(nativePtr, ownsPointer) { }
 
     private Vector3f? _normal;
+    
+    /// <summary>
+    /// Gets the plane normal vector
+    /// </summary>
     public Vector3f Normal
     {
         get

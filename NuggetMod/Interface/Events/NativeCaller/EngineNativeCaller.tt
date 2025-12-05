@@ -9,17 +9,17 @@
     string[] pluginClassName = ["Engine", "EnginePost"];    // 生成的类名
 #>
 
-using Metamod.Native.Common;
-using Metamod.Native.Engine;
-using Metamod.Wrapper.Common;
-using Metamod.Wrapper.Engine;
-using Metamod.Enum.Common;
-using Metamod.Interface.Events;
-using static Metamod.Native.Engine.NativeEngineFuncs;
+using NuggetMod.Native.Common;
+using NuggetMod.Native.Engine;
+using NuggetMod.Wrapper.Common;
+using NuggetMod.Wrapper.Engine;
+using NuggetMod.Enum.Common;
+using NuggetMod.Interface.Events;
+using static NuggetMod.Native.Engine.NativeEngineFuncs;
 using System.Runtime.InteropServices;
 using System.Text;
 #nullable enable
-namespace Metamod.Interface.Events.NativeCaller;
+namespace NuggetMod.Interface.Events.NativeCaller;
 
 <# foreach (var cls in pluginClassName) { #>
 internal static class <#= cls #>NativeCaller

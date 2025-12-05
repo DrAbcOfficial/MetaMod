@@ -1,11 +1,18 @@
-﻿using Metamod.Native.Engine;
+﻿using NuggetMod.Native.Engine;
 using System.Runtime.InteropServices;
 
-namespace Metamod.Wrapper.Engine;
+namespace NuggetMod.Wrapper.Engine;
 
+/// <summary>
+/// Represents key-value data for entity properties
+/// </summary>
 public class KeyValueData : BaseNativeWrapper<NativeKeyValueData>
 {
     internal unsafe KeyValueData(nint ptr) : base((NativeKeyValueData*)ptr) { }
+    
+    /// <summary>
+    /// Gets the class name
+    /// </summary>
     public string ClassName
     {
         get

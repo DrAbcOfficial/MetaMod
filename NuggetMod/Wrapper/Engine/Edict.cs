@@ -1,15 +1,24 @@
-﻿using Metamod.Native.Engine;
+﻿using NuggetMod.Native.Engine;
 
-namespace Metamod.Wrapper.Engine;
+namespace NuggetMod.Wrapper.Engine;
 
+/// <summary>
+/// Represents an entity dictionary entry (edict) in the game engine
+/// </summary>
 public class Edict : BaseNativeWrapper<NativeEdict>
 {
+    /// <summary>
+    /// Initializes a new instance with default values
+    /// </summary>
     public Edict() : base() { }
 
     internal unsafe Edict(nint ptr) : this((NativeEdict*)ptr) { }
     internal unsafe Edict(NativeEdict* nativePtr, bool ownsPointer = false)
         : base(nativePtr, ownsPointer) { }
 
+    /// <summary>
+    /// Gets or sets whether this edict slot is free
+    /// </summary>
     public int Free
     {
         get
@@ -28,6 +37,9 @@ public class Edict : BaseNativeWrapper<NativeEdict>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the serial number for this edict
+    /// </summary>
     public int SerialNumber
     {
         get
@@ -47,6 +59,10 @@ public class Edict : BaseNativeWrapper<NativeEdict>
     }
 
     private Link? _area;
+    
+    /// <summary>
+    /// Gets the area link for spatial partitioning
+    /// </summary>
     public Link Area
     {
         get
@@ -59,6 +75,9 @@ public class Edict : BaseNativeWrapper<NativeEdict>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the head node for BSP tree
+    /// </summary>
     public int HeadNode
     {
         get

@@ -1,13 +1,18 @@
-﻿using Metamod.Native.Game;
-using Metamod.Wrapper.Engine;
+﻿using NuggetMod.Native.Game;
+using NuggetMod.Wrapper.Engine;
 using System.Runtime.InteropServices;
 
-namespace Metamod.Wrapper.Game;
+namespace NuggetMod.Wrapper.Game;
 
+/// <summary>
+/// Wrapper for new DLL functions (extended game DLL API)
+/// </summary>
 public class NewDLLFunctions(nint ptr) : BaseFunctionWrapper<NativeNewDllFuncs>(ptr)
 {
-    // Called right before the object's memory is freed. 
-    // Calls its destructor.
+    /// <summary>
+    /// Called right before the object's memory is freed. Calls its destructor.
+    /// </summary>
+    /// <param name="pEnt">Entity being freed</param>
     public void OnFreeEntPrivateData(Edict pEnt)
     {
         if (Base.pfnOnFreeEntPrivateData == null)
@@ -16,6 +21,10 @@ public class NewDLLFunctions(nint ptr) : BaseFunctionWrapper<NativeNewDllFuncs>(
         }
         Base.pfnOnFreeEntPrivateData(pEnt.GetPointer());
     }
+    
+    /// <summary>
+    /// Called when the game is shutting down
+    /// </summary>
     public void GameShutdown()
     {
         if (Base.pfnGameShutdown == null)

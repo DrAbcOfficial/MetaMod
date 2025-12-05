@@ -1,10 +1,16 @@
-﻿using Metamod.Native.Engine;
-using Metamod.Wrapper.Common;
+﻿using NuggetMod.Native.Engine;
+using NuggetMod.Wrapper.Common;
 
-namespace Metamod.Wrapper.Engine;
+namespace NuggetMod.Wrapper.Engine;
 
+/// <summary>
+/// Represents the result of a trace/ray cast operation
+/// </summary>
 public class TraceResult : BaseNativeWrapper<NativeTraceResult>
 {
+    /// <summary>
+    /// Initializes a new instance with default values
+    /// </summary>
     public TraceResult() : base() { }
 
     internal unsafe TraceResult(nint ptr) : this((NativeTraceResult*)ptr) { }

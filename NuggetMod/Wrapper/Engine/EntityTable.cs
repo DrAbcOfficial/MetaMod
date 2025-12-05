@@ -1,10 +1,16 @@
-﻿using Metamod.Helper;
-using Metamod.Native.Engine;
+﻿using NuggetMod.Helper;
+using NuggetMod.Native.Engine;
 
-namespace Metamod.Wrapper.Engine;
+namespace NuggetMod.Wrapper.Engine;
 
+/// <summary>
+/// Represents an entity table entry for save/restore
+/// </summary>
 public class EntityTable : BaseNativeWrapper<NativeEntityTable>
 {
+    /// <summary>
+    /// Initializes a new instance with default values
+    /// </summary>
     public EntityTable() : base() { }
 
     internal unsafe EntityTable(NativeEntityTable* nativePtr, bool ownsPointer = false)

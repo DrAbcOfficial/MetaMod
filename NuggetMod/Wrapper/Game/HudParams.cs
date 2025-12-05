@@ -1,22 +1,31 @@
 ﻿using System.Drawing;
-using Metamod.Native.Game;
+using NuggetMod.Native.Game;
 
-namespace Metamod.Wrapper.Game;
+namespace NuggetMod.Wrapper.Game;
 
+/// <summary>
+/// Represents HUD (Heads-Up Display) parameters for displaying text on screen
+/// </summary>
 public class HudParams : BaseNativeWrapper<NativeHudParams>
 {
+    /// <summary>
+    /// Initializes a new instance with default values
+    /// </summary>
     public HudParams() : base() { }
 
     /// <summary>
-    /// 使用现有的 native 指针包装一个 HudParams。
-    /// 与其他 Wrapper 保持一致的 nint 构造方式，方便从非托管回调中创建包装对象。
+    /// Wraps an existing native pointer to HudParams.
+    /// Consistent with other wrappers' nint constructor pattern for easy creation from unmanaged callbacks.
     /// </summary>
-    /// <param name="ptr">指向 NativeHudParams 的非托管指针。</param>
+    /// <param name="ptr">Unmanaged pointer to NativeHudParams</param>
     internal unsafe HudParams(nint ptr) : base((NativeHudParams*)ptr) { }
 
     internal unsafe HudParams(NativeHudParams* nativePtr, bool ownsPointer = false)
         : base(nativePtr, ownsPointer) { }
 
+    /// <summary>
+    /// Gets or sets the HUD position as a point
+    /// </summary>
     public PointF Point
     {
         get
@@ -30,6 +39,9 @@ public class HudParams : BaseNativeWrapper<NativeHudParams>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the X coordinate of the HUD element
+    /// </summary>
     public float X
     {
         get
@@ -48,6 +60,9 @@ public class HudParams : BaseNativeWrapper<NativeHudParams>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the Y coordinate of the HUD element
+    /// </summary>
     public float Y
     {
         get
@@ -66,6 +81,9 @@ public class HudParams : BaseNativeWrapper<NativeHudParams>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the visual effect type for the HUD element
+    /// </summary>
     public int Effect
     {
         get
@@ -84,6 +102,9 @@ public class HudParams : BaseNativeWrapper<NativeHudParams>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the red component of the primary color
+    /// </summary>
     public byte R1
     {
         get
@@ -102,6 +123,9 @@ public class HudParams : BaseNativeWrapper<NativeHudParams>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the green component of the primary color
+    /// </summary>
     public byte G1
     {
         get
@@ -120,6 +144,9 @@ public class HudParams : BaseNativeWrapper<NativeHudParams>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the blue component of the primary color
+    /// </summary>
     public byte B1
     {
         get
@@ -138,6 +165,9 @@ public class HudParams : BaseNativeWrapper<NativeHudParams>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the alpha (transparency) component of the primary color
+    /// </summary>
     public byte A1
     {
         get
@@ -156,6 +186,9 @@ public class HudParams : BaseNativeWrapper<NativeHudParams>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the primary color
+    /// </summary>
     public Color Color1
     {
         get
@@ -171,6 +204,9 @@ public class HudParams : BaseNativeWrapper<NativeHudParams>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the red component of the secondary color
+    /// </summary>
     public byte R2
     {
         get
@@ -189,6 +225,9 @@ public class HudParams : BaseNativeWrapper<NativeHudParams>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the green component of the secondary color
+    /// </summary>
     public byte G2
     {
         get
@@ -207,6 +246,9 @@ public class HudParams : BaseNativeWrapper<NativeHudParams>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the blue component of the secondary color
+    /// </summary>
     public byte B2
     {
         get
@@ -225,6 +267,9 @@ public class HudParams : BaseNativeWrapper<NativeHudParams>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the alpha (transparency) component of the secondary color
+    /// </summary>
     public byte A2
     {
         get
@@ -243,6 +288,9 @@ public class HudParams : BaseNativeWrapper<NativeHudParams>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the secondary color
+    /// </summary>
     public Color Color2
     {
         get
@@ -258,6 +306,9 @@ public class HudParams : BaseNativeWrapper<NativeHudParams>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the fade-in duration in seconds
+    /// </summary>
     public float FadeinTime
     {
         get
@@ -276,6 +327,9 @@ public class HudParams : BaseNativeWrapper<NativeHudParams>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the fade-out duration in seconds
+    /// </summary>
     public float FadeoutTime
     {
         get
@@ -294,6 +348,9 @@ public class HudParams : BaseNativeWrapper<NativeHudParams>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the hold duration in seconds (how long the HUD element stays visible)
+    /// </summary>
     public float HoldTime
     {
         get
@@ -312,6 +369,9 @@ public class HudParams : BaseNativeWrapper<NativeHudParams>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the effect time parameter
+    /// </summary>
     public float FxTime
     {
         get
@@ -330,6 +390,9 @@ public class HudParams : BaseNativeWrapper<NativeHudParams>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the HUD channel (allows multiple HUD messages on different channels)
+    /// </summary>
     public int Channel
     {
         get

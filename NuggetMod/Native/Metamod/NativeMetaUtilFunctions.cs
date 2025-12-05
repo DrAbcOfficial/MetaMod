@@ -1,8 +1,8 @@
-﻿using Metamod.Enum.Metamod;
-using Metamod.Native;
-using Metamod.Native.Engine;
-using Metamod.Native.Game;
-using Metamod.Native.Metamod;
+﻿using NuggetMod.Enum.NuggetMod;
+using NuggetMod.Native;
+using NuggetMod.Native.Engine;
+using NuggetMod.Native.Game;
+using NuggetMod.Native.NuggetMod;
 using System.Runtime.InteropServices;
 
 [StructLayout(LayoutKind.Sequential)]

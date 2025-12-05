@@ -1,10 +1,17 @@
-﻿using Metamod.Native.Common;
+﻿using NuggetMod.Native.Common;
 
-namespace Metamod.Wrapper.Common;
+namespace NuggetMod.Wrapper.Common;
 
+/// <summary>
+/// Represents weapon data and state
+/// </summary>
 public class WeaponData : BaseNativeWrapper<NativeWeaponData>
 {
     internal unsafe WeaponData(nint ptr) : base((NativeWeaponData*)ptr) { }
+    
+    /// <summary>
+    /// Gets or sets the weapon ID
+    /// </summary>
     public int Id
     {
         get

@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace Metamod.Native.Game;
+namespace NuggetMod.Native.Game;
 
 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 internal delegate nint Mem_CallocDelegate(int number, uint size);

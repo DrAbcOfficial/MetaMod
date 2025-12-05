@@ -1,4 +1,4 @@
-﻿namespace Metamod.Enum.Engine;
+﻿namespace NuggetMod.Enum.Engine;
 
 public enum ResourceType
 {

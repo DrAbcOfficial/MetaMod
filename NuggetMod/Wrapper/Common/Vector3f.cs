@@ -1,21 +1,34 @@
-﻿using Metamod.Native.Common;
+﻿using NuggetMod.Native.Common;
 
-namespace Metamod.Wrapper.Common;
+namespace NuggetMod.Wrapper.Common;
 
+/// <summary>
+/// Represents a 3D vector with float components
+/// </summary>
 public class Vector3f : BaseNativeWrapper<NativeVector3f>
 {
+    /// <summary>
+    /// Initializes a new instance with specified coordinates
+    /// </summary>
+    /// <param name="x">X coordinate</param>
+    /// <param name="y">Y coordinate</param>
+    /// <param name="z">Z coordinate</param>
     public Vector3f(float x, float y, float z) : base()
     {
         X = x;
         Y = y;
         Z = z;
     }
+
+    /// <summary>
+    /// Initializes a new instance with default values
+    /// </summary>
     public Vector3f() : base() { }
     internal unsafe Vector3f(nint ptr) : this((NativeVector3f*)ptr) { }
     internal unsafe Vector3f(NativeVector3f* nativePtr, bool ownsPointer = false) : base(nativePtr, ownsPointer){}
 
     /// <summary>
-    /// X坐标
+    /// X coordinate
     /// </summary>
     public float X
     {
@@ -36,7 +49,7 @@ public class Vector3f : BaseNativeWrapper<NativeVector3f>
     }
 
     /// <summary>
-    /// Y坐标
+    /// Y coordinate
     /// </summary>
     public float Y
     {
@@ -57,7 +70,7 @@ public class Vector3f : BaseNativeWrapper<NativeVector3f>
     }
 
     /// <summary>
-    /// Z坐标
+    /// Z coordinate
     /// </summary>
     public float Z
     {

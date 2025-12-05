@@ -1,9 +1,9 @@
-﻿using Metamod.Enum.Metamod;
-using Metamod.Wrapper.Common;
-using Metamod.Wrapper.Engine;
-using Metamod.Wrapper.Engine.PM;
+﻿using NuggetMod.Enum.NuggetMod;
+using NuggetMod.Wrapper.Common;
+using NuggetMod.Wrapper.Engine;
+using NuggetMod.Wrapper.Engine.PM;
 
-namespace Metamod.Interface.Events;
+namespace NuggetMod.Interface.Events;
 
 #region delegates
 #region dll functions

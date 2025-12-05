@@ -1,13 +1,20 @@
-﻿using Metamod.Enum.Metamod;
-using Metamod.Native.Engine.PM;
-using Metamod.Wrapper.Common;
+﻿using NuggetMod.Enum.NuggetMod;
+using NuggetMod.Native.Engine.PM;
+using NuggetMod.Wrapper.Common;
 using System.Text;
 
-namespace Metamod.Wrapper.Engine.PM;
+namespace NuggetMod.Wrapper.Engine.PM;
 
+/// <summary>
+/// Represents player movement state and parameters
+/// </summary>
 public class PlayerMove : BaseNativeWrapper<NativePlayerMove>
 {
     internal unsafe PlayerMove(nint ptr) : base((NativePlayerMove*)ptr) { }
+    
+    /// <summary>
+    /// Gets or sets the player index
+    /// </summary>
     public int PlayerIndex
     {
         get

@@ -1,10 +1,10 @@
-﻿using Metamod.Enum.Common;
-using Metamod.Enum.Metamod;
-using Metamod.Native.Common;
-using Metamod.Wrapper.Common;
-using Metamod.Wrapper.Engine;
+﻿using NuggetMod.Enum.Common;
+using NuggetMod.Enum.NuggetMod;
+using NuggetMod.Native.Common;
+using NuggetMod.Wrapper.Common;
+using NuggetMod.Wrapper.Engine;
 
-namespace Metamod.Interface.Events;
+namespace NuggetMod.Interface.Events;
 
 #region Delegates
 public delegate (MetaResult, int) PrecacheModelDelegate(string s);

@@ -1,20 +1,38 @@
-﻿using Metamod.Enum.Metamod;
-using Metamod.Native.Metamod;
-using Metamod.Wrapper.Engine;
-using Metamod.Wrapper.Metamod;
+﻿using NuggetMod.Enum.NuggetMod;
+using NuggetMod.Native.NuggetMod;
+using NuggetMod.Wrapper.Engine;
+using NuggetMod.Wrapper.NuggetMod;
 using System.Runtime.InteropServices;
 
-namespace Metamod.Interface;
+namespace NuggetMod.Interface;
 
+/// <summary>
+/// Base class for plugin entry point implementation
+/// </summary>
 public abstract class PluginEntry
 {
+    /// <summary>
+    /// The plugin interface implementation
+    /// </summary>
     protected static IPlugin? Interface;
+    
+    /// <summary>
+    /// Gets the plugin interface instance
+    /// </summary>
+    /// <returns>The plugin interface</returns>
+    /// <exception cref="NullReferenceException">Thrown when Interface is null</exception>
     public static IPlugin GetPluginInterface()
     {
         if (Interface == null)
             throw new NullReferenceException(nameof(Interface));
         return Interface;
     }
+    
+    /// <summary>
+    /// Gets the plugin information
+    /// </summary>
+    /// <returns>Plugin metadata</returns>
+    /// <exception cref="NullReferenceException">Thrown when Interface is null</exception>
     public static MetaPluginInfo GetPluginInfo()
     {
         if (Interface == null)
@@ -28,7 +46,6 @@ public abstract class PluginEntry
         GlobalVars globalVars = new(pGlobals);
         MetaMod._engineFuncs = engineFuncs;
         MetaMod._globalVars = globalVars;
-        MetaMod._utility = new();
     }
 
     protected static void Native_Meta_Init()
