@@ -37,3 +37,4 @@ jobs:
           name: Metamod
           path: |
             ${{github.workspace}}/Metamod/nuget/*.nupkg
+            ${{github.workspace}}/Metamod/nuget/*.snupkg

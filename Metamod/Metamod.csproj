@@ -10,16 +10,17 @@
     <Title>MetaMod</Title>
     <Authors>Dr.Abc</Authors>
     <Product>MetaMod</Product>
-    <Description>Build MetaMod(GoldSrc) plugin with .NET 9</Description>
+    <Description>Build MetaMod(GoldSrc) plugin with .NET 10</Description>
     <RepositoryUrl>https://github.com/DrAbcOfficial/MetaMod.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>native;dll;game;GoldSrc;plugin;metamod;Half-Life;AOT</PackageTags>
     <PackageOutputPath>./nuget</PackageOutputPath>
     <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
-    <IncludeSymbols>False</IncludeSymbols>
+    <IncludeSymbols>True</IncludeSymbols>
     <Version>0.0.2-beta</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
