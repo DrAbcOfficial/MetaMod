@@ -29,11 +29,11 @@ jobs:
           done
   
       - name: Publish dotnet lib
-        run: cd ${{github.workspace}}/Metamod && dotnet publish -c Release && dotnet pack -c Release
+        run: cd ${{github.workspace}}/NuggetMod && dotnet publish -c Release && dotnet pack -c Release
       
       - name: Upload dotnet lib
         uses: actions/upload-artifact@v4
         with:
-          name: Metamod
+          name: NuggetMod
           path: |
-            ${{github.workspace}}/Metamod/nuget/
+            ${{github.workspace}}/NuggetMod/nuget/
