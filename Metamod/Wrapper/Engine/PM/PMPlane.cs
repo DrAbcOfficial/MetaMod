@@ -26,9 +26,9 @@ public class PMPlane : BaseNativeWrapper<NativePMPlane>
             unsafe
             {
                 // 拷贝值到非托管内存
-                NativePtr->normal.startpos[0] = value.X;
-                NativePtr->normal.startpos[1] = value.Y;
-                NativePtr->normal.startpos[2] = value.Z;
+                NativePtr->normal.x = value.X;
+                NativePtr->normal.y = value.Y;
+                NativePtr->normal.z = value.Z;
             }
         }
     }

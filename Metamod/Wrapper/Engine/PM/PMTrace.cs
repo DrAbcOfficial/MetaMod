@@ -25,9 +25,9 @@ public class PMTrace : BaseNativeWrapper<NativePMTrace>
         {
             unsafe
             {
-                NativePtr->endpos.startpos[0] = value.X;
-                NativePtr->endpos.startpos[1] = value.Y;
-                NativePtr->endpos.startpos[2] = value.Z;
+                NativePtr->endpos.x = value.X;
+                NativePtr->endpos.y = value.Y;
+                NativePtr->endpos.z = value.Z;
             }
         }
     }
@@ -60,9 +60,9 @@ public class PMTrace : BaseNativeWrapper<NativePMTrace>
         {
             unsafe
             {
-                NativePtr->deltavelocity.startpos[0] = value.X;
-                NativePtr->deltavelocity.startpos[1] = value.Y;
-                NativePtr->deltavelocity.startpos[2] = value.Z;
+                NativePtr->deltavelocity.x = value.X;
+                NativePtr->deltavelocity.y = value.Y;
+                NativePtr->deltavelocity.z = value.Z;
             }
         }
     }

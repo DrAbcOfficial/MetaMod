@@ -310,7 +310,7 @@ public class EntityState : BaseNativeWrapper<NativeEntityState>
         {
             unsafe
             {
-                return new Color24(&NativePtr->rendercolor);
+                return new Color24(NativePtr->rendercolor);
             }
         }
     }

@@ -65,6 +65,13 @@ public class Color24 : BaseNativeWrapper<NativeColor24>
         B = b;
     }
 
+    public Color24(int color) : base()
+    {
+        R = (byte)((color >> 16) & 0xFF);
+        G = (byte)((color >> 8) & 0xFF);
+        B = (byte)(color & 0xFF);
+    }
+
     public Color24() : base() { }
 
     internal unsafe Color24(NativeColor24* ptr) : base(ptr) { }

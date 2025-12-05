@@ -201,10 +201,10 @@ public class Resource : BaseNativeWrapper<NativeResource>
         {
             unsafe
             {
-                if (NativePtr->pNext == null)
+                if (NativePtr->pNext == nint.Zero)
                     return null;
 
-                _next ??= new Resource(NativePtr->pNext);
+                _next ??= new Resource((NativeResource*)NativePtr->pNext);
                 return _next;
             }
         }
@@ -213,9 +213,9 @@ public class Resource : BaseNativeWrapper<NativeResource>
             unsafe
             {
                 if (value == null)
-                    NativePtr->pNext = (NativeResource*)nint.Zero;
+                    NativePtr->pNext = nint.Zero;
                 else
-                    NativePtr->pNext = value.NativePtr;
+                    NativePtr->pNext = (nint)value.NativePtr;
             }
         }
     }
@@ -227,9 +227,9 @@ public class Resource : BaseNativeWrapper<NativeResource>
         {
             unsafe
             {
-                if (NativePtr->pPrev == null)
+                if (NativePtr->pPrev == nint.Zero)
                     return null;
-                _previous ??= new Resource(NativePtr->pPrev);
+                _previous ??= new Resource((NativeResource*)NativePtr->pPrev);
                 return _previous;
             }
         }
@@ -238,9 +238,9 @@ public class Resource : BaseNativeWrapper<NativeResource>
             unsafe
             {
                 if (value == null)
-                    NativePtr->pPrev = (NativeResource*)nint.Zero;
+                    NativePtr->pPrev = nint.Zero;
                 else
-                    NativePtr->pPrev = value.NativePtr;
+                    NativePtr->pPrev = (nint)value.NativePtr;
             }
         }
     }

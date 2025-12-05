@@ -23,14 +23,14 @@ public class Vector3f : BaseNativeWrapper<NativeVector3f>
         {
             unsafe
             {
-                return NativePtr->startpos[0];
+                return NativePtr->x;
             }
         }
         set
         {
             unsafe
             {
-                NativePtr->startpos[0] = value;
+                NativePtr->x = value;
             }
         }
     }
@@ -44,14 +44,14 @@ public class Vector3f : BaseNativeWrapper<NativeVector3f>
         {
             unsafe
             {
-                return NativePtr->startpos[1];
+                return NativePtr->y;
             }
         }
         set
         {
             unsafe
             {
-                NativePtr->startpos[1] = value;
+                NativePtr->y = value;
             }
         }
     }
@@ -65,14 +65,14 @@ public class Vector3f : BaseNativeWrapper<NativeVector3f>
         {
             unsafe
             {
-                return NativePtr->startpos[2];
+                return NativePtr->z;
             }
         }
         set
         {
             unsafe
             {
-                NativePtr->startpos[2] = value;
+                NativePtr->z = value;
             }
         }
     }
