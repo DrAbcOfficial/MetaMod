@@ -33,7 +33,7 @@ public struct NativeEntityState : INativeStruct
     // Render information
     internal int rendermode;
     internal int renderamt;
-    internal NativeColor24 rendercolor;
+    internal int rendercolor;
     internal int renderfx;
 
     internal int movetype;

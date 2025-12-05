@@ -17,6 +17,6 @@ public struct NativeResource : INativeStruct
     internal byte playernum;           // Which player index this resource is associated with, if it's a custom resource.
 
     internal unsafe fixed byte rguc_reserved[32]; // For future expansion
-    internal unsafe NativeResource* pNext;              // Next in chain.
-    internal unsafe NativeResource* pPrev;
+    internal nint pNext;              // Next in chain.
+    internal nint pPrev;
 }

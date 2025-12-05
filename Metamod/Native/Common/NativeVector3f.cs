@@ -1,9 +1,10 @@
-﻿using System.Runtime.InteropServices;
-
+using System.Runtime.InteropServices;
 namespace Metamod.Native.Common;
 
 [StructLayout(LayoutKind.Sequential)]
 public struct NativeVector3f : INativeStruct
 {
-    internal unsafe float* startpos;
+    public float x;
+    public float y;
+    public float z;
 }
