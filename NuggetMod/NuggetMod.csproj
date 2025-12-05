@@ -6,12 +6,12 @@
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <PackageId>DrAbc.MetaMod</PackageId>
-    <Title>MetaMod</Title>
+    <PackageId>DrAbc.NuggetMod</PackageId>
+    <Title>NuggetMod</Title>
     <Authors>Dr.Abc</Authors>
-    <Product>MetaMod</Product>
+    <Product>NuggetMod</Product>
     <Description>Build MetaMod(GoldSrc) plugin with .NET 10</Description>
-    <RepositoryUrl>https://github.com/DrAbcOfficial/MetaMod.git</RepositoryUrl>
+    <RepositoryUrl>https://github.com/DrAbcOfficial/NuggetMod.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>native;dll;game;GoldSrc;plugin;metamod;Half-Life;AOT</PackageTags>
     <PackageOutputPath>./nuget</PackageOutputPath>
@@ -21,6 +21,7 @@
     <Version>0.0.2-beta</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

@@ -1,9 +1,9 @@
-# MetaMod
+# NuggetMod
 
-Write metamod plugin based on .NET 9 AOT
+Write metamod plugin based on .NET 9 and later
 
-[![](https://img.shields.io/nuget/v/DrAbc.MetaMod.svg?label=MetaMod&logo=NuGet)](https://www.nuget.org/packages/DrAbc.MetaMod)
-![NuGet Downloads](https://img.shields.io/nuget/dt/DrAbc.MetaMod?label=Downloads)
+[![](https://img.shields.io/nuget/v/DrAbc.MetaMod.svg?label=MetaMod&logo=NuGet)](https://www.nuget.org/packages/DrAbc.NuggetMod)
+![NuGet Downloads](https://img.shields.io/nuget/dt/DrAbc.NuggetMod?label=Downloads)
 
 
 
@@ -12,7 +12,7 @@ Write metamod plugin based on .NET 9 AOT
 
 To quickly set up your first MetaMod plugin, refer to the template repository:
 
-[MetaMod.Template](https://github.com/DrAbcOfficial/MetaMod.Template)
+[NuggetMod.Template](https://github.com/DrAbcOfficial/NuggetMod.Template)
 
 ### Basic Workflow
 
