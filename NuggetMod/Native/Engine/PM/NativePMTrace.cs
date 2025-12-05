@@ -2,7 +2,9 @@
 using System.Runtime.InteropServices;
 
 namespace NuggetMod.Native.Engine.PM;
-
+/// <summary>
+/// Native structure to player move trace
+/// </summary>
 [StructLayout(LayoutKind.Sequential)]
 public struct NativePMTrace : INativeStruct
 {

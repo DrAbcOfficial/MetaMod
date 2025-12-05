@@ -17,6 +17,9 @@ public class SaveStoreData : BaseNativeWrapper<NativeSaveStoreData>
     internal unsafe SaveStoreData(NativeSaveStoreData* nativePtr, bool ownsPointer = false)
         : base(nativePtr, ownsPointer) { }
 
+    /// <summary>
+    /// Gets or sets the base pointer to save data
+    /// </summary>
     public nint BaseData
     {
         get
@@ -35,6 +38,9 @@ public class SaveStoreData : BaseNativeWrapper<NativeSaveStoreData>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the current pointer within save data
+    /// </summary>
     public nint CurrentData
     {
         get
@@ -53,6 +59,9 @@ public class SaveStoreData : BaseNativeWrapper<NativeSaveStoreData>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the current size of save data
+    /// </summary>
     public int Size
     {
         get
@@ -71,6 +80,9 @@ public class SaveStoreData : BaseNativeWrapper<NativeSaveStoreData>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the total buffer size allocated for save data
+    /// </summary>
     public int BufferSize
     {
         get
@@ -89,6 +101,9 @@ public class SaveStoreData : BaseNativeWrapper<NativeSaveStoreData>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the size of each token
+    /// </summary>
     public int TokenSize
     {
         get
@@ -107,6 +122,9 @@ public class SaveStoreData : BaseNativeWrapper<NativeSaveStoreData>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the number of tokens
+    /// </summary>
     public int TokenCount
     {
         get
@@ -125,6 +143,9 @@ public class SaveStoreData : BaseNativeWrapper<NativeSaveStoreData>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the pointer to token array
+    /// </summary>
     public nint Tokens
     {
         get
@@ -143,6 +164,9 @@ public class SaveStoreData : BaseNativeWrapper<NativeSaveStoreData>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the current index in the entity table
+    /// </summary>
     public int CurrentIndex
     {
         get
@@ -161,6 +185,9 @@ public class SaveStoreData : BaseNativeWrapper<NativeSaveStoreData>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the number of entries in the entity table
+    /// </summary>
     public int TableCount
     {
         get
@@ -179,6 +206,9 @@ public class SaveStoreData : BaseNativeWrapper<NativeSaveStoreData>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the number of level connections
+    /// </summary>
     public int ConnectionCount
     {
         get
@@ -197,6 +227,9 @@ public class SaveStoreData : BaseNativeWrapper<NativeSaveStoreData>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the pointer to the entity table
+    /// </summary>
     public nint EntityTable
     {
         get
@@ -215,6 +248,9 @@ public class SaveStoreData : BaseNativeWrapper<NativeSaveStoreData>
         }
     }
 
+    /// <summary>
+    /// Gets the list of level transitions (16 entries)
+    /// </summary>
     private IReadOnlyList<LevelList>? _levelList;
     public IReadOnlyList<LevelList> LevelList
     {
@@ -249,6 +285,9 @@ public class SaveStoreData : BaseNativeWrapper<NativeSaveStoreData>
         }
     }
 
+    /// <summary>
+    /// Gets or sets whether to use a landmark for level transitions
+    /// </summary>
     public int UseLandmark
     {
         get
@@ -267,6 +306,9 @@ public class SaveStoreData : BaseNativeWrapper<NativeSaveStoreData>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the landmark name for level transitions
+    /// </summary>
     public string LandmarkName
     {
         get
@@ -289,6 +331,9 @@ public class SaveStoreData : BaseNativeWrapper<NativeSaveStoreData>
         }
     }
 
+    /// <summary>
+    /// Gets the landmark offset vector for level transitions
+    /// </summary>
     private Vector3f? _vecLandmarkOffset;
     public Vector3f VecLandmarkOffset
     {
@@ -302,6 +347,9 @@ public class SaveStoreData : BaseNativeWrapper<NativeSaveStoreData>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the game time when the save was created
+    /// </summary>
     public float Time
     {
         get
@@ -320,6 +368,9 @@ public class SaveStoreData : BaseNativeWrapper<NativeSaveStoreData>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the current map name
+    /// </summary>
     public string CurrentMapName
     {
         get

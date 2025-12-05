@@ -39,6 +39,9 @@ public class Hook : BaseNativeWrapper<NativeHook>
         }
     }
 
+    /// <summary>
+    /// Gets or sets whether the hook has been committed (activated)
+    /// </summary>
     public int Committed
     {
         get
@@ -57,6 +60,9 @@ public class Hook : BaseNativeWrapper<NativeHook>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the address of the original function being hooked
+    /// </summary>
     public nint OldFuncAddr
     {
         get
@@ -75,6 +81,9 @@ public class Hook : BaseNativeWrapper<NativeHook>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the address of the new function to redirect to
+    /// </summary>
     public nint NewFuncAddr
     {
         get
@@ -93,6 +102,9 @@ public class Hook : BaseNativeWrapper<NativeHook>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the address to call the original function
+    /// </summary>
     public nint OriginalCall
     {
         get
@@ -111,6 +123,9 @@ public class Hook : BaseNativeWrapper<NativeHook>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the pointer to the class instance (for virtual function hooks)
+    /// </summary>
     public nint Class
     {
         get
@@ -129,6 +144,9 @@ public class Hook : BaseNativeWrapper<NativeHook>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the virtual table index (for virtual function hooks)
+    /// </summary>
     public int TableIndex
     {
         get
@@ -147,6 +165,9 @@ public class Hook : BaseNativeWrapper<NativeHook>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the function index within the virtual table
+    /// </summary>
     public int FuncIndex
     {
         get
@@ -165,6 +186,9 @@ public class Hook : BaseNativeWrapper<NativeHook>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the handle of the module containing the hooked function
+    /// </summary>
     public nint ModuleHandle
     {
         get
@@ -183,6 +207,9 @@ public class Hook : BaseNativeWrapper<NativeHook>
         }
     }
 
+    /// <summary>
+    /// Gets the name of the module containing the hooked function
+    /// </summary>
     public string ModuleName
     {
         get
@@ -194,6 +221,9 @@ public class Hook : BaseNativeWrapper<NativeHook>
         }
     }
 
+    /// <summary>
+    /// Gets the name of the hooked function
+    /// </summary>
     public string FuncName
     {
         get
@@ -205,6 +235,9 @@ public class Hook : BaseNativeWrapper<NativeHook>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the pointer to the next hook in the chain
+    /// </summary>
     public nint Next
     {
         get
@@ -223,6 +256,9 @@ public class Hook : BaseNativeWrapper<NativeHook>
         }
     }
 
+    /// <summary>
+    /// Gets or sets additional hook information pointer
+    /// </summary>
     public nint Info
     {
         get

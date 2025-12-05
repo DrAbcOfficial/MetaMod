@@ -1,9 +1,10 @@
-﻿using NuggetMod.Enum.NuggetMod;
-using NuggetMod.Native.Common;
+﻿using NuggetMod.Native.Common;
 using System.Runtime.InteropServices;
 
 namespace NuggetMod.Native.Engine.PM;
-
+/// <summary>
+/// native structure representing player movement data for physics calculations.
+/// </summary>
 [StructLayout(LayoutKind.Sequential)]
 public struct NativePlayerMove : INativeStruct
 {
@@ -15,7 +16,7 @@ public struct NativePlayerMove : INativeStruct
     internal float frametime;       // Duration of this frame
 
     internal NativeVector3f forward, right, up; // Vectors for angles
-                               // player state
+                                                // player state
     internal NativeVector3f origin;        // Movement origin.
     internal NativeVector3f angles;        // Movement view angles.
     internal NativeVector3f oldangles;     // Angles before movement view angles were looked at.

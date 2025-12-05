@@ -647,163 +647,637 @@ public delegate (MetaResult, int) EngCheckParmDelegate(string pchCmdLineToken, o
 public class EngineEvents
 {
     #region Events
+    /// <summary>
+    /// Event for precaching a model file.
+    /// </summary>
     public event PrecacheModelDelegate? PrecacheModel;
+    /// <summary>
+    /// Event for precaching a sound file.
+    /// </summary>
     public event PrecacheSoundDelegate? PrecacheSound;
+    /// <summary>
+    /// Event for setting an entity's model.
+    /// </summary>
     public event SetModelDelegate? SetModel;
+    /// <summary>
+    /// Event for getting a model's index.
+    /// </summary>
     public event ModelIndexDelegate? ModelIndex;
+    /// <summary>
+    /// Event for getting a model's frame count.
+    /// </summary>
     public event ModelFramesDelegate? ModelFrames;
+    /// <summary>
+    /// Event for setting an entity's size.
+    /// </summary>
     public event SetSizeDelegate? SetSize;
+    /// <summary>
+    /// Event for changing to a new level/map.
+    /// </summary>
     public event ChangeLevelDelegate? ChangeLevel;
+    /// <summary>
+    /// Event for getting spawn parameters.
+    /// </summary>
     public event GetSpawnParmsDelegate? GetSpawnParms;
+    /// <summary>
+    /// Event for saving spawn parameters.
+    /// </summary>
     public event SaveSpawnParmsDelegate? SaveSpawnParms;
+    /// <summary>
+    /// Event for converting a vector to yaw angle.
+    /// </summary>
     public event VecToYawDelegate? VecToYaw;
+    /// <summary>
+    /// Event for converting a vector to angles.
+    /// </summary>
     public event VecToAnglesDelegate? VecToAngles;
+    /// <summary>
+    /// Event for moving an entity toward an origin.
+    /// </summary>
     public event MoveToOriginDelegate? MoveToOrigin;
+    /// <summary>
+    /// Event for changing an entity's yaw angle.
+    /// </summary>
     public event ChangeYawDelegate? ChangeYaw;
+    /// <summary>
+    /// Event for changing an entity's pitch angle.
+    /// </summary>
     public event ChangePitchDelegate? ChangePitch;
+    /// <summary>
+    /// Event for finding an entity by string field value.
+    /// </summary>
     public event FindEntityByStringDelegate? FindEntityByString;
+    /// <summary>
+    /// Event for getting an entity's illumination level.
+    /// </summary>
     public event GetEntityIllumDelegate? GetEntityIllum;
+    /// <summary>
+    /// Event for finding entities within a sphere.
+    /// </summary>
     public event FindEntityInSphereDelegate? FindEntityInSphere;
+    /// <summary>
+    /// Event for finding a client in the Potentially Visible Set.
+    /// </summary>
     public event FindClientInPVSDelegate? FindClientInPVS;
+    /// <summary>
+    /// Event for getting entities in the Potentially Visible Set.
+    /// </summary>
     public event EntitiesInPVSDelegate? EntitiesInPVS;
+    /// <summary>
+    /// Event for making global direction vectors from angles.
+    /// </summary>
     public event MakeVectorsDelegate? MakeVectors;
+    /// <summary>
+    /// Event for converting angles to direction vectors.
+    /// </summary>
     public event AngleVectorsDelegate? AngleVectors;
+    /// <summary>
+    /// Event for creating a new entity.
+    /// </summary>
     public event CreateEntityDelegate? CreateEntity;
+    /// <summary>
+    /// Event for removing an entity.
+    /// </summary>
     public event RemoveEntityDelegate? RemoveEntity;
+    /// <summary>
+    /// Event for creating a named entity by classname.
+    /// </summary>
     public event CreateNamedEntityDelegate? CreateNamedEntity;
+    /// <summary>
+    /// Event for making an entity static (non-moving).
+    /// </summary>
     public event MakeStaticDelegate? MakeStatic;
+    /// <summary>
+    /// Event for checking if an entity is on the floor.
+    /// </summary>
     public event EntIsOnFloorDelegate? EntIsOnFloor;
+    /// <summary>
+    /// Event for dropping an entity to the floor.
+    /// </summary>
     public event DropToFloorDelegate? DropToFloor;
+    /// <summary>
+    /// Event for making an entity walk in a direction.
+    /// </summary>
     public event WalkMoveDelegate? WalkMove;
+    /// <summary>
+    /// Event for setting an entity's origin position.
+    /// </summary>
     public event SetOriginDelegate? SetOrigin;
+    /// <summary>
+    /// Event for emitting a sound from an entity.
+    /// </summary>
     public event EmitSoundDelegate? EmitSound;
+    /// <summary>
+    /// Event for emitting an ambient sound at a position.
+    /// </summary>
     public event EmitAmbientSoundDelegate? EmitAmbientSound;
+    /// <summary>
+    /// Event for tracing a line through the world.
+    /// </summary>
     public event TraceLineDelegate? TraceLine;
+    /// <summary>
+    /// Event for tracing a tossed object's trajectory.
+    /// </summary>
     public event TraceTossDelegate? TraceToss;
+    /// <summary>
+    /// Event for tracing a monster's hull.
+    /// </summary>
     public event TraceMonsterHullDelegate? TraceMonsterHull;
+    /// <summary>
+    /// Event for tracing a hull through the world.
+    /// </summary>
     public event TraceHullDelegate? TraceHull;
+    /// <summary>
+    /// Event for tracing against a specific model.
+    /// </summary>
     public event TraceModelDelegate? TraceModel;
+    /// <summary>
+    /// Event for tracing to find texture name.
+    /// </summary>
     public event TraceTextureDelegate? TraceTexture;
+    /// <summary>
+    /// Event for tracing a sphere through the world.
+    /// </summary>
     public event TraceSphereDelegate? TraceSphere;
+    /// <summary>
+    /// Event for getting an entity's aim vector.
+    /// </summary>
     public event GetAimVectorDelegate? GetAimVector;
+    /// <summary>
+    /// Event for executing a server command.
+    /// </summary>
     public event ServerCommandDelegate? ServerCommand;
+    /// <summary>
+    /// Event for executing the server command buffer.
+    /// </summary>
     public event ServerExecuteDelegate? ServerExecute;
+    /// <summary>
+    /// Event for executing a client command from the engine.
+    /// </summary>
     public event EngineClientCommandDelegate? ClientCommand;
+    /// <summary>
+    /// Event for creating a particle effect.
+    /// </summary>
     public event ParticleEffectDelegate? ParticleEffect;
+    /// <summary>
+    /// Event for setting a light style.
+    /// </summary>
     public event LightStyleDelegate? LightStyle;
+    /// <summary>
+    /// Event for getting a decal's index.
+    /// </summary>
     public event DecalIndexDelegate? DecalIndex;
+    /// <summary>
+    /// Event for getting the contents type at a point.
+    /// </summary>
     public event PointContentsDelegate? PointContents;
+    /// <summary>
+    /// Event for beginning a network message.
+    /// </summary>
     public event MessageBeginDelegate? MessageBegin;
+    /// <summary>
+    /// Event for ending a network message.
+    /// </summary>
     public event MessageEndDelegate? MessageEnd;
+    /// <summary>
+    /// Event for writing a byte to a network message.
+    /// </summary>
     public event WriteByteDelegate? WriteByte;
+    /// <summary>
+    /// Event for writing a char to a network message.
+    /// </summary>
     public event WriteCharDelegate? WriteChar;
+    /// <summary>
+    /// Event for writing a short to a network message.
+    /// </summary>
     public event WriteShortDelegate? WriteShort;
+    /// <summary>
+    /// Event for writing a long to a network message.
+    /// </summary>
     public event WriteLongDelegate? WriteLong;
+    /// <summary>
+    /// Event for writing an angle to a network message.
+    /// </summary>
     public event WriteAngleDelegate? WriteAngle;
+    /// <summary>
+    /// Event for writing a coordinate to a network message.
+    /// </summary>
     public event WriteCoordDelegate? WriteCoord;
+    /// <summary>
+    /// Event for writing a string to a network message.
+    /// </summary>
     public event WriteStringDelegate? WriteString;
+    /// <summary>
+    /// Event for writing an entity index to a network message.
+    /// </summary>
     public event WriteEntityDelegate? WriteEntity;
+    /// <summary>
+    /// Event for registering a console variable.
+    /// </summary>
     public event CVarRegisterDelegate? CVarRegister;
+    /// <summary>
+    /// Event for getting a console variable's float value.
+    /// </summary>
     public event CVarGetFloatDelegate? CVarGetFloat;
+    /// <summary>
+    /// Event for getting a console variable's string value.
+    /// </summary>
     public event CVarGetStringDelegate? CVarGetString;
+    /// <summary>
+    /// Event for setting a console variable's float value.
+    /// </summary>
     public event CVarSetFloatDelegate? CVarSetFloat;
+    /// <summary>
+    /// Event for setting a console variable's string value.
+    /// </summary>
     public event CVarSetStringDelegate? CVarSetString;
+    /// <summary>
+    /// Event for displaying an alert message.
+    /// </summary>
     public event AlertMessageDelegate? AlertMessage;
+    /// <summary>
+    /// Event for engine file printf operation.
+    /// </summary>
     public event EngineFprintfDelegate? EngineFprintf;
+    /// <summary>
+    /// Event for allocating entity private data.
+    /// </summary>
     public event PvAllocEntPrivateDataDelegate? PvAllocEntPrivateData;
+    /// <summary>
+    /// Event for getting entity private data pointer.
+    /// </summary>
     public event PvEntPrivateDataDelegate? PvEntPrivateData;
+    /// <summary>
+    /// Event for freeing entity private data.
+    /// </summary>
     public event FreeEntPrivateDataDelegate? FreeEntPrivateData;
+    /// <summary>
+    /// Event for getting string from string pool index.
+    /// </summary>
     public event SzFromIndexDelegate? SzFromIndex;
+    /// <summary>
+    /// Event for allocating a string in the string pool.
+    /// </summary>
     public event AllocStringDelegate? AllocString;
+    /// <summary>
+    /// Event for getting entity variables from edict.
+    /// </summary>
     public event GetVarsOfEntDelegate? GetVarsOfEnt;
+    /// <summary>
+    /// Event for getting entity from offset.
+    /// </summary>
     public event PEntityOfEntOffsetDelegate? PEntityOfEntOffset;
+    /// <summary>
+    /// Event for getting offset from entity.
+    /// </summary>
     public event EntOffsetOfPEntityDelegate? EntOffsetOfPEntity;
+    /// <summary>
+    /// Event for getting edict index.
+    /// </summary>
     public event IndexOfEdictDelegate? IndexOfEdict;
+    /// <summary>
+    /// Event for getting entity from index.
+    /// </summary>
     public event PEntityOfEntIndexDelegate? PEntityOfEntIndex;
+    /// <summary>
+    /// Event for finding entity by entity variables.
+    /// </summary>
     public event FindEntityByVarsDelegate? FindEntityByVars;
+    /// <summary>
+    /// Event for getting model pointer.
+    /// </summary>
     public event GetModelPtrDelegate? GetModelPtr;
+    /// <summary>
+    /// Event for registering a user message.
+    /// </summary>
     public event RegUserMsgDelegate? RegUserMsg;
+    /// <summary>
+    /// Event for animation auto-move.
+    /// </summary>
     public event AnimationAutomoveDelegate? AnimationAutomove;
+    /// <summary>
+    /// Event for getting bone position and angles.
+    /// </summary>
     public event GetBonePositionDelegate? GetBonePosition;
+    /// <summary>
+    /// Event for getting function address from name.
+    /// </summary>
     public event FunctionFromNameDelegate? FunctionFromName;
+    /// <summary>
+    /// Event for getting function name from address.
+    /// </summary>
     public event NameForFunctionDelegate? NameForFunction;
+    /// <summary>
+    /// Event for printing message to client console.
+    /// </summary>
     public event ClientPrintfDelegate? ClientPrintf;
+    /// <summary>
+    /// Event for printing message to server console.
+    /// </summary>
     public event ServerPrintDelegate? ServerPrint;
+    /// <summary>
+    /// Event for getting command arguments string.
+    /// </summary>
     public event Cmd_ArgsDelegate? Cmd_Args;
+    /// <summary>
+    /// Event for getting command argument by index.
+    /// </summary>
     public event Cmd_ArgvDelegate? Cmd_Argv;
+    /// <summary>
+    /// Event for getting command argument count.
+    /// </summary>
     public event Cmd_ArgcDelegate? Cmd_Argc;
+    /// <summary>
+    /// Event for getting entity attachment position.
+    /// </summary>
     public event GetAttachmentDelegate? GetAttachment;
+    /// <summary>
+    /// Event for initializing CRC32 checksum.
+    /// </summary>
     public event CRC32_InitDelegate? CRC32_Init;
+    /// <summary>
+    /// Event for processing CRC32 buffer.
+    /// </summary>
     public event CRC32_ProcessBufferDelegate? CRC32_ProcessBuffer;
+    /// <summary>
+    /// Event for processing CRC32 byte.
+    /// </summary>
     public event CRC32_ProcessByteDelegate? CRC32_ProcessByte;
+    /// <summary>
+    /// Event for finalizing CRC32 checksum.
+    /// </summary>
     public event CRC32_FinalDelegate? CRC32_Final;
+    /// <summary>
+    /// Event for generating random long integer.
+    /// </summary>
     public event RandomLongDelegate? RandomLong;
+    /// <summary>
+    /// Event for generating random float.
+    /// </summary>
     public event RandomFloatDelegate? RandomFloat;
+    /// <summary>
+    /// Event for setting client view entity.
+    /// </summary>
     public event SetViewDelegate? SetView;
+    /// <summary>
+    /// Event for getting server time.
+    /// </summary>
     public event TimeDelegate? Time;
+    /// <summary>
+    /// Event for setting crosshair angle.
+    /// </summary>
     public event CrosshairAngleDelegate? CrosshairAngle;
+    /// <summary>
+    /// Event for loading a file into memory.
+    /// </summary>
     public event LoadFileForMeDelegate? LoadFileForMe;
+    /// <summary>
+    /// Event for freeing a loaded file.
+    /// </summary>
     public event FreeFileDelegate? FreeFile;
+    /// <summary>
+    /// Event for ending a section.
+    /// </summary>
     public event EndSectionDelegate? EndSection;
+    /// <summary>
+    /// Event for comparing file modification times.
+    /// </summary>
     public event CompareFileTimeDelegate? CompareFileTime;
+    /// <summary>
+    /// Event for getting game directory path.
+    /// </summary>
     public event GetGameDirDelegate? GetGameDir;
+    /// <summary>
+    /// Event for registering a console variable (alternative).
+    /// </summary>
     public event CVar_RegisterVariableDelegate? Cvar_RegisterVariable;
+    /// <summary>
+    /// Event for fading client volume.
+    /// </summary>
     public event FadeClientVolumeDelegate? FadeClientVolume;
+    /// <summary>
+    /// Event for setting client maximum speed.
+    /// </summary>
     public event SetClientMaxspeedDelegate? SetClientMaxspeed;
+    /// <summary>
+    /// Event for creating a fake client (bot).
+    /// </summary>
     public event CreateFakeClientDelegate? CreateFakeClient;
+    /// <summary>
+    /// Event for running player move for fake client.
+    /// </summary>
     public event RunPlayerMoveDelegate? RunPlayerMove;
+    /// <summary>
+    /// Event for getting number of entities.
+    /// </summary>
     public event NumberOfEntitiesDelegate? NumberOfEntities;
+    /// <summary>
+    /// Event for getting info key buffer.
+    /// </summary>
     public event GetInfoKeyBufferDelegate? GetInfoKeyBuffer;
+    /// <summary>
+    /// Event for getting info key value.
+    /// </summary>
     public event InfoKeyValueDelegate? InfoKeyValue;
+    /// <summary>
+    /// Event for setting key value in info buffer.
+    /// </summary>
     public event SetKeyValueDelegate? SetKeyValue;
+    /// <summary>
+    /// Event for setting client key value.
+    /// </summary>
     public event SetClientKeyValueDelegate? SetClientKeyValue;
+    /// <summary>
+    /// Event for checking if map is valid.
+    /// </summary>
     public event IsMapValidDelegate? IsMapValid;
+    /// <summary>
+    /// Event for creating a static decal.
+    /// </summary>
     public event StaticDecalDelegate? StaticDecal;
+    /// <summary>
+    /// Event for precaching a generic resource.
+    /// </summary>
     public event PrecacheGenericDelegate? PrecacheGeneric;
+    /// <summary>
+    /// Event for getting player user ID.
+    /// </summary>
     public event GetPlayerUserIdDelegate? GetPlayerUserId;
+    /// <summary>
+    /// Event for building a sound message.
+    /// </summary>
     public event BuildSoundMsgDelegate? BuildSoundMsg;
+    /// <summary>
+    /// Event for checking if server is dedicated.
+    /// </summary>
     public event IsDedicatedServerDelegate? IsDedicatedServer;
+    /// <summary>
+    /// Event for getting console variable pointer.
+    /// </summary>
     public event CVarGetPointerDelegate? CVarGetPointer;
+    /// <summary>
+    /// Event for getting player WON ID.
+    /// </summary>
     public event GetPlayerWONIdDelegate? GetPlayerWONId;
+    /// <summary>
+    /// Event for removing key from info string.
+    /// </summary>
     public event Info_RemoveKeyDelegate? Info_RemoveKey;
+    /// <summary>
+    /// Event for getting physics key value.
+    /// </summary>
     public event GetPhysicsKeyValueDelegate? GetPhysicsKeyValue;
+    /// <summary>
+    /// Event for setting physics key value.
+    /// </summary>
     public event SetPhysicsKeyValueDelegate? SetPhysicsKeyValue;
+    /// <summary>
+    /// Event for getting physics info string.
+    /// </summary>
     public event GetPhysicsInfoStringDelegate? GetPhysicsInfoString;
+    /// <summary>
+    /// Event for precaching an event.
+    /// </summary>
     public event PrecacheEventDelegate? PrecacheEvent;
+    /// <summary>
+    /// Event for playing back an event.
+    /// </summary>
     public event PlaybackEventDelegate? PlaybackEvent;
+    /// <summary>
+    /// Event for setting fat PVS (Potentially Visible Set).
+    /// </summary>
     public event SetFatPVSDelegate? SetFatPVS;
+    /// <summary>
+    /// Event for setting fat PAS (Potentially Audible Set).
+    /// </summary>
     public event SetFatPASDelegate? SetFatPAS;
+    /// <summary>
+    /// Event for checking entity visibility.
+    /// </summary>
     public event CheckVisibilityDelegate? CheckVisibility;
+    /// <summary>
+    /// Event for setting a delta field.
+    /// </summary>
     public event DeltaSetFieldDelegate? DeltaSetField;
+    /// <summary>
+    /// Event for unsetting a delta field.
+    /// </summary>
     public event DeltaUnsetFieldDelegate? DeltaUnsetField;
+    /// <summary>
+    /// Event for adding a delta encoder.
+    /// </summary>
     public event DeltaAddEncoderDelegate? DeltaAddEncoder;
+    /// <summary>
+    /// Event for getting current player index.
+    /// </summary>
     public event GetCurrentPlayerDelegate? GetCurrentPlayer;
+    /// <summary>
+    /// Event for checking if player can be skipped.
+    /// </summary>
     public event CanSkipPlayerDelegate? CanSkipPlayer;
+    /// <summary>
+    /// Event for finding a delta field.
+    /// </summary>
     public event DeltaFindFieldDelegate? DeltaFindField;
+    /// <summary>
+    /// Event for setting delta field by index.
+    /// </summary>
     public event DeltaSetFieldByIndexDelegate? DeltaSetFieldByIndex;
+    /// <summary>
+    /// Event for unsetting delta field by index.
+    /// </summary>
     public event DeltaUnsetFieldByIndexDelegate? DeltaUnsetFieldByIndex;
+    /// <summary>
+    /// Event for setting group mask for visibility.
+    /// </summary>
     public event SetGroupMaskDelegate? SetGroupMask;
+    /// <summary>
+    /// Event for creating instanced baseline.
+    /// </summary>
     public event CreateInstancedBaselineDelegate? CreateInstancedBaseline;
+    /// <summary>
+    /// Event for directly setting console variable value.
+    /// </summary>
     public event Cvar_DirectSetDelegate? Cvar_DirectSet;
+    /// <summary>
+    /// Event for forcing file consistency check.
+    /// </summary>
     public event ForceUnmodifiedDelegate? ForceUnmodified;
+    /// <summary>
+    /// Event for getting player network statistics.
+    /// </summary>
     public event GetPlayerStatsDelegate? GetPlayerStats;
+    /// <summary>
+    /// Event for adding a server command.
+    /// </summary>
     public event AddServerCommandDelegate? AddServerCommand;
+    /// <summary>
+    /// Event for getting voice client listening status.
+    /// </summary>
     public event Voice_GetClientListeningDelegate? Voice_GetClientListening;
+    /// <summary>
+    /// Event for setting voice client listening status.
+    /// </summary>
     public event Voice_SetClientListeningDelegate? Voice_SetClientListening;
+    /// <summary>
+    /// Event for getting player authentication ID.
+    /// </summary>
     public event GetPlayerAuthIdDelegate? GetPlayerAuthId;
+    /// <summary>
+    /// Event for getting sequence entry.
+    /// </summary>
     public event SequenceGetDelegate? SequenceGet;
+    /// <summary>
+    /// Event for picking sentence from sequence.
+    /// </summary>
     public event SequencePickSentenceDelegate? SequencePickSentence;
+    /// <summary>
+    /// Event for getting file size.
+    /// </summary>
     public event GetFileSizeDelegate? GetFileSize;
+    /// <summary>
+    /// Event for getting approximate wave play length.
+    /// </summary>
     public event GetApproxWavePlayLenDelegate? GetApproxWavePlayLen;
+    /// <summary>
+    /// Event for checking if current match is career match.
+    /// </summary>
     public event IsCareerMatchDelegate? IsCareerMatch;
+    /// <summary>
+    /// Event for getting localized string length.
+    /// </summary>
     public event GetLocalizedStringLengthDelegate? GetLocalizedStringLength;
+    /// <summary>
+    /// Event for registering tutor message as shown.
+    /// </summary>
     public event RegisterTutorMessageShownDelegate? RegisterTutorMessageShown;
+    /// <summary>
+    /// Event for getting times tutor message was shown.
+    /// </summary>
     public event GetTimesTutorMessageShownDelegate? GetTimesTutorMessageShown;
+    /// <summary>
+    /// Event for processing tutor message decay buffer.
+    /// </summary>
     public event ProcessTutorMessageDecayBufferDelegate? ProcessTutorMessageDecayBuffer;
+    /// <summary>
+    /// Event for constructing tutor message decay buffer.
+    /// </summary>
     public event ConstructTutorMessageDecayBufferDelegate? ConstructTutorMessageDecayBuffer;
+    /// <summary>
+    /// Event for resetting tutor message decay data.
+    /// </summary>
     public event ResetTutorMessageDecayDataDelegate? ResetTutorMessageDecayData;
+    /// <summary>
+    /// Event for querying client console variable value.
+    /// </summary>
     public event QueryClientCvarValueDelegate? QueryClientCvarValue;
+    /// <summary>
+    /// Event for querying client console variable value with request ID.
+    /// </summary>
     public event QueryClientCvarValue2Delegate? QueryClientCvarValue2;
+    /// <summary>
+    /// Event for checking engine command line parameter.
+    /// </summary>
     public event EngCheckParmDelegate? EngCheckParm;
     #endregion
 

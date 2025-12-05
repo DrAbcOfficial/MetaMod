@@ -18,6 +18,9 @@ public class TypeDescription : BaseNativeWrapper<NativeTypeDescription>
     internal unsafe TypeDescription(NativeTypeDescription* nativePtr, bool ownsPointer = false)
         : base(nativePtr, ownsPointer) { }
 
+    /// <summary>
+    /// Gets or sets the field type for save/restore operations
+    /// </summary>
     public FieldType FieldType
     {
         get
@@ -36,6 +39,9 @@ public class TypeDescription : BaseNativeWrapper<NativeTypeDescription>
         }
     }
 
+    /// <summary>
+    /// Gets the field name
+    /// </summary>
     public string FieldName
     {
         get
@@ -47,6 +53,9 @@ public class TypeDescription : BaseNativeWrapper<NativeTypeDescription>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the field offset within the structure
+    /// </summary>
     public int FieldOffset
     {
         get
@@ -65,6 +74,9 @@ public class TypeDescription : BaseNativeWrapper<NativeTypeDescription>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the field size in bytes
+    /// </summary>
     public short FieldSize
     {
         get
@@ -83,6 +95,9 @@ public class TypeDescription : BaseNativeWrapper<NativeTypeDescription>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the field flags
+    /// </summary>
     public short Flags
     {
         get

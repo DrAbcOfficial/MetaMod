@@ -72,7 +72,9 @@ public class StringHandle
     {
         return _value;
     }
-
+    /// <summary>
+    /// Release a StringHandle instance
+    /// </summary>
     ~StringHandle()
     {
         if (_need_release)

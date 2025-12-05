@@ -40,6 +40,12 @@ public abstract class PluginEntry
         return Interface.GetPluginInfo();
     }
 
+    /// <summary>
+    /// Native function called by the engine to provide function pointers.
+    /// Initializes engine functions and global variables.
+    /// </summary>
+    /// <param name="pengfuncsFromEngine">Pointer to engine functions table.</param>
+    /// <param name="pGlobals">Pointer to global variables structure.</param>
     protected static void Native_GiveFnptrsToDll(nint pengfuncsFromEngine, nint pGlobals)
     {
         EngineFuncs engineFuncs = new(pengfuncsFromEngine);
@@ -48,11 +54,21 @@ public abstract class PluginEntry
         MetaMod._globalVars = globalVars;
     }
 
+    /// <summary>
+    /// Native function called by Metamod to initialize the plugin.
+    /// </summary>
     protected static void Native_Meta_Init()
     {
 
     }
 
+    /// <summary>
+    /// Native function called by Metamod to query plugin information.
+    /// </summary>
+    /// <param name="interfaceVersion">Pointer to interface version string.</param>
+    /// <param name="plinfo">Pointer to plugin info structure pointer.</param>
+    /// <param name="pMetaUtilFuncs">Pointer to Metamod utility functions.</param>
+    /// <returns>1 if successful, 0 otherwise.</returns>
     protected static int Native_Meta_Query(nint interfaceVersion, nint plinfo, nint pMetaUtilFuncs)
     {
         string? version = Marshal.PtrToStringAnsi(interfaceVersion) ?? throw new Exception("Interface version is null");
@@ -105,6 +121,15 @@ public abstract class PluginEntry
         return result ? 1 : 0;
     }
 
+    /// <summary>
+    /// Native function called by Metamod to attach the plugin.
+    /// Sets up function tables and hooks.
+    /// </summary>
+    /// <param name="now">Current plugin load time.</param>
+    /// <param name="pFunctionTable">Pointer to function table to fill.</param>
+    /// <param name="pMGlobals">Pointer to Metamod globals.</param>
+    /// <param name="pGamedllFuncs">Pointer to game DLL functions.</param>
+    /// <returns>1 if successful, 0 otherwise.</returns>
     protected static unsafe int Native_Meta_Attach(PluginLoadTime now, nint pFunctionTable, nint pMGlobals, nint pGamedllFuncs)
     {
         MetaGlobals metaGlobals = new(pMGlobals);
@@ -115,7 +140,7 @@ public abstract class PluginEntry
         bool result = pinterface.Meta_Attach(now, metaGlobals, gameDllFuncs);
 
 
-        // 本地方法：将托管 delegate 转换为函数指针并写入到宿主内存（按字段偏移）
+        // Local method: Convert managed delegate to function pointer and write to host memory (by field offset)
         static void WriteDelegateField<TDelegate>(nint basePtr, string fieldName, TDelegate? del) where TDelegate : Delegate
         {
             nint offset = Marshal.OffsetOf<NativeMetaFuncs>(fieldName);
@@ -138,6 +163,13 @@ public abstract class PluginEntry
         return result ? 1 : 0;
     }
 
+    /// <summary>
+    /// Native function called by Metamod to detach the plugin.
+    /// Cleans up resources and unhooks functions.
+    /// </summary>
+    /// <param name="now">Current plugin load time.</param>
+    /// <param name="reason">Reason for unloading.</param>
+    /// <returns>1 if successful, 0 otherwise.</returns>
     protected static int Native_Meta_Detach(PluginLoadTime now, PluginUnloadReason reason)
     {
         var pinterface = GetPluginInterface();

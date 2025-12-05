@@ -2,7 +2,9 @@
 using System.Runtime.InteropServices;
 
 namespace NuggetMod.Native.Engine.PM;
-
+/// <summary>
+/// Native structure representing a physical entity in the game world.
+/// </summary>
 [StructLayout(LayoutKind.Sequential)]
 public struct NativePhySent : INativeStruct
 {

@@ -53,6 +53,9 @@ namespace NuggetMod.Wrapper.NuggetMod
             }
         }
 
+        /// <summary>
+        /// Gets or sets the current status of the plugin execution
+        /// </summary>
         public MetaResult Status
         {
             get
@@ -71,6 +74,9 @@ namespace NuggetMod.Wrapper.NuggetMod
             }
         }
 
+        /// <summary>
+        /// Gets or sets the original return value from the hooked function
+        /// </summary>
         public nint OriginReturn
         {
             get
@@ -89,6 +95,9 @@ namespace NuggetMod.Wrapper.NuggetMod
             }
         }
 
+        /// <summary>
+        /// Gets or sets the override return value to replace the original return
+        /// </summary>
         public nint OverrideReturn
         {
             get

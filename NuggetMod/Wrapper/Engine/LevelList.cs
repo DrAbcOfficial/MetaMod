@@ -18,6 +18,9 @@ public class LevelList : BaseNativeWrapper<NativeLevelList>
     internal unsafe LevelList(NativeLevelList* nativePtr, bool ownsPointer = false)
         : base(nativePtr, ownsPointer) { }
 
+    /// <summary>
+    /// Gets or sets the map name for this level transition
+    /// </summary>
     public string MapName
     {
         get
@@ -40,6 +43,9 @@ public class LevelList : BaseNativeWrapper<NativeLevelList>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the landmark name for this level transition
+    /// </summary>
     public string LandmarkName
     {
         get
@@ -62,6 +68,9 @@ public class LevelList : BaseNativeWrapper<NativeLevelList>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the landmark entity for this level transition
+    /// </summary>
     private Edict? _pentlandmark;
     public Edict PentLandmark
     {
@@ -82,6 +91,9 @@ public class LevelList : BaseNativeWrapper<NativeLevelList>
         }
     }
 
+    /// <summary>
+    /// Gets the landmark origin position
+    /// </summary>
     private Vector3f? _vecLandmarkOrigin;
     public Vector3f VecLandmarkOrigin
     {

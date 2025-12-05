@@ -16,6 +16,9 @@ public class Link : BaseNativeWrapper<NativeLink>
     internal unsafe Link(NativeLink* nativePtr, bool ownsPointer = false)
         : base(nativePtr, ownsPointer) { }
 
+    /// <summary>
+    /// Gets or sets the pointer to the previous link in the list
+    /// </summary>
     public nint Prev
     {
         get
@@ -34,6 +37,9 @@ public class Link : BaseNativeWrapper<NativeLink>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the pointer to the next link in the list
+    /// </summary>
     public nint Next
     {
         get

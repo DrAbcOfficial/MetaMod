@@ -33,6 +33,9 @@ public class PlayerMove : BaseNativeWrapper<NativePlayerMove>
         }
     }
 
+    /// <summary>
+    /// Gets or sets whether this is running on the server
+    /// </summary>
     public bool Server
     {
         get
@@ -51,6 +54,9 @@ public class PlayerMove : BaseNativeWrapper<NativePlayerMove>
         }
     }
 
+    /// <summary>
+    /// Gets or sets whether this is a multiplayer game
+    /// </summary>
     public bool Multiplayer
     {
         get
@@ -69,6 +75,9 @@ public class PlayerMove : BaseNativeWrapper<NativePlayerMove>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the current game time
+    /// </summary>
     public float Time
     {
         get
@@ -87,6 +96,9 @@ public class PlayerMove : BaseNativeWrapper<NativePlayerMove>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the duration of the current frame
+    /// </summary>
     public float FrameTime
     {
         get
@@ -105,6 +117,9 @@ public class PlayerMove : BaseNativeWrapper<NativePlayerMove>
         }
     }
 
+    /// <summary>
+    /// Gets the forward direction vector
+    /// </summary>
     private Vector3f? _forward;
     public Vector3f Forward
     {
@@ -118,6 +133,9 @@ public class PlayerMove : BaseNativeWrapper<NativePlayerMove>
         }
     }
 
+    /// <summary>
+    /// Gets the right direction vector
+    /// </summary>
     private Vector3f? _right;
     public Vector3f Right
     {
@@ -131,6 +149,9 @@ public class PlayerMove : BaseNativeWrapper<NativePlayerMove>
         }
     }
 
+    /// <summary>
+    /// Gets the up direction vector
+    /// </summary>
     private Vector3f? _up;
     public Vector3f Up
     {
@@ -144,6 +165,9 @@ public class PlayerMove : BaseNativeWrapper<NativePlayerMove>
         }
     }
 
+    /// <summary>
+    /// Gets the player origin position
+    /// </summary>
     private Vector3f? _origin;
     public Vector3f Origin
     {
@@ -157,6 +181,9 @@ public class PlayerMove : BaseNativeWrapper<NativePlayerMove>
         }
     }
 
+    /// <summary>
+    /// Gets the player view angles
+    /// </summary>
     private Vector3f? _angles;
     public Vector3f Angles
     {
@@ -170,6 +197,9 @@ public class PlayerMove : BaseNativeWrapper<NativePlayerMove>
         }
     }
 
+    /// <summary>
+    /// Gets the previous frame's view angles
+    /// </summary>
     private Vector3f? _oldAngles;
     public Vector3f OldAngles
     {
@@ -183,6 +213,9 @@ public class PlayerMove : BaseNativeWrapper<NativePlayerMove>
         }
     }
 
+    /// <summary>
+    /// Gets the player velocity
+    /// </summary>
     private Vector3f? _velocity;
     public Vector3f Velocity
     {
@@ -196,6 +229,9 @@ public class PlayerMove : BaseNativeWrapper<NativePlayerMove>
         }
     }
 
+    /// <summary>
+    /// Gets the movement direction
+    /// </summary>
     private Vector3f? _moveDir;
     public Vector3f MoveDir
     {
@@ -209,6 +245,9 @@ public class PlayerMove : BaseNativeWrapper<NativePlayerMove>
         }
     }
 
+    /// <summary>
+    /// Gets the base velocity (from conveyor belts, etc.)
+    /// </summary>
     private Vector3f? _baseVelocity;
     public Vector3f BaseVelocity
     {
@@ -222,6 +261,9 @@ public class PlayerMove : BaseNativeWrapper<NativePlayerMove>
         }
     }
 
+    /// <summary>
+    /// Gets the view offset from the player origin
+    /// </summary>
     private Vector3f? _viewOfs;
     public Vector3f ViewOfs
     {
@@ -235,6 +277,9 @@ public class PlayerMove : BaseNativeWrapper<NativePlayerMove>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the time spent ducking
+    /// </summary>
     public float DuckTime
     {
         get
@@ -253,6 +298,9 @@ public class PlayerMove : BaseNativeWrapper<NativePlayerMove>
         }
     }
 
+    /// <summary>
+    /// Gets or sets whether the player is currently ducking
+    /// </summary>
     public bool InDuck
     {
         get
@@ -732,7 +780,9 @@ public class PlayerMove : BaseNativeWrapper<NativePlayerMove>
         }
     }
 
-    // User variables
+    /// <summary>
+    /// Gets or sets user-defined integer variable 1
+    /// </summary>
     public int IUser1
     {
         get
@@ -929,6 +979,9 @@ public class PlayerMove : BaseNativeWrapper<NativePlayerMove>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the number of physical entities for collision detection
+    /// </summary>
     public int NumPhysEnt
     {
         get

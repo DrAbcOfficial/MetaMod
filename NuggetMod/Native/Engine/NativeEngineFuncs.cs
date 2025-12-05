@@ -3,6 +3,9 @@ using System.Runtime.InteropServices;
 
 namespace NuggetMod.Native.Engine;
 
+/// <summary>
+/// Native engine functions
+/// </summary>
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct NativeEngineFuncs : INativeStruct
 {

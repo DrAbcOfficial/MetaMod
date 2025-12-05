@@ -25,19 +25,23 @@ public class ClientData : BaseNativeWrapper<NativeClientData>
         }
     }
 
-    private Vector3f? _veloctiy;
+    /// <summary>
+    /// Gets the client's velocity.
+    /// </summary>
     public Vector3f Veloctiy
     {
         get
         {
             unsafe
             {
-                _veloctiy ??= new Vector3f(&NativePtr->velocity);
-                return _veloctiy;
+                return new Vector3f(&NativePtr->velocity);
             }
         }
     }
 
+    /// <summary>
+    /// Gets or sets the view model index.
+    /// </summary>
     public int ViewModel
     {
         get
@@ -56,19 +60,23 @@ public class ClientData : BaseNativeWrapper<NativeClientData>
         }
     }
 
-    private Vector3f? _punchangle;
+    /// <summary>
+    /// Gets the punch angle (view kick from weapon recoil).
+    /// </summary>
     public Vector3f PunchAngle
     {
         get
         {
             unsafe
             {
-                _punchangle ??= new Vector3f(&NativePtr->punchangle);
-                return _punchangle;
+                return new Vector3f(&NativePtr->punchangle);
             }
         }
     }
 
+    /// <summary>
+    /// Gets or sets the client flags (FL_ONGROUND, FL_DUCKING, etc.).
+    /// </summary>
     public int Flags
     {
         get
@@ -87,6 +95,9 @@ public class ClientData : BaseNativeWrapper<NativeClientData>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the water level (0=not in water, 1=feet, 2=waist, 3=head).
+    /// </summary>
     public int WaterLevel
     {
         get
@@ -105,6 +116,9 @@ public class ClientData : BaseNativeWrapper<NativeClientData>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the water type (CONTENTS_WATER, CONTENTS_SLIME, CONTENTS_LAVA).
+    /// </summary>
     public int WaterType
     {
         get
@@ -123,19 +137,23 @@ public class ClientData : BaseNativeWrapper<NativeClientData>
         }
     }
 
-    private Vector3f? _view_ofs;
+    /// <summary>
+    /// Gets the view offset from origin (eye position).
+    /// </summary>
     public Vector3f ViewOFS
     {
         get
         {
             unsafe
             {
-                _view_ofs ??= new Vector3f(&NativePtr->view_ofs);
-                return _view_ofs;
+                return new Vector3f(&NativePtr->view_ofs);
             }
         }
     }
 
+    /// <summary>
+    /// Gets or sets the client's health.
+    /// </summary>
     public float Health
     {
         get
@@ -154,6 +172,9 @@ public class ClientData : BaseNativeWrapper<NativeClientData>
         }
     }
 
+    /// <summary>
+    /// Gets or sets whether the client is ducking.
+    /// </summary>
     public bool InDuck
     {
         get
@@ -172,6 +193,9 @@ public class ClientData : BaseNativeWrapper<NativeClientData>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the weapons bit mask.
+    /// </summary>
     public int Weapons
     {
         get
@@ -190,6 +214,9 @@ public class ClientData : BaseNativeWrapper<NativeClientData>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the time for next footstep sound.
+    /// </summary>
     public int FLTimeStepSound
     {
         get
@@ -208,23 +235,29 @@ public class ClientData : BaseNativeWrapper<NativeClientData>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the duck time.
+    /// </summary>
     public int FLDuckTime
     {
         get
         {
             unsafe
             {
-                return NativePtr->flTimeStepSound;
+                return NativePtr->flDuckTime;
             }
         }
         set
         {
             unsafe
             {
-                NativePtr->flTimeStepSound = value;
+                NativePtr->flDuckTime = value;
             }
         }
     }
+    /// <summary>
+    /// Gets or sets the swim time.
+    /// </summary>
     public int FLSwimTime
     {
         get
@@ -243,6 +276,9 @@ public class ClientData : BaseNativeWrapper<NativeClientData>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the water jump time.
+    /// </summary>
     public int WaterJumpTime
     {
         get
@@ -261,6 +297,9 @@ public class ClientData : BaseNativeWrapper<NativeClientData>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the maximum speed.
+    /// </summary>
     public float MaxSpeed
     {
         get
@@ -279,6 +318,9 @@ public class ClientData : BaseNativeWrapper<NativeClientData>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the field of view.
+    /// </summary>
     public float FOV
     {
         get
@@ -297,6 +339,9 @@ public class ClientData : BaseNativeWrapper<NativeClientData>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the weapon animation sequence.
+    /// </summary>
     public int WeaponAnim
     {
         get
@@ -315,6 +360,9 @@ public class ClientData : BaseNativeWrapper<NativeClientData>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the weapon ID.
+    /// </summary>
     public int Id
     {
         get
@@ -332,6 +380,9 @@ public class ClientData : BaseNativeWrapper<NativeClientData>
             }
         }
     }
+    /// <summary>
+    /// Gets or sets the shell ammunition count.
+    /// </summary>
     public int AmmoShells
     {
         get
@@ -349,6 +400,9 @@ public class ClientData : BaseNativeWrapper<NativeClientData>
             }
         }
     }
+    /// <summary>
+    /// Gets or sets the nail ammunition count.
+    /// </summary>
     public int AmmoNails
     {
         get
@@ -367,6 +421,9 @@ public class ClientData : BaseNativeWrapper<NativeClientData>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the cell ammunition count.
+    /// </summary>
     public int AmmoCells
     {
         get
@@ -384,6 +441,9 @@ public class ClientData : BaseNativeWrapper<NativeClientData>
             }
         }
     }
+    /// <summary>
+    /// Gets or sets the rocket ammunition count.
+    /// </summary>
     public int AmmoRockets
     {
         get
@@ -402,6 +462,9 @@ public class ClientData : BaseNativeWrapper<NativeClientData>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the time until next attack is allowed.
+    /// </summary>
     public float NextAttack
     {
         get
@@ -420,6 +483,9 @@ public class ClientData : BaseNativeWrapper<NativeClientData>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the Team Fortress state.
+    /// </summary>
     public int TFState
     {
         get
@@ -438,6 +504,9 @@ public class ClientData : BaseNativeWrapper<NativeClientData>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the push milliseconds for prediction.
+    /// </summary>
     public int PushMSec
     {
         get
@@ -456,6 +525,9 @@ public class ClientData : BaseNativeWrapper<NativeClientData>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the dead flag (0=alive, 1=dying, 2=dead, 3=respawnable).
+    /// </summary>
     public int DeadFlag
     {
         get
@@ -474,6 +546,9 @@ public class ClientData : BaseNativeWrapper<NativeClientData>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the physics info buffer (256 bytes).
+    /// </summary>
     public byte[] Physinfo
     {
         get
@@ -512,6 +587,9 @@ public class ClientData : BaseNativeWrapper<NativeClientData>
         }
     }
 
+    /// <summary>
+    /// Gets or sets custom integer value 1 for mods.
+    /// </summary>
     public int IUser1
     {
         get
@@ -529,6 +607,9 @@ public class ClientData : BaseNativeWrapper<NativeClientData>
             }
         }
     }
+    /// <summary>
+    /// Gets or sets custom integer value 2 for mods.
+    /// </summary>
     public int IUser2
     {
         get
@@ -546,6 +627,9 @@ public class ClientData : BaseNativeWrapper<NativeClientData>
             }
         }
     }
+    /// <summary>
+    /// Gets or sets custom integer value 3 for mods.
+    /// </summary>
     public int IUser3
     {
         get
@@ -563,6 +647,9 @@ public class ClientData : BaseNativeWrapper<NativeClientData>
             }
         }
     }
+    /// <summary>
+    /// Gets or sets custom integer value 4 for mods.
+    /// </summary>
     public int IUser4
     {
         get
@@ -580,6 +667,9 @@ public class ClientData : BaseNativeWrapper<NativeClientData>
             }
         }
     }
+    /// <summary>
+    /// Gets or sets custom float value 1 for mods.
+    /// </summary>
     public float FUser1
     {
         get
@@ -597,6 +687,9 @@ public class ClientData : BaseNativeWrapper<NativeClientData>
             }
         }
     }
+    /// <summary>
+    /// Gets or sets custom float value 2 for mods.
+    /// </summary>
     public float FUser2
     {
         get
@@ -614,6 +707,9 @@ public class ClientData : BaseNativeWrapper<NativeClientData>
             }
         }
     }
+    /// <summary>
+    /// Gets or sets custom float value 3 for mods.
+    /// </summary>
     public float FUser3
     {
         get
@@ -631,6 +727,9 @@ public class ClientData : BaseNativeWrapper<NativeClientData>
             }
         }
     }
+    /// <summary>
+    /// Gets or sets custom float value 4 for mods.
+    /// </summary>
     public float FUser4
     {
         get
@@ -649,53 +748,57 @@ public class ClientData : BaseNativeWrapper<NativeClientData>
         }
     }
 
-    private Vector3f? _vuser1;
+    /// <summary>
+    /// Gets custom vector value 1 for mods.
+    /// </summary>
     public Vector3f VUser1
     {
         get
         {
             unsafe
             {
-                _vuser1 ??= new Vector3f(&NativePtr->vuser1);
-                return _vuser1;
+                return new Vector3f(&NativePtr->vuser1);
             }
         }
     }
-    private Vector3f? _vuser2;
+    /// <summary>
+    /// Gets custom vector value 2 for mods.
+    /// </summary>
     public Vector3f VUser2
     {
         get
         {
             unsafe
             {
-                _vuser2 ??= new Vector3f(&NativePtr->vuser2);
-                return _vuser2;
+                return new Vector3f(&NativePtr->vuser2);
             }
         }
     }
 
-    private Vector3f? _vuser3;
+    /// <summary>
+    /// Gets custom vector value 3 for mods.
+    /// </summary>
     public Vector3f VUser3
     {
         get
         {
             unsafe
             {
-                _vuser3 ??= new Vector3f(&NativePtr->vuser3);
-                return _vuser3;
+                return new Vector3f(&NativePtr->vuser3);
             }
         }
     }
 
-    private Vector3f? _vuser4;
+    /// <summary>
+    /// Gets custom vector value 4 for mods.
+    /// </summary>
     public Vector3f VUser4
     {
         get
         {
             unsafe
             {
-                _vuser4 ??= new Vector3f(&NativePtr->vuser4);
-                return _vuser4;
+                return new Vector3f(&NativePtr->vuser4);
             }
         }
     }

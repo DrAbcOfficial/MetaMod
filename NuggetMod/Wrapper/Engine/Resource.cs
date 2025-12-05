@@ -17,6 +17,9 @@ public class Resource : BaseNativeWrapper<NativeResource>
     internal unsafe Resource(NativeResource* nativePtr, bool ownsPointer = false)
         : base(nativePtr, ownsPointer) { }
 
+    /// <summary>
+    /// Gets or sets the resource file name
+    /// </summary>
     public string FileName
     {
         get
@@ -52,6 +55,9 @@ public class Resource : BaseNativeWrapper<NativeResource>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the resource type (model, sound, decal, etc.)
+    /// </summary>
     public ResourceType Type
     {
         get
@@ -70,6 +76,9 @@ public class Resource : BaseNativeWrapper<NativeResource>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the resource index
+    /// </summary>
     public int Index
     {
         get
@@ -88,6 +97,9 @@ public class Resource : BaseNativeWrapper<NativeResource>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the download size in bytes
+    /// </summary>
     public int DownloadSize
     {
         get
@@ -106,6 +118,9 @@ public class Resource : BaseNativeWrapper<NativeResource>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the resource flags
+    /// </summary>
     public byte Flags
     {
         get
@@ -124,6 +139,9 @@ public class Resource : BaseNativeWrapper<NativeResource>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the MD5 hash of the resource (16 bytes)
+    /// </summary>
     public byte[] Md5Hash
     {
         get
@@ -153,6 +171,9 @@ public class Resource : BaseNativeWrapper<NativeResource>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the player number for player-specific resources
+    /// </summary>
     public byte PlayerNum
     {
         get
@@ -171,6 +192,9 @@ public class Resource : BaseNativeWrapper<NativeResource>
         }
     }
 
+    /// <summary>
+    /// Gets or sets reserved bytes (32 bytes)
+    /// </summary>
     public byte[] Reserved
     {
         get
@@ -201,6 +225,9 @@ public class Resource : BaseNativeWrapper<NativeResource>
     }
 
     private Resource? _next;
+    /// <summary>
+    /// Gets or sets the next resource in the linked list
+    /// </summary>
     public Resource? Next
     {
         get
@@ -227,6 +254,9 @@ public class Resource : BaseNativeWrapper<NativeResource>
     }
 
     private Resource? _previous;
+    /// <summary>
+    /// Gets or sets the previous resource in the linked list
+    /// </summary>
     public Resource? Previous
     {
         get

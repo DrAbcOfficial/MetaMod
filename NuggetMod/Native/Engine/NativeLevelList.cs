@@ -3,6 +3,9 @@ using System.Runtime.InteropServices;
 
 namespace NuggetMod.Native.Engine;
 
+/// <summary>
+/// Native level list
+/// </summary>
 [StructLayout(LayoutKind.Sequential)]
 public struct NativeLevelList : INativeStruct
 {

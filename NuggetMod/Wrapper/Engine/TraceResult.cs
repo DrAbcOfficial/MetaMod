@@ -17,6 +17,9 @@ public class TraceResult : BaseNativeWrapper<NativeTraceResult>
     internal unsafe TraceResult(NativeTraceResult* nativePtr, bool ownsPointer = false)
         : base(nativePtr, ownsPointer) { }
 
+    /// <summary>
+    /// Gets or sets whether the trace is completely in solid
+    /// </summary>
     public int AllSolid
     {
         get
@@ -35,6 +38,9 @@ public class TraceResult : BaseNativeWrapper<NativeTraceResult>
         }
     }
 
+    /// <summary>
+    /// Gets or sets whether the trace started in solid
+    /// </summary>
     public int StartSolid
     {
         get
@@ -53,6 +59,9 @@ public class TraceResult : BaseNativeWrapper<NativeTraceResult>
         }
     }
 
+    /// <summary>
+    /// Gets or sets whether the trace is in open space
+    /// </summary>
     public int InOpen
     {
         get
@@ -71,6 +80,9 @@ public class TraceResult : BaseNativeWrapper<NativeTraceResult>
         }
     }
 
+    /// <summary>
+    /// Gets or sets whether the trace is in water
+    /// </summary>
     public int InWater
     {
         get
@@ -89,6 +101,9 @@ public class TraceResult : BaseNativeWrapper<NativeTraceResult>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the fraction of the trace completed (0.0 to 1.0)
+    /// </summary>
     public float Fraction
     {
         get
@@ -108,6 +123,9 @@ public class TraceResult : BaseNativeWrapper<NativeTraceResult>
     }
 
     private Vector3f? _endPos;
+    /// <summary>
+    /// Gets the trace end position
+    /// </summary>
     public Vector3f EndPos
     {
         get
@@ -120,6 +138,9 @@ public class TraceResult : BaseNativeWrapper<NativeTraceResult>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the distance along the plane
+    /// </summary>
     public float PlaneDist
     {
         get
@@ -139,6 +160,9 @@ public class TraceResult : BaseNativeWrapper<NativeTraceResult>
     }
 
     private Vector3f? _planeNormal;
+    /// <summary>
+    /// Gets the plane normal at the hit point
+    /// </summary>
     public Vector3f PlaneNormal
     {
         get
@@ -151,6 +175,9 @@ public class TraceResult : BaseNativeWrapper<NativeTraceResult>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the pointer to the entity that was hit
+    /// </summary>
     public nint PHit
     {
         get
@@ -169,6 +196,9 @@ public class TraceResult : BaseNativeWrapper<NativeTraceResult>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the hitgroup (head, chest, legs, etc.)
+    /// </summary>
     public int Hitgroup
     {
         get

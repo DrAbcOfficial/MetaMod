@@ -42,6 +42,9 @@ public class PMTrace : BaseNativeWrapper<NativePMTrace>
         }
     }
 
+    /// <summary>
+    /// Gets the plane information at the hit point
+    /// </summary>
     private PMPlane? _plane;
     public PMPlane Plane
     {
@@ -55,6 +58,9 @@ public class PMTrace : BaseNativeWrapper<NativePMTrace>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the change in velocity caused by the collision
+    /// </summary>
     private Vector3f? _deltavelocity;
     public Vector3f DeltAVelocity
     {
@@ -77,6 +83,9 @@ public class PMTrace : BaseNativeWrapper<NativePMTrace>
         }
     }
 
+    /// <summary>
+    /// Gets or sets whether the trace is completely in solid
+    /// </summary>
     public bool AllSolid
     {
         get
@@ -95,6 +104,9 @@ public class PMTrace : BaseNativeWrapper<NativePMTrace>
         }
     }
 
+    /// <summary>
+    /// Gets or sets whether the trace started in solid
+    /// </summary>
     public bool StartSolid
     {
         get
@@ -113,6 +125,9 @@ public class PMTrace : BaseNativeWrapper<NativePMTrace>
         }
     }
 
+    /// <summary>
+    /// Gets or sets whether the trace is in open space
+    /// </summary>
     public bool InOpen
     {
         get
@@ -131,6 +146,9 @@ public class PMTrace : BaseNativeWrapper<NativePMTrace>
         }
     }
 
+    /// <summary>
+    /// Gets or sets whether the trace is in water
+    /// </summary>
     public bool InWater
     {
         get
@@ -149,6 +167,9 @@ public class PMTrace : BaseNativeWrapper<NativePMTrace>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the fraction of the trace completed (0.0 to 1.0)
+    /// </summary>
     public float Fraction
     {
         get
@@ -167,6 +188,9 @@ public class PMTrace : BaseNativeWrapper<NativePMTrace>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the entity index that was hit
+    /// </summary>
     public int Ent
     {
         get
@@ -185,6 +209,9 @@ public class PMTrace : BaseNativeWrapper<NativePMTrace>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the hitgroup (head, chest, legs, etc.)
+    /// </summary>
     public int HitGroup
     {
         get

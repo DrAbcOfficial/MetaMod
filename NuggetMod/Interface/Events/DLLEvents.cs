@@ -216,55 +216,205 @@ public delegate (MetaResult, int) AllowLagCompensationDelegate();
 public class DLLEvents
 {
     #region Events
+    /// <summary>
+    /// Event fired when the game DLL is initialized.
+    /// </summary>
     public event GameInitDelegate? GameInit;
+    /// <summary>
+    /// Event fired when an entity is spawned.
+    /// </summary>
     public event SpawnDelegate? Spawn;
+    /// <summary>
+    /// Event fired when an entity thinks.
+    /// </summary>
     public event ThinkDelegate? Think;
+    /// <summary>
+    /// Event fired when an entity is used by another entity.
+    /// </summary>
     public event UseDelegate? Use;
+    /// <summary>
+    /// Event fired when an entity touches another entity.
+    /// </summary>
     public event TouchDelegate? Touch;
+    /// <summary>
+    /// Event fired when an entity is blocked by another entity.
+    /// </summary>
     public event BlockedDelegate? Blocked;
+    /// <summary>
+    /// Event fired when key-value data is set on an entity during map load.
+    /// </summary>
     public event KeyValueDelegate? KeyValue;
+    /// <summary>
+    /// Event fired when an entity is saved.
+    /// </summary>
     public event SaveDelegate? Save;
+    /// <summary>
+    /// Event fired when an entity is restored from save data.
+    /// </summary>
     public event RestoreDelegate? Restore;
+    /// <summary>
+    /// Event fired when an entity's absolute bounding box is set.
+    /// </summary>
     public event SetAbsBoxDelegate? SetAbsBox;
+    /// <summary>
+    /// Event fired when save fields are written.
+    /// </summary>
     public event SaveWriteFieldsDelegate? SaveWriteFields;
+    /// <summary>
+    /// Event fired when save fields are read.
+    /// </summary>
     public event SaveReadFieldsDelegate? SaveReadFields;
+    /// <summary>
+    /// Event fired when global state is saved.
+    /// </summary>
     public event SaveGlobalStateDelegate? SaveGlobalState;
+    /// <summary>
+    /// Event fired when global state is restored.
+    /// </summary>
     public event RestoreGlobalStateDelegate? RestoreGlobalState;
+    /// <summary>
+    /// Event fired when global state is reset.
+    /// </summary>
     public event ResetGlobalStateDelegate? ResetGlobalState;
+    /// <summary>
+    /// Event fired when a client attempts to connect to the server.
+    /// </summary>
     public event ClientConnectDelegate? ClientConnect;
+    /// <summary>
+    /// Event fired when a client disconnects from the server.
+    /// </summary>
     public event ClientDisconnectDelegate? ClientDisconnect;
+    /// <summary>
+    /// Event fired when a client executes the kill command.
+    /// </summary>
     public event ClientKillDelegate? ClientKill;
+    /// <summary>
+    /// Event fired when a client is put into the server after connecting.
+    /// </summary>
     public event ClientPutInServerDelegate? ClientPutInServer;
+    /// <summary>
+    /// Event fired when a client executes a command.
+    /// </summary>
     public event DllClientCommandDelegate? ClientCommand;
+    /// <summary>
+    /// Event fired when a client's user info is changed.
+    /// </summary>
     public event ClientUserInfoChangedDelegate? ClientUserInfoChanged;
+    /// <summary>
+    /// Event fired when the server is activated (map loaded).
+    /// </summary>
     public event ServerActivateDelegate? ServerActivate;
+    /// <summary>
+    /// Event fired when the server is deactivated (map unloaded).
+    /// </summary>
     public event ServerDeactivateDelegate? ServerDeactivate;
+    /// <summary>
+    /// Event fired before player physics simulation.
+    /// </summary>
     public event PlayerPreThinkDelegate? PlayerPreThink;
+    /// <summary>
+    /// Event fired after player physics simulation.
+    /// </summary>
     public event PlayerPostThinkDelegate? PlayerPostThink;
+    /// <summary>
+    /// Event fired at the start of each server frame.
+    /// </summary>
     public event StartFrameDelegate? StartFrame;
+    /// <summary>
+    /// Event fired when starting a new level.
+    /// </summary>
     public event ParmsNewLevelDelegate? ParmsNewLevel;
+    /// <summary>
+    /// Event fired when changing levels.
+    /// </summary>
     public event ParmsChangeLevelDelegate? ParmsChangeLevel;
+    /// <summary>
+    /// Event fired to get the game description string.
+    /// </summary>
     public event GetGameDescriptionDelegate? GetGameDescription;
+    /// <summary>
+    /// Event fired when a player's customization is applied.
+    /// </summary>
     public event PlayerCustomizationDelegate? PlayerCustomization;
+    /// <summary>
+    /// Event fired when a spectator connects.
+    /// </summary>
     public event SpectatorConnectDelegate? SpectatorConnect;
+    /// <summary>
+    /// Event fired when a spectator disconnects.
+    /// </summary>
     public event SpectatorDisconnectDelegate? SpectatorDisconnect;
+    /// <summary>
+    /// Event fired when a spectator thinks.
+    /// </summary>
     public event SpectatorThinkDelegate? SpectatorThink;
+    /// <summary>
+    /// Event fired when a system error occurs.
+    /// </summary>
     public event SysErrorDelegate? SysError;
+    /// <summary>
+    /// Event fired during player movement simulation.
+    /// </summary>
     public event PMMoveDelegate? PM_Move;
+    /// <summary>
+    /// Event fired to initialize player movement.
+    /// </summary>
     public event PMInitDelegate? PM_Init;
+    /// <summary>
+    /// Event fired to find texture type during player movement.
+    /// </summary>
     public event PMFindTextureTypeDelegate? PM_FindTextureType;
+    /// <summary>
+    /// Event fired to set up visibility for a client.
+    /// </summary>
     public event SetupVisibilityDelegate? SetupVisibility;
+    /// <summary>
+    /// Event fired to update client data before sending to client.
+    /// </summary>
     public event UpdateClientDataDelegate? UpdateClientData;
+    /// <summary>
+    /// Event fired to add entity to the full pack for network transmission.
+    /// </summary>
     public event AddToFullPackDelegate? AddToFullPack;
+    /// <summary>
+    /// Event fired to create entity baseline for delta compression.
+    /// </summary>
     public event CreateBaselineDelegate? CreateBaseline;
+    /// <summary>
+    /// Event fired to register delta encoders.
+    /// </summary>
     public event RegisterEncodersDelegate? RegisterEncoders;
+    /// <summary>
+    /// Event fired to get weapon data for client prediction.
+    /// </summary>
     public event GetWeaponDataDelegate? GetWeaponData;
+    /// <summary>
+    /// Event fired at the start of a client command.
+    /// </summary>
     public event CmdStartDelegate? CmdStart;
+    /// <summary>
+    /// Event fired at the end of a client command.
+    /// </summary>
     public event CmdEndDelegate? CmdEnd;
+    /// <summary>
+    /// Event fired when a connectionless packet is received.
+    /// </summary>
     public event ConnectionlessPacketDelegate? ConnectionlessPacket;
+    /// <summary>
+    /// Event fired to get hull bounds for collision detection.
+    /// </summary>
     public event GetHullBoundsDelegate? GetHullBounds;
+    /// <summary>
+    /// Event fired to create instanced baselines.
+    /// </summary>
     public event CreateInstancedBaselinesDelegate? CreateInstancedBaselines;
+    /// <summary>
+    /// Event fired when an inconsistent file is detected on the client.
+    /// </summary>
     public event InconsistentFileDelegate? InconsistentFile;
+    /// <summary>
+    /// Event fired to check if lag compensation is allowed.
+    /// </summary>
     public event AllowLagCompensationDelegate? AllowLagCompensation;
     #endregion
     #region Invoker

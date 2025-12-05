@@ -24,6 +24,9 @@ public class KeyValueData : BaseNativeWrapper<NativeKeyValueData>
         }
     }
 
+    /// <summary>
+    /// Gets the key name
+    /// </summary>
     public string KeyName
     {
         get
@@ -35,6 +38,9 @@ public class KeyValueData : BaseNativeWrapper<NativeKeyValueData>
         }
     }
 
+    /// <summary>
+    /// Gets the value associated with the key
+    /// </summary>
     public string Value
     {
         get
@@ -46,6 +52,9 @@ public class KeyValueData : BaseNativeWrapper<NativeKeyValueData>
         }
     }
 
+    /// <summary>
+    /// Gets or sets whether this key-value pair has been handled
+    /// </summary>
     public int Handled
     {
         get

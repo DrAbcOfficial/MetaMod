@@ -60,6 +60,9 @@ public class GlobalVars : BaseNativeWrapper<NativeGlobalVars>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the force retouch value (forces entities to recheck touch)
+    /// </summary>
     public float ForceRetouch
     {
         get
@@ -78,6 +81,9 @@ public class GlobalVars : BaseNativeWrapper<NativeGlobalVars>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the current map name
+    /// </summary>
     private StringHandle? _mapname;
     public string MapName
     {
@@ -99,6 +105,9 @@ public class GlobalVars : BaseNativeWrapper<NativeGlobalVars>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the start spot name for player spawning
+    /// </summary>
     private StringHandle? _startspot;
     public string StartSpot
     {
@@ -120,6 +129,9 @@ public class GlobalVars : BaseNativeWrapper<NativeGlobalVars>
         }
     }
 
+    /// <summary>
+    /// Gets or sets whether deathmatch mode is enabled
+    /// </summary>
     public float Deathmatch
     {
         get
@@ -138,6 +150,9 @@ public class GlobalVars : BaseNativeWrapper<NativeGlobalVars>
         }
     }
 
+    /// <summary>
+    /// Gets or sets whether cooperative mode is enabled
+    /// </summary>
     public float Coop
     {
         get
@@ -156,6 +171,9 @@ public class GlobalVars : BaseNativeWrapper<NativeGlobalVars>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the teamplay mode value
+    /// </summary>
     public float Teamplay
     {
         get
@@ -174,6 +192,9 @@ public class GlobalVars : BaseNativeWrapper<NativeGlobalVars>
         }
     }
 
+    /// <summary>
+    /// Gets or sets server flags
+    /// </summary>
     public float Serverflags
     {
         get
@@ -192,6 +213,9 @@ public class GlobalVars : BaseNativeWrapper<NativeGlobalVars>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the number of secrets found
+    /// </summary>
     public float FoundSecrets
     {
         get
@@ -210,6 +234,9 @@ public class GlobalVars : BaseNativeWrapper<NativeGlobalVars>
         }
     }
 
+    /// <summary>
+    /// Gets the forward direction vector (calculated from angles)
+    /// </summary>
     private Vector3f? _vForward;
     public Vector3f VForward
     {
@@ -223,6 +250,9 @@ public class GlobalVars : BaseNativeWrapper<NativeGlobalVars>
         }
     }
 
+    /// <summary>
+    /// Gets the up direction vector (calculated from angles)
+    /// </summary>
     private Vector3f? _vUp;
     public Vector3f VUp
     {
@@ -236,6 +266,9 @@ public class GlobalVars : BaseNativeWrapper<NativeGlobalVars>
         }
     }
 
+    /// <summary>
+    /// Gets the right direction vector (calculated from angles)
+    /// </summary>
     private Vector3f? _vRight;
     public Vector3f VRight
     {
@@ -473,6 +506,9 @@ public class GlobalVars : BaseNativeWrapper<NativeGlobalVars>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the maximum number of clients allowed on the server
+    /// </summary>
     public int MaxClients
     {
         get
@@ -491,6 +527,9 @@ public class GlobalVars : BaseNativeWrapper<NativeGlobalVars>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the maximum number of entities
+    /// </summary>
     public int MaxEntities
     {
         get
@@ -509,6 +548,9 @@ public class GlobalVars : BaseNativeWrapper<NativeGlobalVars>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the base pointer for string storage
+    /// </summary>
     public nint StringBase
     {
         get
@@ -527,6 +569,9 @@ public class GlobalVars : BaseNativeWrapper<NativeGlobalVars>
         }
     }
 
+    /// <summary>
+    /// Gets or sets the pointer to save data
+    /// </summary>
     public nint SaveData
     {
         get
@@ -545,6 +590,9 @@ public class GlobalVars : BaseNativeWrapper<NativeGlobalVars>
         }
     }
 
+    /// <summary>
+    /// Gets the landmark offset for level transitions
+    /// </summary>
     private Vector3f? _vecLandmarkOffset;
     public Vector3f VecLandmarkOffset
     {

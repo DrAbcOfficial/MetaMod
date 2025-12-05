@@ -2,6 +2,9 @@
 
 namespace NuggetMod.Native.Engine;
 
+/// <summary>
+/// Native entity table
+/// </summary>
 [StructLayout(LayoutKind.Sequential)]
 public struct NativeEntityTable : INativeStruct
 {

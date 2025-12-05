@@ -32,10 +32,25 @@ public delegate MetaResult CvarValue2Delegate(Edict pEnt, int requestID, string 
 public class NewDLLEvents
 {
     #region new dll functions
+    /// <summary>
+    /// Event fired when entity private data is being freed.
+    /// </summary>
     public event OnFreeEntPrivateDataDelegate? OnFreeEntPrivateData;
+    /// <summary>
+    /// Event fired when the game is shutting down.
+    /// </summary>
     public event GameShutdownDelegate? GameShutdown;
+    /// <summary>
+    /// Event fired to determine if two entities should collide.
+    /// </summary>
     public event ShouldCollideDelegate? ShouldCollide;
+    /// <summary>
+    /// Event fired when a client cvar value query response is received.
+    /// </summary>
     public event CvarValueDelegate? CvarValue;
+    /// <summary>
+    /// Event fired when a client cvar value query response with request ID is received.
+    /// </summary>
     public event CvarValue2Delegate? CvarValue2;
     #endregion
 
