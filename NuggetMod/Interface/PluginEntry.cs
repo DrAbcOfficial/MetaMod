@@ -59,7 +59,8 @@ public abstract class PluginEntry
     /// </summary>
     protected static void Native_Meta_Init()
     {
-
+        var pinterface = GetPluginInterface();
+        pinterface.MetaInit();
     }
 
     /// <summary>
