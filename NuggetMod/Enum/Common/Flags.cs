@@ -3,6 +3,7 @@
 /// <summary>
 /// edict->flags
 /// </summary>
+[Flags]
 public enum Flags
 {
     /// <summary>
