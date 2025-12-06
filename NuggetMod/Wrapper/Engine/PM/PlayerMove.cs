@@ -1,5 +1,4 @@
-﻿using NuggetMod.Enum.NuggetMod;
-using NuggetMod.Native.Engine.PM;
+﻿using NuggetMod.Native.Engine.PM;
 using NuggetMod.Wrapper.Common;
 using System.Text;
 
@@ -11,7 +10,7 @@ namespace NuggetMod.Wrapper.Engine.PM;
 public class PlayerMove : BaseNativeWrapper<NativePlayerMove>
 {
     internal unsafe PlayerMove(nint ptr) : base((NativePlayerMove*)ptr) { }
-    
+
     /// <summary>
     /// Gets or sets the player index
     /// </summary>
@@ -386,7 +385,7 @@ public class PlayerMove : BaseNativeWrapper<NativePlayerMove>
     /// Gets the view punch angle (weapon recoil, damage feedback)
     /// </summary>
     private Vector3f? _punchAngle;
-    
+
     /// <summary>
     /// Gets the view punch angle (weapon recoil, damage feedback)
     /// </summary>
@@ -1031,7 +1030,7 @@ public class PlayerMove : BaseNativeWrapper<NativePlayerMove>
     /// Gets user-defined vector variable 1 (game-specific usage)
     /// </summary>
     private Vector3f? _vUser1;
-    
+
     /// <summary>
     /// Gets user-defined vector variable 1 (game-specific usage)
     /// </summary>
@@ -1051,7 +1050,7 @@ public class PlayerMove : BaseNativeWrapper<NativePlayerMove>
     /// Gets user-defined vector variable 2 (game-specific usage)
     /// </summary>
     private Vector3f? _vUser2;
-    
+
     /// <summary>
     /// Gets user-defined vector variable 2 (game-specific usage)
     /// </summary>
@@ -1071,7 +1070,7 @@ public class PlayerMove : BaseNativeWrapper<NativePlayerMove>
     /// Gets user-defined vector variable 3 (game-specific usage)
     /// </summary>
     private Vector3f? _vUser3;
-    
+
     /// <summary>
     /// Gets user-defined vector variable 3 (game-specific usage)
     /// </summary>
@@ -1091,7 +1090,7 @@ public class PlayerMove : BaseNativeWrapper<NativePlayerMove>
     /// Gets user-defined vector variable 4 (game-specific usage)
     /// </summary>
     private Vector3f? _vUser4;
-    
+
     /// <summary>
     /// Gets user-defined vector variable 4 (game-specific usage)
     /// </summary>

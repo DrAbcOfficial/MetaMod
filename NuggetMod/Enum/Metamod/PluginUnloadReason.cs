@@ -1,4 +1,4 @@
-﻿namespace NuggetMod.Enum.NuggetMod;
+﻿namespace NuggetMod.Enum.Metamod;
 
 /// <summary>
 /// Specifies the reason why a plugin is being unloaded.

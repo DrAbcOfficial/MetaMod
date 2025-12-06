@@ -1,4 +1,4 @@
-﻿namespace NuggetMod.Enum.NuggetMod;
+﻿namespace NuggetMod.Enum.Metamod;
 
 /// <summary>
 /// Represents the Metamod plugin interface version. Version consists of "major:minor", two separate integer numbers.

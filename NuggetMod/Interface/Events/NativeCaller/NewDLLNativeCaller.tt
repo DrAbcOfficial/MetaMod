@@ -16,7 +16,7 @@ using NuggetMod.Wrapper.Common;
 using NuggetMod.Wrapper.Engine;
 using static NuggetMod.Native.Game.NativeDllFuncs;
 using System.Runtime.InteropServices;
-using NuggetMod.Enum.NuggetMod;
+using NuggetMod.Enum.Metamod;
 using NuggetMod.Interface.Events;
 #nullable enable
 namespace NuggetMod.Interface;

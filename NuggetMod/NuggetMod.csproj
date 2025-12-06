@@ -90,4 +90,8 @@
     </Compile>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="nuget\" />
+  </ItemGroup>
+
 </Project>

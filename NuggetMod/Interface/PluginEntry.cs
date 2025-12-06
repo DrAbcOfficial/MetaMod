@@ -1,4 +1,4 @@
-﻿using NuggetMod.Enum.NuggetMod;
+﻿using NuggetMod.Enum.Metamod;
 using NuggetMod.Native.Metamod;
 using NuggetMod.Wrapper.Engine;
 using NuggetMod.Wrapper.Metamod;

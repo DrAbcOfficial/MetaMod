@@ -1,4 +1,4 @@
-﻿namespace NuggetMod.Enum.NuggetMod;
+﻿namespace NuggetMod.Enum.Metamod;
 
 /// <summary>
 /// Flags returned by a plugin's API function.

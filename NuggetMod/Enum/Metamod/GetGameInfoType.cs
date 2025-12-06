@@ -1,4 +1,4 @@
-﻿namespace NuggetMod.Enum.NuggetMod;
+﻿namespace NuggetMod.Enum.Metamod;
 
 /// <summary>
 /// Specifies the type of game information to retrieve via GetGameInfo.
