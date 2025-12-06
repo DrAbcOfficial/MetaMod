@@ -115,5 +115,66 @@ namespace NuggetMod.Wrapper.Metamod
                 }
             }
         }
+
+        /// <summary>
+        /// Gets the original return value casted to the specified unmanaged type
+        /// </summary>
+        /// <typeparam name="T">unmanaged type</typeparam>
+        /// <returns>value</returns>
+        public T GetOriginalReturn<T>() where T : unmanaged
+        {
+            unsafe
+            {
+                return *((T*)(NativePtr->orig_ret));
+            }
+        }
+        /// <summary>
+        /// Sets the override return value to the specified unmanaged type
+        /// </summary>
+        /// <typeparam name="T">unmanaged type</typeparam>
+        /// <param name="value">value</param>
+        /// <exception cref="InvalidOperationException">null override_ret</exception>
+        public void SetOverrideReturn<T>(T value) where T : unmanaged
+        {
+            unsafe
+            {
+                if (NativePtr->override_ret == nint.Zero)
+                {
+                    throw new InvalidOperationException("Override return pointer is null.");
+                }
+                *((T*)(NativePtr->override_ret)) = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets the override return value casted to the specified unmanaged type
+        /// </summary>
+        /// <typeparam name="T">unmanaged type</typeparam>
+        /// <returns>value</returns>
+        public T GetOverrideReturn<T>() where T : unmanaged
+        {
+            unsafe
+            {
+                return *((T*)(NativePtr->override_ret));
+            }
+        }
+
+        /// <summary>
+        /// Sets the override return value to the specified unmanaged type
+        /// </summary>
+        /// <typeparam name="T">unmanaged type</typeparam>
+        /// <param name="value">value</param>
+        /// <exception cref="InvalidOperationException">null override_ret</exception>
+        public void SetOriginReturn<T>(T value) where T : unmanaged
+        {
+            unsafe
+            {
+                if (NativePtr->orig_ret == nint.Zero)
+                {
+                    throw new InvalidOperationException("Original return pointer is null.");
+                }
+                *((T*)(NativePtr->orig_ret)) = value;
+            }
+        }
     }
 }
