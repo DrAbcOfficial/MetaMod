@@ -138,16 +138,18 @@ public class EngineFuncs(nint ptr) : BaseFunctionWrapper<NativeEngineFuncs>(ptr)
     /// <param name="field">Field name to search (e.g., "classname", "targetname")</param>
     /// <param name="value">Value to match</param>
     /// <returns>Found entity or null if not found</returns>
-    public Edict FindEntityByString(Edict e, string field, string value)
+    public Edict? FindEntityByString(Edict e, string field, string value)
     {
+        nint ns1 = Marshal.StringToHGlobalAnsi(field);
+        nint ns2 = Marshal.StringToHGlobalAnsi(value);
+        nint result = Base.pfnFindEntityByString(e.GetNative(), ns1, ns2);
+        Marshal.FreeHGlobal(ns1);
+        Marshal.FreeHGlobal(ns2);
+        if (result == nint.Zero)
+            return null;
         unsafe
         {
-            nint ns1 = Marshal.StringToHGlobalAnsi(field);
-            nint ns2 = Marshal.StringToHGlobalAnsi(value);
-            Edict ret = new((NativeEdict*)Base.pfnFindEntityByString(e.GetNative(), ns1, ns2));
-            Marshal.FreeHGlobal(ns1);
-            Marshal.FreeHGlobal(ns2);
-            return ret;
+            return new((NativeEdict*)result);
         }
     }
     /// <summary>
@@ -164,11 +166,14 @@ public class EngineFuncs(nint ptr) : BaseFunctionWrapper<NativeEngineFuncs>(ptr)
     /// <param name="origin">Center point of the sphere</param>
     /// <param name="radius">Search radius</param>
     /// <returns>Found entity or null if no more entities</returns>
-    public Edict FindEntityInSphere(Edict e, Vector3f origin, float radius)
+    public Edict? FindEntityInSphere(Edict e, Vector3f origin, float radius)
     {
+        nint result = Base.pfnFindEntityInSphere(e.GetNative(), origin.GetNative(), radius);
+        if (result == nint.Zero)
+            return null;
         unsafe
         {
-            return new((NativeEdict*)Base.pfnFindEntityInSphere(e.GetNative(), origin.GetNative(), radius));
+            return new((NativeEdict*)result);
         }
     }
     /// <summary>
@@ -176,11 +181,14 @@ public class EngineFuncs(nint ptr) : BaseFunctionWrapper<NativeEngineFuncs>(ptr)
     /// </summary>
     /// <param name="e">Entity whose PVS to check</param>
     /// <returns>Client entity in PVS or null if none found</returns>
-    public Edict FindClientInPVS(Edict e)
+    public Edict? FindClientInPVS(Edict e)
     {
+        nint result = Base.pfnFindClientInPVS(e.GetNative());
+        if (result == nint.Zero)
+            return null;
         unsafe
         {
-            return new((NativeEdict*)Base.pfnFindClientInPVS(e.GetNative()));
+            return new((NativeEdict*)result);
         }
     }
     /// <summary>
@@ -188,11 +196,14 @@ public class EngineFuncs(nint ptr) : BaseFunctionWrapper<NativeEngineFuncs>(ptr)
     /// </summary>
     /// <param name="e">Entity whose PVS to check</param>
     /// <returns>Entity in PVS</returns>
-    public Edict EntitiesInPVS(Edict e)
+    public Edict? EntitiesInPVS(Edict e)
     {
+        nint result = Base.pfnEntitiesInPVS(e.GetNative());
+        if (result == nint.Zero)
+            return null;
         unsafe
         {
-            return new((NativeEdict*)Base.pfnEntitiesInPVS(e.GetNative()));
+            return new((NativeEdict*)result);
         }
     }
     /// <summary>
@@ -213,11 +224,14 @@ public class EngineFuncs(nint ptr) : BaseFunctionWrapper<NativeEngineFuncs>(ptr)
     /// Creates a new entity
     /// </summary>
     /// <returns>Newly created entity</returns>
-    public Edict CreateEntity()
+    public Edict? CreateEntity()
     {
+        nint result = Base.pfnCreateEntity();
+        if (result == nint.Zero)
+            return null;
         unsafe
         {
-            return new((NativeEdict*)Base.pfnCreateEntity());
+            return new((NativeEdict*)result);
         }
     }
     /// <summary>
@@ -231,12 +245,15 @@ public class EngineFuncs(nint ptr) : BaseFunctionWrapper<NativeEngineFuncs>(ptr)
     /// </summary>
     /// <param name="className">Class name of the entity to create</param>
     /// <returns>Newly created entity</returns>
-    public Edict CreateNamedEntity(string className)
+    public Edict? CreateNamedEntity(string className)
     {
         StringHandle? _namedEntity = new(className);
+        nint result = Base.pfnCreateNamedEntity(_namedEntity.ToHandle());
+        if(result == nint.Zero)
+            return null;
         unsafe
         {
-            return new((NativeEdict*)Base.pfnCreateNamedEntity(_namedEntity.ToHandle()));
+            return new((NativeEdict*)result);
         }
     }
     /// <summary>
@@ -686,11 +703,14 @@ public class EngineFuncs(nint ptr) : BaseFunctionWrapper<NativeEngineFuncs>(ptr)
     /// </summary>
     /// <param name="iEntIndex">Entity index (1-based)</param>
     /// <returns>Entity at the index</returns>
-    public Edict PEntityOfEntIndex(int iEntIndex)
+    public Edict? PEntityOfEntIndex(int iEntIndex)
     {
+        nint result = Base.pfnPEntityOfEntIndex(iEntIndex);
+        if (result == nint.Zero)
+            return null;
         unsafe
         {
-            return new((NativeEdict*)Base.pfnPEntityOfEntIndex(iEntIndex));
+            return new((NativeEdict*)result);
         }
     }
     /// <summary>
@@ -698,11 +718,14 @@ public class EngineFuncs(nint ptr) : BaseFunctionWrapper<NativeEngineFuncs>(ptr)
     /// </summary>
     /// <param name="pvars">Entity variables to search for</param>
     /// <returns>Entity with matching entvars</returns>
-    public Edict FindEntityByVars(Entvars pvars)
+    public Edict? FindEntityByVars(Entvars pvars)
     {
+        nint result = Base.pfnFindEntityByVars(pvars.GetNative());
+        if (result == nint.Zero)
+            return null;
         unsafe
         {
-            return new((NativeEdict*)Base.pfnFindEntityByVars(pvars.GetNative()));
+            return new((NativeEdict*)result);
         }
     }
     /// <summary>

@@ -1,4 +1,5 @@
-﻿using NuggetMod.Helper;
+﻿using NuggetMod.Enum.Common;
+using NuggetMod.Helper;
 using NuggetMod.Native.Engine;
 using NuggetMod.Wrapper.Common;
 
@@ -623,20 +624,20 @@ public class Entvars : BaseNativeWrapper<NativeEntvars>
     /// <summary>
     /// Gets or sets the movement type (MOVETYPE_WALK, MOVETYPE_FLY, etc.)
     /// </summary>
-    public int MoveType
+    public MoveType MoveType
     {
         get
         {
             unsafe
             {
-                return NativePtr->movetype;
+                return (MoveType)NativePtr->movetype;
             }
         }
         set
         {
             unsafe
             {
-                NativePtr->movetype = value;
+                NativePtr->movetype = (int)value;
             }
         }
     }
@@ -644,20 +645,20 @@ public class Entvars : BaseNativeWrapper<NativeEntvars>
     /// <summary>
     /// Gets or sets the solid type for collision (SOLID_NOT, SOLID_BBOX, etc.)
     /// </summary>
-    public int Solid
+    public Solid Solid
     {
         get
         {
             unsafe
             {
-                return NativePtr->solid;
+                return (Solid)NativePtr->solid;
             }
         }
         set
         {
             unsafe
             {
-                NativePtr->solid = value;
+                NativePtr->solid = (int)value;
             }
         }
     }
@@ -977,20 +978,20 @@ public class Entvars : BaseNativeWrapper<NativeEntvars>
     /// <summary>
     /// Gets or sets the rendering mode (kRenderNormal, kRenderTransColor, kRenderGlow, etc.)
     /// </summary>
-    public int RenderMode
+    public RenderMode RenderMode
     {
         get
         {
             unsafe
             {
-                return NativePtr->rendermode;
+                return (RenderMode)NativePtr->rendermode;
             }
         }
         set
         {
             unsafe
             {
-                NativePtr->rendermode = value;
+                NativePtr->rendermode = (int)value;
             }
         }
     }
@@ -1035,20 +1036,20 @@ public class Entvars : BaseNativeWrapper<NativeEntvars>
     /// <summary>
     /// Gets or sets the render effects (kRenderFxNone, kRenderFxPulseSlow, kRenderFxGlowShell, etc.)
     /// </summary>
-    public int RenderFx
+    public RenderFX RenderFx
     {
         get
         {
             unsafe
             {
-                return NativePtr->renderfx;
+                return (RenderFX)NativePtr->renderfx;
             }
         }
         set
         {
             unsafe
             {
-                NativePtr->renderfx = value;
+                NativePtr->renderfx = (int)value;
             }
         }
     }
@@ -1140,20 +1141,20 @@ public class Entvars : BaseNativeWrapper<NativeEntvars>
     /// <summary>
     /// Gets or sets the dead flag status (DEAD_NO, DEAD_DYING, DEAD_DEAD, DEAD_RESPAWNABLE, DEAD_DISCARDBODY)
     /// </summary>
-    public int DeadFlag
+    public DeadFlag DeadFlag
     {
         get
         {
             unsafe
             {
-                return NativePtr->deadflag;
+                return (DeadFlag)NativePtr->deadflag;
             }
         }
         set
         {
             unsafe
             {
-                NativePtr->deadflag = value;
+                NativePtr->deadflag = (int)value;
             }
         }
     }
